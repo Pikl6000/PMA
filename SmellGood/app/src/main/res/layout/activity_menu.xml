@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".Game">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        app:srcCompat="@drawable/title" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center|top"
+        android:gravity="center|top"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="160dp"
+            android:layout_height="78dp"
+            android:layout_marginBottom="30dp"
+            android:backgroundTint="#903CF1"
+            android:text="PLAY"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="160dp"
+            android:layout_height="78dp"
+            android:layout_marginBottom="30dp"
+            android:backgroundTint="#903CF1"
+            android:text="SCORE BOARD"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/EXIT"
+            android:layout_width="160dp"
+            android:layout_height="78dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:backgroundTint="#903CF1"
+            android:text="EXIT"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>
