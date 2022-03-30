@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    android:gravity="center"
+    android:gravity="center|top"
     android:orientation="vertical"
     tools:context=".Game">
 
@@ -14,42 +14,57 @@
         android:id="@+id/imageView"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        app:srcCompat="@drawable/title" />
+        app:srcCompat="@drawable/title"
+        tools:ignore="ImageContrastCheck" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center|top"
         android:gravity="center|top"
         android:orientation="vertical">
 
         <Button
             android:id="@+id/button"
-            android:layout_width="160dp"
+            android:layout_width="220dp"
             android:layout_height="78dp"
             android:layout_marginBottom="30dp"
             android:backgroundTint="#903CF1"
             android:text="PLAY"
+            android:textSize="21sp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/button2"
-            android:layout_width="160dp"
+            android:layout_width="220dp"
             android:layout_height="78dp"
             android:layout_marginBottom="30dp"
             android:backgroundTint="#903CF1"
             android:text="SCORE BOARD"
+            android:textSize="21sp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/EXIT"
-            android:layout_width="160dp"
+            android:layout_width="220dp"
             android:layout_height="78dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:backgroundTint="#903CF1"
             android:text="EXIT"
+            android:textSize="21sp"
             android:textStyle="bold" />
+
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_marginTop="88dp"
+        android:gravity="bottom"
+        android:text="© 2022"
+        android:textAlignment="center"
+        android:textSize="16sp" />
 
 </LinearLayout>
