@@ -11,14 +11,14 @@
 9-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml
 10
 11    <application
-11-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:5:5-22:19
+11-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:5:5-23:19
 12        android:allowBackup="true"
 12-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:6:9-35
 13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 13-->[androidx.core:core:1.5.0] C:\Users\jozef\.gradle\caches\transforms-3\b1fe9740f6c86f0b7649a763c3bf2b85\transformed\core-1.5.0\AndroidManifest.xml:24:18-86
 14        android:debuggable="true"
-15        android:icon="@mipmap/ic_launcher"
-15-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:7:9-43
+15        android:icon="@mipmap/icon"
+15-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:7:9-36
 16        android:label="@string/app_name"
 16-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:8:9-41
 17        android:roundIcon="@mipmap/ic_launcher_round"
