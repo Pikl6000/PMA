@@ -53,64 +53,6 @@ public class Main extends AppCompatActivity {
     }
 
 
-
-
-    /*public void setTimer(){
-        timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                handler.post(() -> startGame());
-            }}, 0, period);
-    }
-
-    public void startGame(){
-        //pohyb hracej postavy
-        if (up){
-            roboX+=speedRobo;
-            robo.setY(roboX);
-            if (roboX+robo.getHeight()>displej.getHeight()){
-                roboX=displej.getHeight()-robo.getHeight();
-                robo.setY(roboX);
-            }
-
-        }else {
-            roboX-=speedRobo;
-            robo.setY(roboX);
-            if (roboX<0){
-                roboX=0;
-                robo.setY(roboX);
-            }
-        }
-
-        //pohyb prekazok
-        mudY-=speedMud;
-        mud.setX(mudY);
-
-        if (mudY+mud.getWidth()<=0){
-            mudY=displej.getWidth();
-            mud.setX(mudY);
-            round++;
-            if (round%3==0){
-                speedMud++;
-                boolPowder=true;
-                setPowderY();
-                powder.setVisibility(View.VISIBLE);
-            }
-            generateMud();
-        }
-    }
-
-    public void generateMud(){
-
-    }
-
-    public void setPowderY(){
-        int random=rd.nextInt(displej.getHeight()-powder.getHeight());
-        powder.setY(random);
-    }*/
-
-
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
