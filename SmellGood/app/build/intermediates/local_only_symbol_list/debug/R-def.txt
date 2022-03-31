@@ -1,0 +1,36 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color icon_background
+color purple_200
+color purple_500
+color purple_700
+color teal_200
+color teal_700
+color white
+drawable background
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+drawable mud
+drawable powder
+drawable robo
+drawable robodeadright
+drawable robostand
+drawable robotoright
+drawable score
+drawable title
+id EXIT
+id button
+id button2
+id button3
+id imageView
+id textView
+layout activity_menu
+layout game_layout
+mipmap ic_launcher
+mipmap ic_launcher_round
+mipmap icon
+mipmap icon_foreground
+mipmap icon_round
+string app_name
+style Theme.SmellGood
