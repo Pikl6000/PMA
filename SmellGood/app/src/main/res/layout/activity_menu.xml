@@ -7,7 +7,11 @@
     android:background="@drawable/background"
     android:gravity="center|top"
     android:orientation="vertical"
+<<<<<<< HEAD
     tools:context=".Game">
+=======
+    tools:context=".Main">
+>>>>>>> prvopociatok
 
 
     <ImageView
@@ -19,8 +23,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+<<<<<<< HEAD
         android:layout_height="wrap_content"
         android:layout_gravity="center|top"
+=======
+        android:layout_height="350dp"
+        android:layout_gravity="center|top"
+        android:layout_marginTop="20dp"
+>>>>>>> prvopociatok
         android:gravity="center|top"
         android:orientation="vertical">
 
@@ -30,6 +40,10 @@
             android:layout_height="78dp"
             android:layout_marginBottom="30dp"
             android:backgroundTint="#903CF1"
+<<<<<<< HEAD
+=======
+            android:onClick="onStartButton"
+>>>>>>> prvopociatok
             android:text="PLAY"
             android:textSize="21sp"
             android:textStyle="bold" />
@@ -40,6 +54,10 @@
             android:layout_height="78dp"
             android:layout_marginBottom="30dp"
             android:backgroundTint="#903CF1"
+<<<<<<< HEAD
+=======
+            android:onClick="onScoreButton"
+>>>>>>> prvopociatok
             android:text="SCORE BOARD"
             android:textSize="21sp"
             android:textStyle="bold" />
@@ -51,12 +69,17 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:backgroundTint="#903CF1"
+<<<<<<< HEAD
+=======
+            android:onClick="onExitButton"
+>>>>>>> prvopociatok
             android:text="EXIT"
             android:textSize="21sp"
             android:textStyle="bold" />
 
     </LinearLayout>
 
+<<<<<<< HEAD
     <TextView
         android:id="@+id/footer"
         android:layout_width="match_parent"
@@ -67,4 +90,6 @@
         android:textAlignment="center"
         android:textSize="16sp" />
 
+=======
+>>>>>>> prvopociatok
 </LinearLayout>
