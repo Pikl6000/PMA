@@ -14,7 +14,6 @@ public class Game extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         setContentView(R.layout.game_layout);
-        setContentView(R.layout.activity_menu);
     }
 
 
