@@ -1705,6 +1705,7 @@ drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable icon
 drawable material_cursor_drawable
 drawable material_ic_calendar_black_24dp
 drawable material_ic_clear_black_24dp
@@ -1753,7 +1754,6 @@ id ALT
 id BOTTOM_END
 id BOTTOM_START
 id CTRL
-id EXIT
 id FUNCTION
 id META
 id NO_DEBUG
@@ -1831,6 +1831,7 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id backButton
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -1838,9 +1839,6 @@ id beginning
 id blocking
 id bottom
 id bounce
-id button
-id button2
-id button3
 id buttonPanel
 id cache_measures
 id cancel_button
@@ -1909,6 +1907,7 @@ id end
 id endToStart
 id enterAlways
 id enterAlwaysCollapsed
+id exitButton
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -2042,6 +2041,7 @@ id pathRelative
 id peekHeight
 id percent
 id pin
+id playButton
 id position
 id postLayout
 id progress_circular
@@ -2060,6 +2060,7 @@ id save_non_transition_alpha
 id save_overlay_view
 id sawtooth
 id scale
+id scoreButton
 id screen
 id scroll
 id scrollIndicatorDown
@@ -2374,6 +2375,7 @@ string character_counter_pattern
 string chip_text
 string clear_text_end_icon_content_description
 string error_icon_content_description
+string exit
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior

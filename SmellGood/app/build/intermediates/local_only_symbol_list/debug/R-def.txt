@@ -11,6 +11,7 @@ color white
 drawable background
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable icon
 drawable mud
 drawable powder
 drawable robo
@@ -19,11 +20,11 @@ drawable robostand
 drawable robotoright
 drawable score
 drawable title
-id EXIT
-id button
-id button2
-id button3
+id backButton
+id exitButton
 id imageView
+id playButton
+id scoreButton
 id textView
 layout activity_menu
 layout game_layout
@@ -33,4 +34,5 @@ mipmap icon
 mipmap icon_foreground
 mipmap icon_round
 string app_name
+string exit
 style Theme.SmellGood
