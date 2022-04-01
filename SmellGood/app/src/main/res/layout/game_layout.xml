@@ -17,6 +17,7 @@
 
     <Button
         android:id="@+id/button3"
+        style="@style/Widget.AppCompat.Button"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:onClick="onBackButton"
