@@ -18,6 +18,12 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.SmellGood" >
+        <provider
+            android:name="com.example.smellgood.provider.NoteContentProvider"
+            android:authorities="com.example.smellgood.provider.NoteContentProvider"
+            android:enabled="true"
+            android:exported="true" />
+
         <activity
             android:name="com.example.smellgood.Main"
             android:exported="true" >
@@ -28,6 +34,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.smellgood.Game" />
+        <activity android:name="com.example.smellgood.ScoreBoard" />
     </application>
 
 </manifest>

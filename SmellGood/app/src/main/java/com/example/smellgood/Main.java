@@ -42,7 +42,7 @@ public class Main extends AppCompatActivity {
         startActivity(intent);
     }
     public void onScoreButton(View view){
-        Intent intent = new Intent(Main.this, Game.class);
+        Intent intent = new Intent(Main.this, ScoreBoard.class);
         startActivity(intent);
     }
     public void onExitButton(View view){

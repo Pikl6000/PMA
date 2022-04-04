@@ -11,7 +11,7 @@
 9-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml
 10
 11    <application
-11-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:5:5-23:19
+11-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:5:5-29:19
 12        android:allowBackup="true"
 12-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:6:9-35
 13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -28,26 +28,40 @@
 19        android:testOnly="true"
 20        android:theme="@style/Theme.SmellGood" >
 20-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:11:9-47
-21        <activity
-21-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:12:9-20:20
-22            android:name="com.example.smellgood.Main"
-22-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:13:13-33
-23            android:exported="true" >
-23-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:14:13-36
-24            <intent-filter>
-24-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:15:13-19:29
-25                <action android:name="android.intent.action.MAIN" />
-25-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:16:17-69
-25-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:16:25-66
+21        <provider
+21-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:12:9-16:48
+22            android:name="com.example.smellgood.provider.NoteContentProvider"
+22-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:13:13-57
+23            android:authorities="com.example.smellgood.provider.NoteContentProvider"
+23-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:14:13-85
+24            android:enabled="true"
+24-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:15:13-35
+25            android:exported="true" />
+25-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:16:13-36
 26
-27                <category android:name="android.intent.category.LAUNCHER" />
-27-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:18:17-77
-27-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:18:27-74
-28            </intent-filter>
-29        </activity>
-30        <activity android:name="com.example.smellgood.Game" />
-30-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:21:9-51
-30-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:21:19-39
-31    </application>
+27        <activity
+27-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:18:9-26:20
+28            android:name="com.example.smellgood.Main"
+28-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:19:13-33
+29            android:exported="true" >
+29-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:20:13-36
+30            <intent-filter>
+30-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:21:13-25:29
+31                <action android:name="android.intent.action.MAIN" />
+31-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:22:17-69
+31-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:22:25-66
 32
-33</manifest>
+33                <category android:name="android.intent.category.LAUNCHER" />
+33-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:24:17-77
+33-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:24:27-74
+34            </intent-filter>
+35        </activity>
+36        <activity android:name="com.example.smellgood.Game" />
+36-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:27:9-42
+36-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:27:19-39
+37        <activity android:name="com.example.smellgood.ScoreBoard" />
+37-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:28:9-47
+37-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:28:19-45
+38    </application>
+39
+40</manifest>

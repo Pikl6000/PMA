@@ -1921,6 +1921,7 @@ int id flip 0x7f0800a8
 int id floating 0x7f0800a9
 int id forever 0x7f0800aa
 int id fragment_container_view_tag 0x7f0800ab
+int id gamePanel 0x7f0801ad
 int id ghost_view 0x7f0800ac
 int id ghost_view_holder 0x7f0800ad
 int id gone 0x7f0800ae
@@ -2021,6 +2022,8 @@ int id never 0x7f08010c
 int id noScroll 0x7f08010d
 int id none 0x7f08010e
 int id normal 0x7f08010f
+int id notesGridView 0x7f0801ae
+int id notesGridViewItem 0x7f0801af
 int id notification_background 0x7f080110
 int id notification_main_column 0x7f080111
 int id notification_main_column_container 0x7f080112
@@ -2136,7 +2139,6 @@ int id textSpacerNoButtons 0x7f08017f
 int id textSpacerNoTitle 0x7f080180
 int id textStart 0x7f080181
 int id textTop 0x7f080182
-int id textView 0x7f080183
 int id text_input_end_icon 0x7f080184
 int id text_input_error_icon 0x7f080185
 int id text_input_start_icon 0x7f080186
@@ -2306,12 +2308,14 @@ int layout mtrl_picker_header_title_text 0x7f0b0055
 int layout mtrl_picker_header_toggle 0x7f0b0056
 int layout mtrl_picker_text_input_date 0x7f0b0057
 int layout mtrl_picker_text_input_date_range 0x7f0b0058
+int layout note 0x7f0b0072
 int layout notification_action 0x7f0b0059
 int layout notification_action_tombstone 0x7f0b005a
 int layout notification_template_custom_big 0x7f0b005b
 int layout notification_template_icon_group 0x7f0b005c
 int layout notification_template_part_chronometer 0x7f0b005d
 int layout notification_template_part_time 0x7f0b005e
+int layout scoreboard_layout 0x7f0b0073
 int layout select_dialog_item_material 0x7f0b005f
 int layout select_dialog_multichoice_material 0x7f0b0060
 int layout select_dialog_singlechoice_material 0x7f0b0061
@@ -2331,6 +2335,7 @@ int layout text_view_with_line_height_from_layout 0x7f0b006e
 int layout text_view_with_line_height_from_style 0x7f0b006f
 int layout text_view_with_theme_line_height 0x7f0b0070
 int layout text_view_without_line_height 0x7f0b0071
+int menu menu_main 0x7f120000
 int mipmap ic_launcher 0x7f0c0000
 int mipmap ic_launcher_round 0x7f0c0001
 int mipmap icon 0x7f0c0002

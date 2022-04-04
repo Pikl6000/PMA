@@ -1922,6 +1922,7 @@ id flip
 id floating
 id forever
 id fragment_container_view_tag
+id gamePanel
 id ghost_view
 id ghost_view_holder
 id gone
@@ -2022,6 +2023,8 @@ id never
 id noScroll
 id none
 id normal
+id notesGridView
+id notesGridViewItem
 id notification_background
 id notification_main_column
 id notification_main_column_container
@@ -2137,7 +2140,6 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
-id textView
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -2307,12 +2309,14 @@ layout mtrl_picker_header_title_text
 layout mtrl_picker_header_toggle
 layout mtrl_picker_text_input_date
 layout mtrl_picker_text_input_date_range
+layout note
 layout notification_action
 layout notification_action_tombstone
 layout notification_template_custom_big
 layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout scoreboard_layout
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
@@ -2332,6 +2336,7 @@ layout text_view_with_line_height_from_layout
 layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
+menu menu_main
 mipmap ic_launcher
 mipmap ic_launcher_round
 mipmap icon
