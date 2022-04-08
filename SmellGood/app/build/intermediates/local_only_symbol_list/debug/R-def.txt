@@ -13,12 +13,14 @@ drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable icon
 drawable mud
+drawable person
 drawable powder
 drawable robo
 drawable robodeadright
 drawable robostand
 drawable robotoright
 drawable score
+drawable scoreboard
 drawable title
 id backButton
 id exitButton

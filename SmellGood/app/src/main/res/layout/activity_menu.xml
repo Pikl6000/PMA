@@ -28,7 +28,7 @@
 
         <Button
             android:id="@+id/playButton"
-            android:layout_width="230dp"
+            android:layout_width="260dp"
             android:layout_height="78dp"
             android:layout_marginBottom="30dp"
             android:backgroundTint="#a17aef"
@@ -40,7 +40,7 @@
 
         <Button
             android:id="@+id/scoreButton"
-            android:layout_width="230dp"
+            android:layout_width="260dp"
             android:layout_height="78dp"
             android:layout_marginBottom="30dp"
             android:backgroundTint="#a17aef"
@@ -52,7 +52,7 @@
 
         <Button
             android:id="@+id/exitButton"
-            android:layout_width="230dp"
+            android:layout_width="260dp"
             android:layout_height="78dp"
             android:layout_centerVertical="true"
             android:backgroundTint="#a17aef"

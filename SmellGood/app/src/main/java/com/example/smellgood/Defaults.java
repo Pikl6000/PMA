@@ -1,4 +1,5 @@
 package com.example.smellgood;
+
 import android.content.DialogInterface;
 import android.database.ContentObserver;
 import android.database.Cursor;
