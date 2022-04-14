@@ -9,6 +9,7 @@ color teal_200
 color teal_700
 color white
 drawable background
+drawable grass
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable icon
@@ -26,10 +27,15 @@ id backButton
 id exitButton
 id gamePanel
 id imageView
+id imageView2
+id imageView3
 id notesGridView
 id notesGridViewItem
 id playButton
+id score
 id scoreButton
+id textView
+id totem
 layout activity_menu
 layout game_layout
 layout note
@@ -42,4 +48,5 @@ mipmap icon_foreground
 mipmap icon_round
 string app_name
 string exit
+string scoreboard
 style Theme.SmellGood

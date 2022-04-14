@@ -1696,6 +1696,7 @@ int drawable design_ic_visibility 0x7f070062
 int drawable design_ic_visibility_off 0x7f070063
 int drawable design_password_eye 0x7f070064
 int drawable design_snackbar_background 0x7f070065
+int drawable grass 0x7f07009d
 int drawable ic_clock_black_24dp 0x7f070066
 int drawable ic_keyboard_black_24dp 0x7f070067
 int drawable ic_launcher_background 0x7f070068
@@ -1945,6 +1946,8 @@ int id ignore 0x7f0800be
 int id ignoreRequest 0x7f0800bf
 int id image 0x7f0800c0
 int id imageView 0x7f0800c1
+int id imageView2 0x7f0801af
+int id imageView3 0x7f0801b0
 int id info 0x7f0800c2
 int id invisible 0x7f0800c3
 int id inward 0x7f0800c4
@@ -2064,6 +2067,7 @@ int id save_non_transition_alpha 0x7f080135
 int id save_overlay_view 0x7f080136
 int id sawtooth 0x7f080137
 int id scale 0x7f080138
+int id score 0x7f0801b1
 int id scoreButton 0x7f080139
 int id screen 0x7f08013a
 int id scroll 0x7f08013b
@@ -2141,6 +2145,7 @@ int id textSpacerNoButtons 0x7f080182
 int id textSpacerNoTitle 0x7f080183
 int id textStart 0x7f080184
 int id textTop 0x7f080185
+int id textView 0x7f0801b3
 int id text_input_end_icon 0x7f080186
 int id text_input_error_icon 0x7f080187
 int id text_input_start_icon 0x7f080188
@@ -2157,6 +2162,7 @@ int id title_template 0x7f080192
 int id toggle 0x7f080193
 int id top 0x7f080194
 int id topPanel 0x7f080195
+int id totem 0x7f0801b2
 int id touch_outside 0x7f080196
 int id transitionToEnd 0x7f080197
 int id transitionToStart 0x7f080198
@@ -2448,6 +2454,7 @@ int string path_password_eye 0x7f0f0064
 int string path_password_eye_mask_strike_through 0x7f0f0065
 int string path_password_eye_mask_visible 0x7f0f0066
 int string path_password_strike_through 0x7f0f0067
+int string scoreboard 0x7f0f006a
 int string search_menu_title 0x7f0f0068
 int string status_bar_notification_info_overflow 0x7f0f0069
 int style AlertDialog_AppCompat 0x7f100000

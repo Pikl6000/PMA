@@ -8,8 +8,10 @@ import static com.example.smellgood.Defaults.NO_FLAGS;
 import static com.example.smellgood.Defaults.NO_SELECTION;
 import static com.example.smellgood.Defaults.NO_SELECTION_ARGS;
 
+import android.app.AlertDialog;
 import android.app.LoaderManager;
 import android.content.CursorLoader;
+import android.content.DialogInterface;
 import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -51,7 +53,18 @@ public class ScoreBoard extends AppCompatActivity implements
 
 
 
-
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, final long id) {
+        Cursor selectedNoteCursor = (Cursor) parent.getItemAtPosition(position);
+        int dN = selectedNoteCursor.getColumnIndex(Provider.Note.NICKNAME),
+                dL = selectedNoteCursor.getColumnIndex(Provider.Note.SCORE);
+        String noteN = selectedNoteCursor.getString(dN),noteL = selectedNoteCursor.getString(dL);
+        new AlertDialog.Builder(this)
+                .setTitle("Film")
+                .setMessage("Hráč : "+noteN+"\nSkóre : "+noteL)
+                .setNegativeButton("Close", DISMISS_ACTION)
+                .show();
+    }
 
 
 
@@ -83,8 +96,4 @@ public class ScoreBoard extends AppCompatActivity implements
         this.adapter.swapCursor(NO_CURSOR);
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-    }
 }

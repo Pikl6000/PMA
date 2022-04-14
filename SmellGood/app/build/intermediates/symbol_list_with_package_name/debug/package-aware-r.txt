@@ -1697,6 +1697,7 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable grass
 drawable ic_clock_black_24dp
 drawable ic_keyboard_black_24dp
 drawable ic_launcher_background
@@ -1946,6 +1947,8 @@ id ignore
 id ignoreRequest
 id image
 id imageView
+id imageView2
+id imageView3
 id info
 id invisible
 id inward
@@ -2065,6 +2068,7 @@ id save_non_transition_alpha
 id save_overlay_view
 id sawtooth
 id scale
+id score
 id scoreButton
 id screen
 id scroll
@@ -2142,6 +2146,7 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
+id textView
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -2158,6 +2163,7 @@ id title_template
 id toggle
 id top
 id topPanel
+id totem
 id touch_outside
 id transitionToEnd
 id transitionToStart
@@ -2449,6 +2455,7 @@ string path_password_eye
 string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
+string scoreboard
 string search_menu_title
 string status_bar_notification_info_overflow
 style AlertDialog_AppCompat

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Smell Good</string>
     <string name="exit">EXIT</string>
+    <string name="scoreboard">ScoreBoard</string>
 </resources>
