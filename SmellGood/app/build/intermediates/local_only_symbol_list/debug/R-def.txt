@@ -27,11 +27,11 @@ id backButton
 id exitButton
 id gamePanel
 id imageView
-id imageView2
 id imageView3
 id notesGridView
 id notesGridViewItem
 id playButton
+id robo
 id score
 id scoreButton
 id textView

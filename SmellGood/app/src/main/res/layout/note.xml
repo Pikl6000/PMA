@@ -17,6 +17,7 @@
         android:maxHeight="150dp"
         android:minHeight="96dp"
         android:padding="12dp"
+        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/white" />
 </LinearLayout>

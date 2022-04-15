@@ -1,12 +1,32 @@
 package com.example.smellgood;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Game extends AppCompatActivity {
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
+public class Game extends AppCompatActivity {
+    private Handler handler=new Handler();
+    private Timer timer;
+    private SharedPreferences settings;
+    private ImageView robo, roboDeadRight, roboStand, roboToRight, mud, powder;
+    private Button play;
+    private TextView score, totem;
+    private RelativeLayout displej;
+    private int speedMud, speedRobo, period, round, body, tBody;
+    private float roboX, mudY, powderY;
+    private boolean right = false, boolPowder = false, prvyBod = true;
+    private Random rd=new Random();
 
 
     @Override
@@ -14,6 +34,12 @@ public class Game extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         setContentView(R.layout.game_layout);
+
+        robo = findViewById(R.id.robo);
+        totem = findViewById(R.id.totem);
+        score = findViewById(R.id.score);
+
+
     }
 
 
@@ -23,7 +49,7 @@ public class Game extends AppCompatActivity {
     }
 
 
-    /*public void setTimer(){
+    public void setTimer(){
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
@@ -34,7 +60,7 @@ public class Game extends AppCompatActivity {
 
     public void startGame(){
         //pohyb hracej postavy
-        if (up){
+        if (right){
             roboX+=speedRobo;
             robo.setY(roboX);
             if (roboX+robo.getHeight()>displej.getHeight()){
@@ -76,7 +102,7 @@ public class Game extends AppCompatActivity {
     public void setPowderY(){
         int random=rd.nextInt(displej.getHeight()-powder.getHeight());
         powder.setY(random);
-    }*/
+    }
 
 
 

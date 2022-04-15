@@ -23,7 +23,7 @@ public class Main extends AppCompatActivity {
     private SharedPreferences settings;
     private ImageView robo, roboDeadRight, roboStand, roboToRight, mud, powder;
     private Button play;
-    private TextView score, nadpis, topBody;
+    private TextView score, totem;
     private RelativeLayout displej;
     private int speedMud, speedRobo, period, round, body, tBody;
     private float roboX, mudY, powderY;
@@ -35,6 +35,7 @@ public class Main extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         setContentView(R.layout.activity_menu);
+
     }
 
     public void onStartButton(View view){
