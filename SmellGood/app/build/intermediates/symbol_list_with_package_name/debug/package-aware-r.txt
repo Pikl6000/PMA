@@ -3224,6 +3224,7 @@ string abc_toolbar_collapse_description
 string androidx_startup
 string app_name
 string appbar_scrolling_view_behavior
+string back
 string bottom_sheet_behavior
 string bottomsheet_action_expand_halfway
 string character_counter_content_description
@@ -3328,6 +3329,7 @@ string path_password_strike_through
 string scoreboard
 string search_menu_title
 string status_bar_notification_info_overflow
+string totems_0
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style AndroidThemeColorAccentYellow

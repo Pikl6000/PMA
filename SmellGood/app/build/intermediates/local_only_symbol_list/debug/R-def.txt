@@ -47,6 +47,8 @@ mipmap icon
 mipmap icon_foreground
 mipmap icon_round
 string app_name
+string back
 string exit
 string scoreboard
+string totems_0
 style Theme.SmellGood

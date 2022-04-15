@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -22,7 +23,7 @@ public class Game extends AppCompatActivity {
     private ImageView robo, roboDeadRight, roboStand, roboToRight, mud, powder;
     private Button play;
     private TextView score, totem;
-    private RelativeLayout displej;
+    private LinearLayout gamePanel;
     private int speedMud, speedRobo, period, round, body, tBody;
     private float roboX, mudY, powderY;
     private boolean right = false, boolPowder = false, prvyBod = true;
@@ -35,10 +36,15 @@ public class Game extends AppCompatActivity {
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         setContentView(R.layout.game_layout);
 
+        period = 1;
+
         robo = findViewById(R.id.robo);
         totem = findViewById(R.id.totem);
         score = findViewById(R.id.score);
+        gamePanel = findViewById(R.id.gamePanel);
 
+        right = true;
+        setTimer();
 
     }
 
@@ -62,27 +68,29 @@ public class Game extends AppCompatActivity {
         //pohyb hracej postavy
         if (right){
             roboX+=speedRobo;
-            robo.setY(roboX);
-            if (roboX+robo.getHeight()>displej.getHeight()){
-                roboX=displej.getHeight()-robo.getHeight();
-                robo.setY(roboX);
+            robo.setX(roboX);
+            if (roboX+robo.getWidth()>gamePanel.getWidth()){
+                roboX=gamePanel.getWidth()-robo.getWidth();
+                robo.setX(roboX);
+                right = false;
             }
 
         }else {
             roboX-=speedRobo;
-            robo.setY(roboX);
+            robo.setX(roboX);
             if (roboX<0){
                 roboX=0;
-                robo.setY(roboX);
+                robo.setX(roboX);
+                right = true;
             }
         }
 
-        //pohyb prekazok
+        /*//pohyb prekazok
         mudY-=speedMud;
         mud.setX(mudY);
 
         if (mudY+mud.getWidth()<=0){
-            mudY=displej.getWidth();
+            mudY=gamePanel.getWidth();
             mud.setX(mudY);
             round++;
             if (round%3==0){
@@ -92,7 +100,7 @@ public class Game extends AppCompatActivity {
                 powder.setVisibility(View.VISIBLE);
             }
             generateMud();
-        }
+        }*/
     }
 
     public void generateMud(){
@@ -100,7 +108,7 @@ public class Game extends AppCompatActivity {
     }
 
     public void setPowderY(){
-        int random=rd.nextInt(displej.getHeight()-powder.getHeight());
+        int random=rd.nextInt(gamePanel.getHeight()-powder.getHeight());
         powder.setY(random);
     }
 

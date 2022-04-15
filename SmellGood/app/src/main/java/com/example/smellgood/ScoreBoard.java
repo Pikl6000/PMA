@@ -35,7 +35,6 @@ public class ScoreBoard extends AppCompatActivity implements
     private GridView notesGridView;
     private SimpleCursorAdapter adapter;
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,12 +46,6 @@ public class ScoreBoard extends AppCompatActivity implements
         notesGridView.setOnItemClickListener(this);
     }
 
-
-
-
-
-
-
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, final long id) {
         Cursor selectedNoteCursor = (Cursor) parent.getItemAtPosition(position);
@@ -60,16 +53,11 @@ public class ScoreBoard extends AppCompatActivity implements
                 dL = selectedNoteCursor.getColumnIndex(Provider.Note.SCORE);
         String noteN = selectedNoteCursor.getString(dN),noteL = selectedNoteCursor.getString(dL);
         new AlertDialog.Builder(this)
-                .setTitle("Film")
+                .setTitle("Hráč a skóre")
                 .setMessage("Hráč : "+noteN+"\nSkóre : "+noteL)
-                .setNegativeButton("Close", DISMISS_ACTION)
+                .setNegativeButton("Zavrieť", DISMISS_ACTION)
                 .show();
     }
-
-
-
-
-
 
     private ListAdapter initializeAdapter() {
         String[] from = {Provider.Note.NICKNAME,Provider.Note.SCORE};
@@ -94,6 +82,21 @@ public class ScoreBoard extends AppCompatActivity implements
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
         this.adapter.swapCursor(NO_CURSOR);
+    }
+
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        }
     }
 
 }

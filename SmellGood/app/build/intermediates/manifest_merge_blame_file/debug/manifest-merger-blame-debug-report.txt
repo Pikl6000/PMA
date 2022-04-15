@@ -11,11 +11,11 @@
 9-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml
 10
 11    <application
-11-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:5:5-29:19
+11-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:5:5-31:19
 12        android:allowBackup="true"
 12-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:6:9-35
 13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-13-->[androidx.core:core:1.7.0] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\02483169c4c9e0ddffa88758188ac6f1\transformed\core-1.7.0\AndroidManifest.xml:24:18-86
+13-->[androidx.core:core:1.7.0] C:\Users\jozef\.gradle\caches\transforms-3\b9e4376e452ce4f1a2bbb1fc4b534124\transformed\core-1.7.0\AndroidManifest.xml:24:18-86
 14        android:debuggable="true"
 15        android:icon="@mipmap/icon"
 15-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:7:9-36
@@ -29,7 +29,7 @@
 20        android:theme="@style/Theme.SmellGood" >
 20-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:11:9-47
 21        <provider
-21-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:12:9-16:48
+21-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:12:9-16:39
 22            android:name="com.example.smellgood.provider.NoteContentProvider"
 22-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:13:13-57
 23            android:authorities="com.example.smellgood.provider.NoteContentProvider"
@@ -40,50 +40,55 @@
 25-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:16:13-36
 26
 27        <activity
-27-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:18:9-26:20
+27-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:18:9-27:20
 28            android:name="com.example.smellgood.Main"
 28-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:19:13-33
-29            android:exported="true" >
+29            android:exported="true"
 29-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:20:13-36
-30            <intent-filter>
-30-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:21:13-25:29
-31                <action android:name="android.intent.action.MAIN" />
-31-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:22:17-69
-31-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:22:25-66
-32
-33                <category android:name="android.intent.category.LAUNCHER" />
-33-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:24:17-77
-33-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:24:27-74
-34            </intent-filter>
-35        </activity>
-36        <activity android:name="com.example.smellgood.Game" />
-36-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:27:9-42
-36-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:27:19-39
-37        <activity android:name="com.example.smellgood.ScoreBoard" />
-37-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:28:9-47
-37-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:28:19-45
-38
-39        <provider
-39-->[androidx.emoji2:emoji2:1.0.0] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\278083bef5dd79cb476949a0d92ce592\transformed\emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
-40            android:name="androidx.startup.InitializationProvider"
-40-->[androidx.emoji2:emoji2:1.0.0] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\278083bef5dd79cb476949a0d92ce592\transformed\emoji2-1.0.0\AndroidManifest.xml:27:13-67
-41            android:authorities="com.example.smellgood.androidx-startup"
-41-->[androidx.emoji2:emoji2:1.0.0] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\278083bef5dd79cb476949a0d92ce592\transformed\emoji2-1.0.0\AndroidManifest.xml:28:13-68
-42            android:exported="false" >
-42-->[androidx.emoji2:emoji2:1.0.0] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\278083bef5dd79cb476949a0d92ce592\transformed\emoji2-1.0.0\AndroidManifest.xml:29:13-37
-43            <meta-data
-43-->[androidx.emoji2:emoji2:1.0.0] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\278083bef5dd79cb476949a0d92ce592\transformed\emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
-44                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-44-->[androidx.emoji2:emoji2:1.0.0] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\278083bef5dd79cb476949a0d92ce592\transformed\emoji2-1.0.0\AndroidManifest.xml:32:17-75
-45                android:value="androidx.startup" />
-45-->[androidx.emoji2:emoji2:1.0.0] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\278083bef5dd79cb476949a0d92ce592\transformed\emoji2-1.0.0\AndroidManifest.xml:33:17-49
+30            android:screenOrientation="portrait" >
+30-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:21:13-49
+31            <intent-filter>
+31-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:22:13-26:29
+32                <action android:name="android.intent.action.MAIN" />
+32-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:23:17-69
+32-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:23:25-66
+33
+34                <category android:name="android.intent.category.LAUNCHER" />
+34-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:25:17-77
+34-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:25:27-74
+35            </intent-filter>
+36        </activity>
+37        <activity
+37-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:28:9-29:51
+38            android:name="com.example.smellgood.Game"
+38-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:28:19-39
+39            android:screenOrientation="portrait" />
+39-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:29:13-49
+40        <activity android:name="com.example.smellgood.ScoreBoard" />
+40-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:30:9-47
+40-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:30:19-45
+41
+42        <provider
+42-->[androidx.emoji2:emoji2:1.0.0] C:\Users\jozef\.gradle\caches\transforms-3\2c96a293c0a835e94af1ddc4d74ff22d\transformed\emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
+43            android:name="androidx.startup.InitializationProvider"
+43-->[androidx.emoji2:emoji2:1.0.0] C:\Users\jozef\.gradle\caches\transforms-3\2c96a293c0a835e94af1ddc4d74ff22d\transformed\emoji2-1.0.0\AndroidManifest.xml:27:13-67
+44            android:authorities="com.example.smellgood.androidx-startup"
+44-->[androidx.emoji2:emoji2:1.0.0] C:\Users\jozef\.gradle\caches\transforms-3\2c96a293c0a835e94af1ddc4d74ff22d\transformed\emoji2-1.0.0\AndroidManifest.xml:28:13-68
+45            android:exported="false" >
+45-->[androidx.emoji2:emoji2:1.0.0] C:\Users\jozef\.gradle\caches\transforms-3\2c96a293c0a835e94af1ddc4d74ff22d\transformed\emoji2-1.0.0\AndroidManifest.xml:29:13-37
 46            <meta-data
-46-->[androidx.lifecycle:lifecycle-process:2.4.0] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\4d932a67b7be3c4366d55752ebd69384\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
-47                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-47-->[androidx.lifecycle:lifecycle-process:2.4.0] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\4d932a67b7be3c4366d55752ebd69384\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
+46-->[androidx.emoji2:emoji2:1.0.0] C:\Users\jozef\.gradle\caches\transforms-3\2c96a293c0a835e94af1ddc4d74ff22d\transformed\emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
+47                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+47-->[androidx.emoji2:emoji2:1.0.0] C:\Users\jozef\.gradle\caches\transforms-3\2c96a293c0a835e94af1ddc4d74ff22d\transformed\emoji2-1.0.0\AndroidManifest.xml:32:17-75
 48                android:value="androidx.startup" />
-48-->[androidx.lifecycle:lifecycle-process:2.4.0] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\4d932a67b7be3c4366d55752ebd69384\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
-49        </provider>
-50    </application>
-51
-52</manifest>
+48-->[androidx.emoji2:emoji2:1.0.0] C:\Users\jozef\.gradle\caches\transforms-3\2c96a293c0a835e94af1ddc4d74ff22d\transformed\emoji2-1.0.0\AndroidManifest.xml:33:17-49
+49            <meta-data
+49-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\jozef\.gradle\caches\transforms-3\bdba8a1b7f77d959878d5a52670cf96f\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
+50                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+50-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\jozef\.gradle\caches\transforms-3\bdba8a1b7f77d959878d5a52670cf96f\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
+51                android:value="androidx.startup" />
+51-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\jozef\.gradle\caches\transforms-3\bdba8a1b7f77d959878d5a52670cf96f\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
+52        </provider>
+53    </application>
+54
+55</manifest>

@@ -13,18 +13,20 @@
             android:name=".provider.NoteContentProvider"
             android:authorities="com.example.smellgood.provider.NoteContentProvider"
             android:enabled="true"
-            android:exported="true"></provider>
+            android:exported="true" />
 
         <activity
             android:name=".Main"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Game" />
+        <activity android:name=".Game"
+            android:screenOrientation="portrait"/>
         <activity android:name=".ScoreBoard"/>
     </application>
 
