@@ -125,7 +125,7 @@ public class Game extends AppCompatActivity {
 
     public void pohybMud(){
         if (hybeSa){
-            mudY += 1.5;
+            mudY += 1.35;
             mud.setY(mudY);
             dotykajuSaMud();
             if (mudY >= vyska){
@@ -136,7 +136,7 @@ public class Game extends AppCompatActivity {
 
     public void pohybPowder(){
         if (hybeSa){
-            powderY += 1.5;
+            powderY += 1.35;
             powder.setY(powderY);
             dotykajuSaPowder();
         }
@@ -210,6 +210,7 @@ public class Game extends AppCompatActivity {
                 play.setText("RESTART");
                 scoreB = 0;
                 totemB = 0;
+                firstGen = true;
                 if (timer != null) {
                     timer.cancel();
                     right = true;
