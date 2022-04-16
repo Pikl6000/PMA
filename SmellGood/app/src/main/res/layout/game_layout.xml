@@ -15,17 +15,6 @@
         android:gravity="center"
         android:textAlignment="gravity">
 
-        <Button
-            android:id="@+id/backButton"
-            android:layout_width="100dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="10dp"
-            android:backgroundTint="#a17aef"
-            android:onClick="onBackButton"
-            android:text="@string/back"
-            android:textSize="14sp"
-            android:visibility="gone" />
-
         <TextView
             android:id="@+id/score"
             android:layout_width="wrap_content"
@@ -41,10 +30,11 @@
             android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="13dp"
-            android:text="@string/totems_0"
+            android:text="totem : 0"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="23sp" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -53,6 +43,21 @@
         android:layout_height="match_parent"
         android:gravity="bottom"
         android:orientation="vertical">
+
+        <Button
+            android:id="@+id/startButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="125dp"
+            android:backgroundTint="#a17aef"
+            android:onClick="klikloSa"
+            android:padding="25dp"
+            android:text="START"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/robo"

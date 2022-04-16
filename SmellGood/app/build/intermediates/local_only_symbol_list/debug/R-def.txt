@@ -23,7 +23,6 @@ drawable robotoright
 drawable score
 drawable scoreboard
 drawable title
-id backButton
 id exitButton
 id gamePanel
 id imageView
@@ -34,6 +33,7 @@ id playButton
 id robo
 id score
 id scoreButton
+id startButton
 id textView
 id totem
 layout activity_menu

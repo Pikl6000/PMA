@@ -26,7 +26,7 @@ public class Game extends AppCompatActivity {
     private LinearLayout gamePanel;
     private int speedMud, speedRobo, period, round, body, tBody;
     private float roboX, mudY, powderY;
-    private boolean right = false, boolPowder = false, prvyBod = true;
+    private boolean right = false, boolPowder = false, prvyBod = true , hybeSa = false;
     private Random rd=new Random();
 
 
@@ -42,46 +42,51 @@ public class Game extends AppCompatActivity {
         totem = findViewById(R.id.totem);
         score = findViewById(R.id.score);
         gamePanel = findViewById(R.id.gamePanel);
+        play = findViewById(R.id.startButton);
 
         right = true;
+    }
+
+    public void klikloSa(View view){
+        score.setText("Score : 0");
+        totem.setText("Totem : 0");
+        hybeSa = true;
+        play.setVisibility(View.GONE);
+        generateMud();
         setTimer();
-
     }
-
-
-    public void onBackButton(View view){
-        Intent intent = new Intent(Game.this, Main.class);
-        startActivity(intent);
-    }
-
 
     public void setTimer(){
+        hybeSa = true;
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                handler.post(() -> startGame());
+                pohyb();
             }}, 0, period);
     }
 
-    public void startGame(){
-        //pohyb hracej postavy
-        if (right){
-            roboX+=speedRobo;
-            robo.setX(roboX);
-            if (roboX+robo.getWidth()>gamePanel.getWidth()){
-                roboX=gamePanel.getWidth()-robo.getWidth();
-                robo.setX(roboX);
-                right = false;
-            }
 
-        }else {
-            roboX-=speedRobo;
-            robo.setX(roboX);
-            if (roboX<0){
-                roboX=0;
+    public void pohyb(){
+        //pohyb hracej postavy
+        if (hybeSa){
+            if (right){
+                roboX+=1;
                 robo.setX(roboX);
-                right = true;
+                if (roboX+robo.getWidth()>gamePanel.getWidth()){
+                    roboX=gamePanel.getWidth()-robo.getWidth();
+                    robo.setX(roboX);
+                    hybeSa = false;
+                }
+
+            }else {
+                roboX-=1;
+                robo.setX(roboX);
+                if (roboX<0){
+                    roboX=0;
+                    robo.setX(roboX);
+                    hybeSa = false;
+                }
             }
         }
 
@@ -104,12 +109,29 @@ public class Game extends AppCompatActivity {
     }
 
     public void generateMud(){
+        ImageView imageView = new ImageView(this);
+        imageView.setImageResource(R.drawable.mud);
+        imageView.setY(0);
+        imageView.setX(0);
+        imageView.setLay
 
+        gamePanel.addView(imageView);
     }
 
     public void setPowderY(){
         int random=rd.nextInt(gamePanel.getHeight()-powder.getHeight());
         powder.setY(random);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (timer != null) {
+            timer.cancel();
+            timer = null;
+            right = true;
+        }
+
     }
 
 

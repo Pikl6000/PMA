@@ -2607,7 +2607,6 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
-id backButton
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -2925,6 +2924,7 @@ id src_in
 id src_over
 id standard
 id start
+id startButton
 id startHorizontal
 id startToEnd
 id startVertical
