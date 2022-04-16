@@ -30,7 +30,9 @@ public class Game extends AppCompatActivity {
     private int speedMud, speedRobo, period, round, body, tBody,totemB,scoreB;
     private float roboX, mudY, powderY, sirka,vyska;
     private boolean right = false, boolPowder = false, prvyBod = true , hybeSa = false, firstGen = true;
-    private Random rd=new Random();
+    private boolean left = false, prvaZmena = true;
+    private Random rd = new Random();
+    private int[] robko = {R.drawable.robostand,R.drawable.robostandl};
 
 
     @Override
@@ -105,17 +107,41 @@ public class Game extends AppCompatActivity {
         //pohyb hracej postavy
         if (hybeSa){
             if (right){
-                roboX+=1;
-                robo.setX(roboX);
+                if (prvaZmena){
+                    prvaZmena = false;
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            robo.setImageResource(robko[0]);
+                        }
+                    });
+                }
                 if (roboX+robo.getWidth()>gamePanel.getWidth()){
                     roboX=gamePanel.getWidth()-robo.getWidth();
                     robo.setX(roboX);
+                    prvaZmena = true;
+                }
+                else {
+                    roboX+=1;
+                    robo.setX(roboX);
                 }
             }else {
-                roboX-=1;
-                robo.setX(roboX);
-                if (roboX<0){
+                if (prvaZmena){
+                    prvaZmena = false;
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            robo.setImageResource(robko[1]);
+                        }
+                    });
+                }
+                if ((roboX-1)<0){
                     roboX=0;
+                    robo.setX(roboX);
+                    prvaZmena = true;
+                }
+                else {
+                    roboX-=1;
                     robo.setX(roboX);
                 }
             }
@@ -143,6 +169,7 @@ public class Game extends AppCompatActivity {
     }
 
     public void klik(View view){
+        prvaZmena = true;
         if (right){
             right = false;
         }
@@ -210,6 +237,7 @@ public class Game extends AppCompatActivity {
                 play.setText("RESTART");
                 scoreB = 0;
                 totemB = 0;
+                firstGen = true;
                 if (timer != null) {
                     timer.cancel();
                     right = true;

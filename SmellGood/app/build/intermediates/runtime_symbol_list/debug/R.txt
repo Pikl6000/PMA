@@ -2512,6 +2512,7 @@ int drawable powder 0x7f07009f
 int drawable robo 0x7f0700a0
 int drawable robodeadright 0x7f0700a1
 int drawable robostand 0x7f0700a2
+int drawable robostandl 0x7f0700ab
 int drawable robotoright 0x7f0700a3
 int drawable score 0x7f0700a4
 int drawable scoreboard 0x7f0700a5

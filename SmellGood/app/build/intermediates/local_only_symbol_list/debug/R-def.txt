@@ -20,6 +20,7 @@ drawable powder
 drawable robo
 drawable robodeadright
 drawable robostand
+drawable robostandl
 drawable robotoright
 drawable score
 drawable scoreboard
