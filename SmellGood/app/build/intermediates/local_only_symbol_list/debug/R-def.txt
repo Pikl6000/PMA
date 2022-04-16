@@ -9,6 +9,7 @@ color teal_200
 color teal_700
 color white
 drawable background
+drawable concrete
 drawable grass
 drawable ic_launcher_background
 drawable ic_launcher_foreground
@@ -23,12 +24,11 @@ drawable robotoright
 drawable score
 drawable scoreboard
 drawable title
-id backButton
 id exitButton
 id gamePanel
 id imageView
 id imageView3
-id imageView4
+id mud
 id notesGridView
 id notesGridViewItem
 id playButton

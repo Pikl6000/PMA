@@ -12,37 +12,30 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_gravity="center"
+        android:background="#a17aef"
+        android:backgroundTint="#a17aef"
         android:gravity="center"
         android:textAlignment="gravity">
-
-        <Button
-            android:id="@+id/backButton"
-            android:layout_width="100dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="10dp"
-            android:backgroundTint="#a17aef"
-            android:text="@string/back"
-            android:textSize="14sp"
-            android:visibility="gone" />
 
         <TextView
             android:id="@+id/score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
             android:text="Score : 0"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#F8F8F8"
             android:textSize="23sp" />
 
         <TextView
             android:id="@+id/totem"
-            android:layout_width="125dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="13dp"
-            android:text="totem : 0"
+            android:text="Totem : 0"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#FAFAFA"
             android:textSize="23sp" />
 
     </LinearLayout>
@@ -51,6 +44,7 @@
         android:id="@+id/gamePanel"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#C2F6F6"
         android:gravity="bottom"
         android:onClick="klik"
         android:orientation="vertical"
@@ -72,11 +66,11 @@
             android:textStyle="bold" />
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/mud"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:scaleType="fitXY"
-            android:visibility="invisible"
+            android:visibility="visible"
             app:srcCompat="@drawable/mud" />
 
         <ImageView
@@ -95,7 +89,7 @@
             android:layout_height="50dp"
             android:contentDescription="grass"
             android:scaleType="fitXY"
-            app:srcCompat="@drawable/grass"
+            app:srcCompat="@drawable/concrete"
             tools:ignore="ImageContrastCheck" />
     </LinearLayout>
 
