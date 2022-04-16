@@ -24,10 +24,10 @@ drawable robotoright
 drawable score
 drawable scoreboard
 drawable title
+id bottom
 id exitButton
 id gamePanel
 id imageView
-id imageView3
 id mud
 id notesGridView
 id notesGridViewItem

@@ -23,7 +23,7 @@ public class Game extends AppCompatActivity {
     private Handler handler=new Handler();
     private Timer timer;
     private SharedPreferences settings;
-    private ImageView robo, roboDeadRight, roboStand, roboToRight, mud, powder;
+    private ImageView robo, roboDeadRight, roboStand, roboToRight, mud, powder, bottom;
     private Button play;
     private TextView score, totem;
     private LinearLayout gamePanel;
@@ -50,11 +50,12 @@ public class Game extends AppCompatActivity {
         gamePanel = findViewById(R.id.gamePanel);
         play = findViewById(R.id.startButton);
         mud = findViewById(R.id.mud);
+        bottom = findViewById(R.id.bottom);
 
         gamePanel.post(new Runnable() {
             public void run() {
                 sirka = gamePanel.getWidth();
-                vyska = gamePanel.getHeight() - robo.getHeight();
+                vyska = gamePanel.getHeight() - bottom.getHeight();
             }
         });
 
@@ -138,7 +139,7 @@ public class Game extends AppCompatActivity {
 
     public void generateMud(){
         mud.setY(0);
-        mud.setX((float)Math.random()*sirka);
+        mud.setX((float)Math.random()*(sirka-mud.getWidth()));
         mud.setVisibility(View.VISIBLE);
         mudY = mud.getY();
     }
@@ -149,7 +150,7 @@ public class Game extends AppCompatActivity {
         Rect otherViewRect1 = new Rect();
         mud.getHitRect(otherViewRect1);
         if (Rect.intersects(myViewRect,otherViewRect1)){
-            onStop();
+            stop();
         }
     }
 
@@ -158,8 +159,7 @@ public class Game extends AppCompatActivity {
         powder.setY(random);
     }
 
-    @Override
-    protected void onStop() {
+    protected void stop(){
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -174,6 +174,12 @@ public class Game extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        stop();
     }
 
     @Override

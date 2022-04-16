@@ -53,6 +53,11 @@ public class Main extends AppCompatActivity {
         startActivity(homeIntent);
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
