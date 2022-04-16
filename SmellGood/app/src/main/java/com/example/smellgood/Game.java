@@ -29,7 +29,7 @@ public class Game extends AppCompatActivity {
     private LinearLayout gamePanel;
     private int speedMud, speedRobo, period, round, body, tBody,totemB,scoreB;
     private float roboX, mudY, powderY, sirka,vyska;
-    private boolean right = false, boolPowder = false, prvyBod = true , hybeSa = false;
+    private boolean right = false, boolPowder = false, prvyBod = true , hybeSa = false, firstGen = true;
     private Random rd=new Random();
 
 
@@ -50,6 +50,7 @@ public class Game extends AppCompatActivity {
         gamePanel = findViewById(R.id.gamePanel);
         play = findViewById(R.id.startButton);
         mud = findViewById(R.id.mud);
+        powder = findViewById(R.id.powder);
         bottom = findViewById(R.id.bottom);
 
         gamePanel.post(new Runnable() {
@@ -68,6 +69,7 @@ public class Game extends AppCompatActivity {
         play.setVisibility(View.GONE);
         setTimer();
         generateMud();
+        generatePowder();
     }
 
     public void updateText(){
@@ -92,6 +94,7 @@ public class Game extends AppCompatActivity {
                 public void run() {
                     pohyb();
                     pohybMud();
+                    pohybPowder();
                     updateText();
                 }}, 0, period);
         }
@@ -118,15 +121,24 @@ public class Game extends AppCompatActivity {
             }
         }
     }
+
+
     public void pohybMud(){
         if (hybeSa){
             mudY += 1.5;
             mud.setY(mudY);
-            dotykajuSa();
+            dotykajuSaMud();
             if (mudY >= vyska){
                 generateMud();
-                scoreB++;
             }
+        }
+    }
+
+    public void pohybPowder(){
+        if (hybeSa){
+            powderY += 1.5;
+            powder.setY(powderY);
+            dotykajuSaPowder();
         }
     }
 
@@ -137,6 +149,7 @@ public class Game extends AppCompatActivity {
         else right = true;
     }
 
+    /* generovanie objektov, ktorym sa treba vyhybat */
     public void generateMud(){
         mud.setY(0);
         mud.setX((float)Math.random()*(sirka-mud.getWidth()));
@@ -144,7 +157,27 @@ public class Game extends AppCompatActivity {
         mudY = mud.getY();
     }
 
-    private void dotykajuSa(){
+    /* generovanie objektov, ktore treba zbierat */
+    public void generatePowder(){
+        if (firstGen){
+            powder.setY(-500);
+            firstGen = !firstGen;
+        } else {
+            powder.setY(0);
+        }
+        float mudStart = mud.getX(), mudEnd = mudStart + mud.getWidth();
+        float powderStart = powder.getX(), powderEnd = powderStart + powder.getWidth();
+        while ((powderStart <= mudStart && powderEnd >= mudStart) || (powderStart <= mudEnd && powderEnd >= mudEnd)) {
+            powder.setX((float)Math.random()*(sirka-powder.getWidth()));
+            powderStart = powder.getX();
+            powderEnd = powderStart + powder.getWidth();
+        }
+        powder.setX((float)Math.random()*(sirka-powder.getWidth()));
+        powder.setVisibility(View.VISIBLE);
+        powderY = powder.getY();
+    }
+
+    private void dotykajuSaMud(){
         Rect myViewRect = new Rect();
         robo.getHitRect(myViewRect);
         Rect otherViewRect1 = new Rect();
@@ -154,9 +187,18 @@ public class Game extends AppCompatActivity {
         }
     }
 
-    public void setPowderY(){
-        int random=rd.nextInt(gamePanel.getHeight()-powder.getHeight());
-        powder.setY(random);
+    private void dotykajuSaPowder(){
+        Rect myViewRect = new Rect();
+        robo.getHitRect(myViewRect);
+        Rect otherViewRect1 = new Rect();
+        powder.getHitRect(otherViewRect1);
+        if (Rect.intersects(myViewRect,otherViewRect1)){
+            generatePowder();
+            scoreB++;
+        }
+        if (powder.getY() >= vyska){
+            generatePowder();
+        }
     }
 
     protected void stop(){

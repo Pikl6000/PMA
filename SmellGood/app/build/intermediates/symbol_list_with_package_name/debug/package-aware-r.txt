@@ -2859,6 +2859,7 @@ id pin
 id playButton
 id position
 id postLayout
+id powder
 id progress_circular
 id progress_horizontal
 id radio

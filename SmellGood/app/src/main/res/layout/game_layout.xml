@@ -66,9 +66,15 @@
             android:textStyle="bold" />
 
         <ImageView
+            android:id="@+id/powder"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:srcCompat="@drawable/powder" />
+
+        <ImageView
             android:id="@+id/mud"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:scaleType="fitXY"
             android:visibility="visible"
             app:srcCompat="@drawable/mud" />

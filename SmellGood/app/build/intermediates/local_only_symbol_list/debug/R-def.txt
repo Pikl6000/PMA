@@ -32,6 +32,7 @@ id mud
 id notesGridView
 id notesGridViewItem
 id playButton
+id powder
 id robo
 id score
 id scoreButton
