@@ -23,10 +23,12 @@ drawable robotoright
 drawable score
 drawable scoreboard
 drawable title
+id backButton
 id exitButton
 id gamePanel
 id imageView
 id imageView3
+id imageView4
 id notesGridView
 id notesGridViewItem
 id playButton

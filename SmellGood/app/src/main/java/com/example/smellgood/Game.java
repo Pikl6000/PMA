@@ -1,6 +1,8 @@
 package com.example.smellgood;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -52,7 +54,6 @@ public class Game extends AppCompatActivity {
         totem.setText("Totem : 0");
         hybeSa = true;
         play.setVisibility(View.GONE);
-        generateMud();
         setTimer();
     }
 
@@ -76,7 +77,6 @@ public class Game extends AppCompatActivity {
                 if (roboX+robo.getWidth()>gamePanel.getWidth()){
                     roboX=gamePanel.getWidth()-robo.getWidth();
                     robo.setX(roboX);
-                    hybeSa = false;
                 }
 
             }else {
@@ -85,7 +85,6 @@ public class Game extends AppCompatActivity {
                 if (roboX<0){
                     roboX=0;
                     robo.setX(roboX);
-                    hybeSa = false;
                 }
             }
         }
@@ -108,15 +107,25 @@ public class Game extends AppCompatActivity {
         }*/
     }
 
-    public void generateMud(){
-        ImageView imageView = new ImageView(this);
-        imageView.setImageResource(R.drawable.mud);
-        imageView.setY(0);
-        imageView.setX(0);
-        imageView.setLay
-
-        gamePanel.addView(imageView);
+    public void klik(View view){
+        if (right){
+            right = false;
+        }
+        else right = true;
     }
+
+//    public void generateMud(){
+//        ImageView imageView = new ImageView(this);
+//
+//        Bitmap bmp;
+//        bmp = BitmapFactory.decodeResource(getResources(),R.drawable.mud);
+//        bmp = Bitmap.createScaledBitmap(bmp,150,150,true);
+//        imageView.setImageBitmap(bmp);
+//        imageView.setY(-1000);
+//        imageView.setX(50);
+//
+//        gamePanel.addView(imageView);
+//    }
 
     public void setPowderY(){
         int random=rd.nextInt(gamePanel.getHeight()-powder.getHeight());
@@ -128,14 +137,18 @@ public class Game extends AppCompatActivity {
         super.onStop();
         if (timer != null) {
             timer.cancel();
-            timer = null;
             right = true;
         }
 
     }
 
-
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (timer != null){
+            timer.c
+        }
+    }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {

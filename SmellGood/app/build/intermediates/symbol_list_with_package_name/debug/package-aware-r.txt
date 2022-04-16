@@ -2607,6 +2607,7 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id backButton
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -2738,6 +2739,7 @@ id ignoreRequest
 id image
 id imageView
 id imageView3
+id imageView4
 id immediateStop
 id included
 id info
