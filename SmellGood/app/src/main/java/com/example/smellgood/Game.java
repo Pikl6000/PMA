@@ -67,9 +67,9 @@ public class Game extends AppCompatActivity {
         score.setText("Score : 0");
         totem.setText("Totem : 0");
         play.setVisibility(View.GONE);
-        setTimer();
         generateMud();
         generatePowder();
+        setTimer();
     }
 
     public void updateText(){
@@ -159,6 +159,7 @@ public class Game extends AppCompatActivity {
 
     /* generovanie objektov, ktore treba zbierat */
     public void generatePowder(){
+        powder.setVisibility(View.VISIBLE);
         if (firstGen){
             powder.setY(-500);
             firstGen = !firstGen;
