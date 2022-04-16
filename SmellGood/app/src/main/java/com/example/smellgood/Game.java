@@ -55,7 +55,7 @@ public class Game extends AppCompatActivity {
         gamePanel.post(new Runnable() {
             public void run() {
                 sirka = gamePanel.getWidth();
-                vyska = gamePanel.getHeight() - bottom.getHeight();
+                vyska = gamePanel.getHeight() - bottom.getHeight() - mud.getHeight();
             }
         });
 
