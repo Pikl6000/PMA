@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Smell Good</string>
+    <string name="exit">EXIT</string>
+    <string name="scoreboard">ScoreBoard</string>
+    <string name="back">BACK</string>
+    <string name="totems_0">Totems : 0</string>
 </resources>

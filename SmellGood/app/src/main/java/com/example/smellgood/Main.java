@@ -23,7 +23,7 @@ public class Main extends AppCompatActivity {
     private SharedPreferences settings;
     private ImageView robo, roboDeadRight, roboStand, roboToRight, mud, powder;
     private Button play;
-    private TextView score, nadpis, topBody;
+    private TextView score, totem;
     private RelativeLayout displej;
     private int speedMud, speedRobo, period, round, body, tBody;
     private float roboX, mudY, powderY;
@@ -35,6 +35,7 @@ public class Main extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         setContentView(R.layout.activity_menu);
+
     }
 
     public void onStartButton(View view){
@@ -42,7 +43,7 @@ public class Main extends AppCompatActivity {
         startActivity(intent);
     }
     public void onScoreButton(View view){
-        Intent intent = new Intent(Main.this, Game.class);
+        Intent intent = new Intent(Main.this, ScoreBoard.class);
         startActivity(intent);
     }
     public void onExitButton(View view){
@@ -52,63 +53,10 @@ public class Main extends AppCompatActivity {
         startActivity(homeIntent);
     }
 
-
-
-
-    /*public void setTimer(){
-        timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                handler.post(() -> startGame());
-            }}, 0, period);
+    @Override
+    protected void onStop() {
+        super.onStop();
     }
-
-    public void startGame(){
-        //pohyb hracej postavy
-        if (up){
-            roboX+=speedRobo;
-            robo.setY(roboX);
-            if (roboX+robo.getHeight()>displej.getHeight()){
-                roboX=displej.getHeight()-robo.getHeight();
-                robo.setY(roboX);
-            }
-
-        }else {
-            roboX-=speedRobo;
-            robo.setY(roboX);
-            if (roboX<0){
-                roboX=0;
-                robo.setY(roboX);
-            }
-        }
-
-        //pohyb prekazok
-        mudY-=speedMud;
-        mud.setX(mudY);
-
-        if (mudY+mud.getWidth()<=0){
-            mudY=displej.getWidth();
-            mud.setX(mudY);
-            round++;
-            if (round%3==0){
-                speedMud++;
-                boolPowder=true;
-                setPowderY();
-                powder.setVisibility(View.VISIBLE);
-            }
-            generateMud();
-        }
-    }
-
-    public void generateMud(){
-
-    }
-
-    public void setPowderY(){
-        int random=rd.nextInt(displej.getHeight()-powder.getHeight());
-        powder.setY(random);
-    }*/
 
 
     @Override

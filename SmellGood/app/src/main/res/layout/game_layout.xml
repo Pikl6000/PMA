@@ -1,24 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:gravity="center"
+    android:gravity="start"
     android:orientation="vertical"
     tools:context=".Game">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="test"
-        android:textSize="34sp" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="200dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:onClick="onBackButton"
-        android:text="Back" />
+        android:layout_gravity="center"
+        android:background="#a17aef"
+        android:backgroundTint="#a17aef"
+        android:gravity="center"
+        android:textAlignment="gravity">
+
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:text="Score : 0"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#F8F8F8"
+            android:textSize="23sp" />
+
+        <TextView
+            android:id="@+id/totem"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="13dp"
+            android:text="Totem : 0"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#FAFAFA"
+            android:textSize="23sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/gamePanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#C2F6F6"
+        android:gravity="bottom"
+        android:onClick="klik"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <Button
+            android:id="@+id/startButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="100dp"
+            android:backgroundTint="#a17aef"
+            android:onClick="klikloSa"
+            android:padding="25dp"
+            android:text="START"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="75dp"
+            android:layout_marginEnd="75dp"
+            android:layout_marginBottom="50dp"
+            android:backgroundTint="#a17aef"
+            android:onClick="createReport"
+            android:text="Save"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/powder"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:visibility="gone"
+            app:srcCompat="@drawable/powder" />
+
+        <ImageView
+            android:id="@+id/mud"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="fitXY"
+            android:visibility="gone"
+            app:srcCompat="@drawable/mud" />
+
+        <ImageView
+            android:id="@+id/robo"
+            android:layout_width="85dp"
+            android:layout_height="140dp"
+            android:contentDescription="Robo"
+            android:maxHeight="150dp"
+            android:minHeight="100dp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/robostand" />
+
+        <ImageView
+            android:id="@+id/bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:contentDescription="grass"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/concrete"
+            tools:ignore="ImageContrastCheck" />
+    </LinearLayout>
+
 </LinearLayout>
