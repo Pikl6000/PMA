@@ -1,20 +1,19 @@
 package com.example.smellgood;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Rect;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.time.temporal.ValueRange;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -23,12 +22,12 @@ public class Game extends AppCompatActivity {
     private Handler handler=new Handler();
     private Timer timer;
     private SharedPreferences settings;
-    private ImageView robo, roboDeadRight, roboStand, roboToRight, mud, powder, bottom;
+    private ImageView robo, roboDeadRight, roboStand, roboToRight, mud, powder, bottom, totemObject;
     private Button play;
     private TextView score, totem;
     private LinearLayout gamePanel;
     private int speedMud, speedRobo, period, round, body, tBody,totemB,scoreB;
-    private float roboX, mudY, powderY, sirka,vyska;
+    private float roboX, mudY, powderY, totemY, sirka,vyska, angle;
     private boolean right = false, boolPowder = false, prvyBod = true , hybeSa = false, firstGen = true;
     private boolean left = false, prvaZmena = true;
     private Random rd = new Random();
@@ -42,7 +41,7 @@ public class Game extends AppCompatActivity {
         setContentView(R.layout.game_layout);
 
         period = 1;
-
+        angle = 0;
         scoreB = 0;
         totemB = 0;
 
@@ -53,6 +52,7 @@ public class Game extends AppCompatActivity {
         play = findViewById(R.id.startButton);
         mud = findViewById(R.id.mud);
         powder = findViewById(R.id.powder);
+        totemObject = findViewById(R.id.totemObject);
         bottom = findViewById(R.id.bottom);
 
         gamePanel.post(new Runnable() {
@@ -101,7 +101,6 @@ public class Game extends AppCompatActivity {
                 }}, 0, period);
         }
     }
-
 
     public void pohyb(){
         //pohyb hracej postavy
@@ -152,6 +151,12 @@ public class Game extends AppCompatActivity {
     public void pohybMud(){
         if (hybeSa){
             mudY += 1.35;
+            if (angle <= 360){
+                angle += 0.1;
+            } else {
+                angle = 0;
+            }
+            mud.setRotation(angle);
             mud.setY(mudY);
             dotykajuSaMud();
             if (mudY >= vyska){
@@ -184,6 +189,14 @@ public class Game extends AppCompatActivity {
         mudY = mud.getY();
     }
 
+    public static boolean inRange(float value, float min, float max) {
+        return toRange(value, min, max) == value;
+    }
+
+    public static float toRange(float value, float min, float max) {
+        return Math.max(Math.min(max, value), min);
+    }
+
     /* generovanie objektov, ktore treba zbierat */
     public void generatePowder(){
         powder.setVisibility(View.VISIBLE);
@@ -191,18 +204,26 @@ public class Game extends AppCompatActivity {
             powder.setY(-500);
             firstGen = !firstGen;
         } else {
-            powder.setY(0);
+            powder.setY(-40);
         }
         float mudStart = mud.getX(), mudEnd = mudStart + mud.getWidth();
         float powderStart = powder.getX(), powderEnd = powderStart + powder.getWidth();
-        while ((powderStart <= mudStart && powderEnd >= mudStart) || (powderStart <= mudEnd && powderEnd >= mudEnd)) {
+
+        do {
             powder.setX((float)Math.random()*(sirka-powder.getWidth()));
             powderStart = powder.getX();
             powderEnd = powderStart + powder.getWidth();
-        }
-        powder.setX((float)Math.random()*(sirka-powder.getWidth()));
-        powder.setVisibility(View.VISIBLE);
+            mudStart = mud.getX();
+            mudEnd = mudStart + mud.getWidth();
+        } while (inRange(powderStart, mudStart, mudEnd) || inRange(powderEnd, mudStart, mudEnd));
         powderY = powder.getY();
+    }
+
+    public void generateTotem(){
+        mud.setY(-40);
+        mud.setX((float)Math.random()*(sirka-mud.getWidth()));
+        mud.setVisibility(View.VISIBLE);
+        mudY = mud.getY();
     }
 
     private void dotykajuSaMud(){
