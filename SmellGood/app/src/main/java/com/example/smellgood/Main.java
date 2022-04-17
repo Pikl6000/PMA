@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -29,24 +30,30 @@ public class Main extends AppCompatActivity {
     private float roboX, mudY, powderY;
     private boolean up=false, boolPowder=false, prvyBod=true;
     private Random rd=new Random();
+    private MediaPlayer mp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         setContentView(R.layout.activity_menu);
-
+        mp = MediaPlayer.create(this, R.raw.main);
+        mp.setLooping(true);
+        mp.start();
     }
 
     public void onStartButton(View view){
+        mp.reset();
         Intent intent = new Intent(Main.this, Game.class);
         startActivity(intent);
     }
     public void onScoreButton(View view){
+        mp.reset();
         Intent intent = new Intent(Main.this, ScoreBoard.class);
         startActivity(intent);
     }
     public void onExitButton(View view){
+        mp.reset();
         Intent homeIntent = new Intent(Intent.ACTION_MAIN);
         homeIntent.addCategory( Intent.CATEGORY_HOME );
         homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -56,6 +63,14 @@ public class Main extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
+        mp.reset();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mp.setLooping(true);
+        mp.start();
     }
 
 

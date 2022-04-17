@@ -93,6 +93,13 @@
             app:srcCompat="@drawable/mud" />
 
         <ImageView
+            android:id="@+id/totemObject"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:visibility="gone"
+            app:srcCompat="@drawable/vanish" />
+
+        <ImageView
             android:id="@+id/robo"
             android:layout_width="85dp"
             android:layout_height="140dp"

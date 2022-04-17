@@ -2511,6 +2511,7 @@ drawable notify_panel_notification_icon_bg
 drawable person
 drawable powder
 drawable robo
+drawable robodeadleft
 drawable robodeadright
 drawable robostand
 drawable robostandl
@@ -2522,6 +2523,7 @@ drawable test_level_drawable
 drawable title
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+drawable vanish
 id ALT
 id BOTTOM_END
 id BOTTOM_START
@@ -2982,6 +2984,7 @@ id toggle
 id top
 id topPanel
 id totem
+id totemObject
 id touch_outside
 id transitionToEnd
 id transitionToStart
@@ -3198,6 +3201,11 @@ mipmap icon
 mipmap icon_foreground
 mipmap icon_round
 plurals mtrl_badge_content_description
+raw game
+raw getscore
+raw main
+raw score
+raw splash
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description

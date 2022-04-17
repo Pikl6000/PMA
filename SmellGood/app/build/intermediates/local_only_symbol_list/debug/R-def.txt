@@ -18,6 +18,7 @@ drawable mud
 drawable person
 drawable powder
 drawable robo
+drawable robodeadleft
 drawable robodeadright
 drawable robostand
 drawable robostandl
@@ -25,6 +26,7 @@ drawable robotoright
 drawable score
 drawable scoreboard
 drawable title
+drawable vanish
 id bottom
 id exitButton
 id gamePanel
@@ -41,6 +43,7 @@ id scoreButton
 id startButton
 id textView
 id totem
+id totemObject
 layout activity_menu
 layout game_layout
 layout note
@@ -51,6 +54,11 @@ mipmap ic_launcher_round
 mipmap icon
 mipmap icon_foreground
 mipmap icon_round
+raw game
+raw getscore
+raw main
+raw score
+raw splash
 string app_name
 string back
 string exit
