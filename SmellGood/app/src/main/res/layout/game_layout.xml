@@ -86,18 +86,11 @@
 
         <ImageView
             android:id="@+id/mud"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:scaleType="fitXY"
             android:visibility="gone"
             app:srcCompat="@drawable/mud" />
-
-        <ImageView
-            android:id="@+id/totemObject"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:visibility="gone"
-            app:srcCompat="@drawable/vanish" />
 
         <ImageView
             android:id="@+id/robo"
@@ -117,7 +110,6 @@
             android:scaleType="fitXY"
             app:srcCompat="@drawable/concrete"
             tools:ignore="ImageContrastCheck" />
-
     </LinearLayout>
 
 </LinearLayout>
