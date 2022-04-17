@@ -62,6 +62,11 @@
     <option name="LAST_EDITED_SIGNING_CONFIG" value="debug" />
     <option name="LAST_EDITED_BUILD_TYPE" value="release" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Moje Subory\Programovanie\Git\PMA\SmellGood\app\src\main\res\drawable-v24" />
+    </key>
+  </component>
   <component name="RunManager" selected="Android App.Main">
     <configuration name="Main" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="Smell_Good.app" />

@@ -2522,6 +2522,7 @@ drawable test_level_drawable
 drawable title
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+drawable vanish
 id ALT
 id BOTTOM_END
 id BOTTOM_START
@@ -2982,6 +2983,7 @@ id toggle
 id top
 id topPanel
 id totem
+id totemObject
 id touch_outside
 id transitionToEnd
 id transitionToStart
