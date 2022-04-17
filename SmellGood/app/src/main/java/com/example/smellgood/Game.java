@@ -1,30 +1,51 @@
 package com.example.smellgood;
+import android.app.AlertDialog;
+import android.content.AsyncQueryHandler;
+import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.smellgood.provider.NoteContentProvider;
+import com.example.smellgood.provider.Provider;
 
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
+import static com.example.smellgood.Defaults.NO_CURSOR;
+import static com.example.smellgood.Defaults.DISMISS_ACTION;
+import static com.example.smellgood.Defaults.NO_COOKIE;
+import static com.example.smellgood.Defaults.NO_CURSOR;
+import static com.example.smellgood.Defaults.NO_FLAGS;
+import static com.example.smellgood.Defaults.NO_SELECTION;
+import static com.example.smellgood.Defaults.NO_SELECTION_ARGS;
+import com.example.smellgood.provider.NoteContentProvider;
+import com.example.smellgood.provider.Provider;
+
+
 
 public class Game extends AppCompatActivity {
     private Handler handler=new Handler();
     private Timer timer;
     private SharedPreferences settings;
     private ImageView robo, roboDeadRight, roboStand, roboToRight, mud, powder, bottom;
-    private Button play;
+    private Button play, save;
     private TextView score, totem;
     private LinearLayout gamePanel;
     private int speedMud, speedRobo, period, round, body, tBody,totemB,scoreB;
@@ -33,6 +54,9 @@ public class Game extends AppCompatActivity {
     private boolean left = false, prvaZmena = true;
     private Random rd = new Random();
     private int[] robko = {R.drawable.robostand,R.drawable.robostandl};
+    private static final int NOTES_LOADER_ID = 0;
+    private static final int INSERT_NOTE_TOKEN = 0;
+    private static final int DELETE_NOTE_TOKEN = 0;
 
 
     @Override
@@ -54,6 +78,7 @@ public class Game extends AppCompatActivity {
         mud = findViewById(R.id.mud);
         powder = findViewById(R.id.powder);
         bottom = findViewById(R.id.bottom);
+        save = findViewById(R.id.saveButton);
 
         gamePanel.post(new Runnable() {
             public void run() {
@@ -68,6 +93,7 @@ public class Game extends AppCompatActivity {
     public void klikloSa(View view){
         score.setText("Score : 0");
         totem.setText("Totem : 0");
+        save.setVisibility(View.GONE);
         play.setVisibility(View.GONE);
         generateMud();
         generatePowder();
@@ -178,9 +204,9 @@ public class Game extends AppCompatActivity {
 
     /* generovanie objektov, ktorym sa treba vyhybat */
     public void generateMud(){
+        mud.setVisibility(View.VISIBLE);
         mud.setY(0);
         mud.setX((float)Math.random()*(sirka-mud.getWidth()));
-        mud.setVisibility(View.VISIBLE);
         mudY = mud.getY();
     }
 
@@ -201,7 +227,6 @@ public class Game extends AppCompatActivity {
             powderEnd = powderStart + powder.getWidth();
         }
         powder.setX((float)Math.random()*(sirka-powder.getWidth()));
-        powder.setVisibility(View.VISIBLE);
         powderY = powder.getY();
     }
 
@@ -233,6 +258,7 @@ public class Game extends AppCompatActivity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                save.setVisibility(View.VISIBLE);
                 play.setVisibility(View.VISIBLE);
                 play.setText("RESTART");
                 scoreB = 0;
@@ -259,6 +285,54 @@ public class Game extends AppCompatActivity {
         if (timer != null){
 
         }
+    }
+
+    public void createReport(View view) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                LinearLayout a = new LinearLayout(Game.this);
+                a.setOrientation(LinearLayout.VERTICAL);
+                a.setPadding(25,10,25,10);
+
+                final EditText descriptionEditText = new EditText(Game.this);
+                descriptionEditText.setHint("Enter nickname");
+                descriptionEditText.setMinimumWidth(a.getWidth());
+
+                a.addView(descriptionEditText);
+
+                new AlertDialog.Builder(Game.this)
+                        .setTitle("Enter Shall of Fame")
+                        .setView(a)
+
+                        .setPositiveButton("Save", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String nazov = descriptionEditText.getText().toString();
+                                insertIntoContentProvider(nazov,String.valueOf(scoreB));
+                            }
+                        })
+                        .setNegativeButton("Cancel", DISMISS_ACTION)
+                        .show();
+            }
+        });
+    }
+
+
+    private void insertIntoContentProvider(String nickname,String score) {
+        Uri uri = NoteContentProvider.CONTENT_URI;
+        ContentValues values = new ContentValues();
+        values.put(Provider.Note.NICKNAME, nickname);
+        values.put(Provider.Note.SCORE, score);
+        AsyncQueryHandler insertHandler = new
+                AsyncQueryHandler(getContentResolver()) {
+                    @Override
+                    protected void onInsertComplete(int token, Object cookie, Uri uri) {
+                        Toast.makeText(Game.this, "Saved",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                };
+        insertHandler.startInsert(INSERT_NOTE_TOKEN, NO_COOKIE, uri, values);
     }
 
     @Override

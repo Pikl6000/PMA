@@ -85,6 +85,9 @@ public class ScoreBoard extends AppCompatActivity implements
     }
 
 
+
+
+
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);

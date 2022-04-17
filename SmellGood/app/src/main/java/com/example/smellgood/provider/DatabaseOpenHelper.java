@@ -12,7 +12,8 @@ import static com.example.smellgood.provider.Provider.Note.NICKNAME;
 import static com.example.smellgood.provider.Provider.Note.TABLE_NAME;
 import static com.example.smellgood.Defaults.DEFAULT_CURSOR_FACTORY;
 
-public class DatabaseOpenHelper extends SQLiteOpenHelper {
+public class
+DatabaseOpenHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "film";
     public static final int DATABASE_VERSION = 1;
     public DatabaseOpenHelper(Context context) {
