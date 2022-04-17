@@ -2983,7 +2983,7 @@ int id toggle 0x7f0801c8
 int id top 0x7f0801c9
 int id topPanel 0x7f0801ca
 int id totem 0x7f0801cb
-int id totemObject 0x7f0801ec
+int id totemObject 0x7f0801cc
 int id touch_outside 0x7f0801cd
 int id transitionToEnd 0x7f0801ce
 int id transitionToStart 0x7f0801cf

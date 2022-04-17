@@ -274,7 +274,7 @@ public class Game extends AppCompatActivity {
                     mud.setVisibility(View.GONE);
                 }
             });
-            mpEffects = MediaPlayer.create(this, R.raw.splash);
+            mpEffects = MediaPlayer.create(Game.this, R.raw.splash);
             mpEffects.start();
         }
     }
