@@ -12,6 +12,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,7 +51,7 @@ public class Game extends AppCompatActivity {
     private TextView score, totem;
     private LinearLayout gamePanel;
     private int speedMud, speedRobo, period, round, body, tBody, totemB, scoreB;
-    private float roboX, mudY, powderY, sirka, vyska, angle;
+    private float roboX, mudY, powderY, sirka, vyska, totemObjectY;
     private boolean right = false, boolPowder = false, prvyBod = true, hybeSa = false, firstGen = true;
     private boolean left = false, prvaZmena = true;
     private Random rd = new Random();
@@ -69,7 +70,6 @@ public class Game extends AppCompatActivity {
         setContentView(R.layout.game_layout);
 
         period = 1;
-        angle = 0;
         scoreB = 0;
         totemB = 0;
 
@@ -99,7 +99,10 @@ public class Game extends AppCompatActivity {
         mp.setLooping(true);
         mp.start();
         score.setText("Score : 0");
-        totem.setText("Totem : 0");
+        if (totemB > 0){
+            totemB--;
+        }
+        totem.setText("Totem : " + totemB);
         save.setVisibility(View.GONE);
         play.setVisibility(View.GONE);
         robo.setImageResource(robko[0]);
@@ -107,7 +110,20 @@ public class Game extends AppCompatActivity {
         generateMud();
         generatePowder();
         setTimer();
+        Handler handler = new Handler();
+        handler.postDelayed(runnableCode, 30000);
     }
+
+    private Runnable runnableCode = new Runnable() {
+        @Override
+        public void run() {
+            // Do something here on the main thread
+            generateTotem();
+            // Repeat this the same runnable code block again another 2 seconds
+            // 'this' is referencing the Runnable object
+            handler.postDelayed(this, 30000);
+        }
+    };
 
     public void updateText() {
         runOnUiThread(new Runnable() {
@@ -131,6 +147,7 @@ public class Game extends AppCompatActivity {
                     pohyb();
                     pohybMud();
                     pohybPowder();
+                    pohybTotem();
                     updateText();
                 }
             }, 0, period);
@@ -153,11 +170,21 @@ public class Game extends AppCompatActivity {
                 }
                 if (roboX + robo.getWidth() > gamePanel.getWidth()) {
                     roboX = gamePanel.getWidth() - robo.getWidth();
-                    robo.setX(roboX);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            robo.setX(roboX);
+                        }
+                    });
                     prvaZmena = true;
                 } else {
                     roboX += 1;
-                    robo.setX(roboX);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            robo.setX(roboX);
+                        }
+                    });
                 }
             } else {
                 if (prvaZmena) {
@@ -185,12 +212,6 @@ public class Game extends AppCompatActivity {
     public void pohybMud() {
         if (hybeSa) {
             mudY += 1.35;
-            if (angle <= 360) {
-                angle += 0.1;
-            } else {
-                angle = 0;
-            }
-            mud.setRotation(angle);
             mud.setY(mudY);
             dotykajuSaMud();
             if (mudY >= vyska) {
@@ -207,6 +228,14 @@ public class Game extends AppCompatActivity {
         }
     }
 
+    public void pohybTotem() {
+        if (hybeSa) {
+            totemObjectY += 1.35;
+            totemObject.setY(totemObjectY);
+            dotykajuSaTotem();
+        }
+    }
+
     public void klik(View view) {
         prvaZmena = true;
         if (right) {
@@ -216,10 +245,10 @@ public class Game extends AppCompatActivity {
 
     /* generovanie objektov, ktorym sa treba vyhybat */
     public void generateMud() {
-        mud.setVisibility(View.VISIBLE);
-        mud.setY(0);
+        mud.setY(-40);
         mud.setX((float) Math.random() * (sirka - mud.getWidth()));
         mudY = mud.getY();
+        mud.setVisibility(View.VISIBLE);
     }
 
     /* generovanie objektov, ktore treba zbierat */
@@ -244,10 +273,27 @@ public class Game extends AppCompatActivity {
     }
 
     public void generateTotem() {
-        mud.setY(-40);
-        mud.setX((float) Math.random() * (sirka - mud.getWidth()));
-        mud.setVisibility(View.VISIBLE);
-        mudY = mud.getY();
+
+        float mudStart = mud.getX(), mudEnd = mudStart + mud.getWidth();
+        float powderStart = powder.getX(), powderEnd = powderStart + powder.getWidth();
+        float totemStart = totemObject.getX(), totemEnd = totemStart + totemObject.getWidth();
+        do {
+            totemObject.setX((float) Math.random() * (sirka - powder.getWidth()));
+            powderStart = powder.getX();
+            powderEnd = powderStart + powder.getWidth();
+            mudStart = mud.getX();
+            mudEnd = mudStart + mud.getWidth();
+            totemStart = totemObject.getX();
+            totemEnd = totemStart + totemObject.getWidth();
+        } while (inRange(totemStart, mudStart, mudEnd) ||
+                inRange(totemEnd, mudStart, mudEnd) ||
+                inRange(totemStart, powderStart, powderEnd) ||
+                inRange(totemEnd, powderStart, powderEnd)
+        );
+
+        totemObject.setY(-40);
+        totemObject.setVisibility(View.VISIBLE);
+        totemObjectY = totemObject.getY();
     }
 
     private void dotykajuSaMud() {
@@ -295,21 +341,51 @@ public class Game extends AppCompatActivity {
         }
     }
 
+    private void dotykajuSaTotem() {
+        Rect myViewRect = new Rect();
+        robo.getHitRect(myViewRect);
+        Rect otherViewRect1 = new Rect();
+        totemObject.getHitRect(otherViewRect1);
+        if (Rect.intersects(myViewRect, otherViewRect1)) {
+            totemObject.setX(sirka - 1000);
+            totemB++;
+            mpEffects = MediaPlayer.create(this, R.raw.score);
+            mpEffects.start();
+        }
+        if (totemObject.getY() >= vyska) {
+            totemObject.setX(sirka - 1000);
+        }
+    }
+
     protected void stop() {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                handler.removeCallbacksAndMessages(runnableCode);
                 mp.reset();
                 save.setVisibility(View.VISIBLE);
                 play.setVisibility(View.VISIBLE);
-                play.setText("RESTART");
-                scoreB = 0;
-                totemB = 0;
-                firstGen = true;
-                if (timer != null) {
-                    timer.cancel();
-                    right = true;
-                    hybeSa = false;
+                if (totemB == 0){
+                    play.setText("RESTART");
+                    save.setVisibility(View.VISIBLE);
+                    play.setVisibility(View.VISIBLE);
+                    scoreB = 0;
+                    totemB = 0;
+                    firstGen = true;
+                    if (timer != null) {
+                        timer.cancel();
+                        right = true;
+                        hybeSa = false;
+                    }
+                } else {
+                    play.setText("Continue ( " + totemB + " )");
+                    save.setVisibility(View.VISIBLE);
+                    play.setVisibility(View.VISIBLE);
+                    if (timer != null) {
+                        timer.cancel();
+                        right = true;
+                        hybeSa = false;
+                    }
                 }
             }
         });
