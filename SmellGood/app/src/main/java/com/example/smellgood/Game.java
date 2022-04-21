@@ -50,7 +50,7 @@ public class Game extends AppCompatActivity {
     private Button play, save;
     private TextView score, totem;
     private LinearLayout gamePanel;
-    private int speedMud, speedRobo, period, round, body, tBody, totemB, scoreB;
+    private int speedMud, speedRobo, period, round, body, tBody, totemB, scoreB, media_length;
     private float roboX, mudY, powderY, sirka, vyska, totemObjectY;
     private boolean right = false, boolPowder = false, prvyBod = true, hybeSa = false, firstGen = true;
     private boolean left = false, prvaZmena = true, roboRight;
@@ -72,6 +72,7 @@ public class Game extends AppCompatActivity {
         period = 1;
         scoreB = 0;
         totemB = 0;
+        media_length = 0;
 
         robo = findViewById(R.id.robo);
         totem = findViewById(R.id.totem);
@@ -389,14 +390,21 @@ public class Game extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         stop();
+        mp.reset();
+        mpEffects.reset();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stop();
+        mp.reset();
+        mpEffects.reset();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (timer != null) {
-
-        }
     }
 
     public void createReport(View view) {
