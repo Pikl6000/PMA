@@ -54,6 +54,7 @@ mipmap ic_launcher_round
 mipmap icon
 mipmap icon_foreground
 mipmap icon_round
+raw dead
 raw game
 raw getscore
 raw main

@@ -3200,6 +3200,7 @@ int mipmap icon 0x7f0d0002
 int mipmap icon_foreground 0x7f0d0003
 int mipmap icon_round 0x7f0d0004
 int plurals mtrl_badge_content_description 0x7f0e0000
+int raw dead 0x7f0f0005
 int raw game 0x7f0f0000
 int raw getscore 0x7f0f0001
 int raw main 0x7f0f0002

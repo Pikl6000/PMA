@@ -3201,6 +3201,7 @@ mipmap icon
 mipmap icon_foreground
 mipmap icon_round
 plurals mtrl_badge_content_description
+raw dead
 raw game
 raw getscore
 raw main
