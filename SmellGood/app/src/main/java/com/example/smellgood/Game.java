@@ -137,7 +137,6 @@ public class Game extends AppCompatActivity {
                     pohyb();
                     pohybMud();
                     pohybPowder();
-                    pohybTotem();
                     updateText();
                 }
             }, 0, period);
