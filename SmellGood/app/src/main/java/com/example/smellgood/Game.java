@@ -102,6 +102,8 @@ public class Game extends AppCompatActivity {
         mp = MediaPlayer.create(this, R.raw.game);
         mp.setLooping(true);
         mp.start();
+        scoreB = 0;
+        totemB = 0;
         score.setText("Score : 0");
         if (totemB > 0){
             totemB--;
@@ -364,8 +366,6 @@ public class Game extends AppCompatActivity {
                     play.setText("RESTART");
                     save.setVisibility(View.VISIBLE);
                     play.setVisibility(View.VISIBLE);
-                    scoreB = 0;
-                    totemB = 0;
                     firstGen = true;
                     if (timer != null) {
                         timer.cancel();
