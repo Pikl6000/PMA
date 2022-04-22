@@ -45,7 +45,7 @@
             android:layout_marginBottom="30dp"
             android:backgroundTint="#a17aef"
             android:onClick="onScoreButton"
-            android:text="Shell OFf Fame"
+            android:text="Shelf OFf Fame"
             android:textColor="#FFFEFE"
             android:textSize="21sp"
             android:textStyle="bold" />
