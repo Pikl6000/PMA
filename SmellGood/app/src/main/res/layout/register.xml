@@ -60,5 +60,6 @@
             android:textAlignment="gravity"
             android:textColor="#FFFFFF"
             android:textSize="20sp" />
+
     </LinearLayout>
 </LinearLayout>
