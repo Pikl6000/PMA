@@ -207,8 +207,13 @@ public class Game extends AppCompatActivity {
         if (hybeSa) {
             System.out.println(mudY);
             mudY += 1.35;
-            mud.setY(mudY);
-            dotykajuSaMud();
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mud.setY(mudY);
+                    dotykajuSaMud();
+                }
+            });
             if (mudY >= vyska) {
                 generateMud();
             }
@@ -218,16 +223,26 @@ public class Game extends AppCompatActivity {
     public void pohybPowder() {
         if (hybeSa) {
             powderY += 1.35;
-            powder.setY(powderY);
-            dotykajuSaPowder();
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    powder.setY(powderY);
+                    dotykajuSaPowder();
+                }
+            });
         }
     }
 
     public void pohybTotem() {
         if (hybeSa) {
             totemObjectY += 1.35;
-            totemObject.setY(totemObjectY);
-            dotykajuSaTotem();
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    totemObject.setY(totemObjectY);
+                    dotykajuSaTotem();
+                }
+            });
         }
     }
 
