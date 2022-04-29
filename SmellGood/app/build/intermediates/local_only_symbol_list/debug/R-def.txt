@@ -8,7 +8,9 @@ color purple_700
 color teal_200
 color teal_700
 color white
+drawable arrow
 drawable background
+drawable border
 drawable concrete
 drawable grass
 drawable ic_launcher_background
@@ -17,6 +19,7 @@ drawable icon
 drawable mud
 drawable person
 drawable powder
+drawable profile
 drawable robo
 drawable robodeadleft
 drawable robodeadright
@@ -28,14 +31,19 @@ drawable scoreboard
 drawable title
 drawable vanish
 id bottom
+id editTextTextPersonName2
 id exitButton
 id gamePanel
 id imageView
+id mail
 id mud
+id name
 id notesGridView
 id notesGridViewItem
 id playButton
 id powder
+id profileButton
+id register
 id robo
 id saveButton
 id score
@@ -46,7 +54,9 @@ id totem
 id totemObject
 layout activity_menu
 layout game_layout
+layout login
 layout note
+layout register
 layout scoreboard_layout
 menu menu_main
 mipmap ic_launcher
@@ -63,6 +73,7 @@ raw splash
 string app_name
 string back
 string exit
+string profile
 string scoreboard
 string totems_0
 style Theme.SmellGood

@@ -2436,9 +2436,11 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable arrow
 drawable avd_hide_password
 drawable avd_show_password
 drawable background
+drawable border
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -2510,6 +2512,7 @@ drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable person
 drawable powder
+drawable profile
 drawable robo
 drawable robodeadleft
 drawable robodeadright
@@ -2696,6 +2699,7 @@ id easeIn
 id easeInOut
 id easeOut
 id east
+id editTextTextPersonName2
 id edit_query
 id elastic
 id end
@@ -2764,6 +2768,7 @@ id line3
 id linear
 id listMode
 id list_item
+id mail
 id masked
 id match_constraint
 id match_parent
@@ -2821,6 +2826,7 @@ id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id mud
 id multiply
+id name
 id navigation_bar_item_active_indicator_view
 id navigation_bar_item_icon_container
 id navigation_bar_item_icon_view
@@ -2863,11 +2869,13 @@ id playButton
 id position
 id postLayout
 id powder
+id profileButton
 id progress_circular
 id progress_horizontal
 id radio
 id ratio
 id rectangles
+id register
 id reverseSawtooth
 id right
 id rightToLeft
@@ -3119,6 +3127,7 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout game_layout
+layout login
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title
@@ -3172,6 +3181,7 @@ layout notification_template_custom_big
 layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout register
 layout scoreboard_layout
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
@@ -3339,6 +3349,7 @@ string path_password_eye
 string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
+string profile
 string scoreboard
 string search_menu_title
 string status_bar_notification_info_overflow

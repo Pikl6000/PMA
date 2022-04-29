@@ -205,6 +205,7 @@ public class Game extends AppCompatActivity {
 
     public void pohybMud() {
         if (hybeSa) {
+            System.out.println(mudY);
             mudY += 1.35;
             mud.setY(mudY);
             dotykajuSaMud();

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -31,6 +32,7 @@ public class Main extends AppCompatActivity {
     private boolean up=false, boolPowder=false, prvyBod=true;
     private Random rd=new Random();
     private MediaPlayer mp;
+    private ImageButton profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,8 @@ public class Main extends AppCompatActivity {
         mp = MediaPlayer.create(this, R.raw.main);
         mp.setLooping(true);
         mp.start();
+
+        profile = findViewById(R.id.profileButton);
     }
 
     public void onStartButton(View view){
@@ -58,6 +62,10 @@ public class Main extends AppCompatActivity {
         homeIntent.addCategory( Intent.CATEGORY_HOME );
         homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(homeIntent);
+    }
+    public void openProfile(View view){
+        Intent intent = new Intent(Main.this, Profile.class);
+        startActivity(intent);
     }
 
     @Override

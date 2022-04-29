@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#40AADC"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="380dp"
+        android:layout_height="380dp"
+
+        android:background="@drawable/border"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/mail"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#4A4A4A"
+            android:hint="E - mail"
+            android:inputType="textWebEmailAddress"
+            android:textColor="#000000"
+            android:textColorHint="#606060" />
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:backgroundTint="#4A4A4A"
+            android:ems="10"
+            android:hint="Nickname"
+            android:inputType="textShortMessage"
+            android:textColor="#000000"
+            android:textColorHint="#606060" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName2"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:backgroundTint="#4A4A4A"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textColor="#000000"
+            android:textColorHint="#606060" />
+
+        <Button
+            android:id="@+id/register"
+            android:layout_width="280dp"
+            android:layout_height="65dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#a17aef"
+            android:onClick="zmena"
+            android:text="REGISTER"
+            android:textAlignment="gravity"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+    </LinearLayout>
+</LinearLayout>

@@ -38,6 +38,7 @@
             android:name="com.example.smellgood.Game"
             android:screenOrientation="portrait" />
         <activity android:name="com.example.smellgood.ScoreBoard" />
+        <activity android:name="com.example.smellgood.Profile" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"
