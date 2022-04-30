@@ -9,24 +9,22 @@
     android:paddingRight="16dp"
     android:paddingBottom="16dp">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/scoreboard"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="25sp"
-        android:textStyle="bold" />
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:scaleType="fitStart"
+        app:srcCompat="@drawable/scoreboard" />
 
     <GridView
         android:id="@+id/notesGridView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="90dp"
         android:horizontalSpacing="12dp"
-        android:numColumns="auto_fit"
+        android:numColumns="1"
         android:stretchMode="columnWidth"
         android:verticalSpacing="12dp"></GridView>
+
 </RelativeLayout>
 

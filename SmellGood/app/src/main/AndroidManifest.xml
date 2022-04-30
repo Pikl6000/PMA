@@ -28,6 +28,9 @@
         <activity android:name=".Game"
             android:screenOrientation="portrait"/>
         <activity android:name=".ScoreBoard"/>
+        <activity android:name=".Profile"/>
+        <activity android:name=".RegisterActivity"/>
+        <activity android:name=".LoginActivity"/>
     </application>
 
 </manifest>
