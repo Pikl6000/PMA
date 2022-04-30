@@ -20,8 +20,8 @@ drawable login
 drawable mud
 drawable person
 drawable powder
+drawable prof
 drawable profile
-drawable profiletop
 drawable robo
 drawable robodeadleft
 drawable robodeadright
@@ -34,6 +34,7 @@ drawable title
 drawable vanish
 id bottom
 id change
+id divider2
 id exitButton
 id gamePanel
 id imageView
@@ -70,6 +71,7 @@ id totemObject
 id tvLoginHere
 id tvRegisterHere
 layout activity_menu
+layout change_robo
 layout game_layout
 layout login
 layout note
