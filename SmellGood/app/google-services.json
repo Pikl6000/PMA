@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "656929623743",
+    "project_id": "smell-good-a2a28",
+    "storage_bucket": "smell-good-a2a28.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:656929623743:android:015083f2461218f0ef000a",
+        "android_client_info": {
+          "package_name": "com.example.smellgood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "656929623743-p0q862ll4auh2hgv1e05p79pegsv8aii.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8CwK68FVGeW7iYVWdyjX5xXBlMb52ZME"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "656929623743-p0q862ll4auh2hgv1e05p79pegsv8aii.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

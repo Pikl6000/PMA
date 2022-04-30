@@ -1,36 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#40AADC"
+    android:background="#449BDC"
     android:gravity="center"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="380dp"
-        android:layout_height="300dp"
+        android:layout_height="380dp"
 
         android:background="@drawable/border"
         android:gravity="center"
         android:orientation="vertical">
 
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:scaleType="center"
+            app:srcCompat="@drawable/login" />
+
         <EditText
-            android:id="@+id/name"
+            android:id="@+id/mail2"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="15dp"
             android:backgroundTint="#4A4A4A"
-            android:ems="10"
-            android:hint="Nickname"
-            android:inputType="textPersonName"
+            android:hint="E - mail"
+            android:inputType="textWebEmailAddress"
             android:textColor="#000000"
             android:textColorHint="#606060" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/password2"
             android:layout_width="300dp"
             android:layout_height="50dp"
+            android:layout_marginTop="10dp"
             android:backgroundTint="#4A4A4A"
             android:ems="10"
             android:hint="Password"
@@ -39,7 +47,7 @@
             android:textColorHint="#606060" />
 
         <Button
-            android:id="@+id/register"
+            android:id="@+id/login"
             android:layout_width="280dp"
             android:layout_height="65dp"
             android:layout_marginTop="20dp"
@@ -49,5 +57,14 @@
             android:textAlignment="gravity"
             android:textColor="#FFFFFF"
             android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvRegisterHere"
+            android:layout_width="90dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Register here"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
     </LinearLayout>
 </LinearLayout>

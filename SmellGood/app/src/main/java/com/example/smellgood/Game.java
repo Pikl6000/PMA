@@ -39,10 +39,13 @@ import static com.example.smellgood.Defaults.NO_SELECTION;
 import static com.example.smellgood.Defaults.NO_SELECTION_ARGS;
 import com.example.smellgood.provider.NoteContentProvider;
 import com.example.smellgood.provider.Provider;
-
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 public class Game extends AppCompatActivity {
+    FirebaseAuth mAuth;
+
     private Handler handler = new Handler();
     private Timer timer;
     private SharedPreferences settings;
@@ -68,6 +71,12 @@ public class Game extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         setContentView(R.layout.game_layout);
+        mAuth = FirebaseAuth.getInstance();
+
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user == null){
+            startActivity(new Intent(Game.this, LoginActivity.class));
+        }
 
         period = 1;
         scoreB = 0;
@@ -96,12 +105,12 @@ public class Game extends AppCompatActivity {
     }
 
     public void klikloSa(View view) {
-        if (mp != null){
-            mp.reset();
-        }
-        mp = MediaPlayer.create(this, R.raw.game);
-        mp.setLooping(true);
-        mp.start();
+//        if (mp != null){
+//            mp.reset();
+//        }
+////        mp = MediaPlayer.create(this, R.raw.game);
+//        mp.setLooping(true);
+//        mp.start();
         scoreB = 0;
         totemB = 0;
         score.setText("Score : 0");
@@ -205,7 +214,6 @@ public class Game extends AppCompatActivity {
 
     public void pohybMud() {
         if (hybeSa) {
-            System.out.println(mudY);
             mudY += 1.35;
             runOnUiThread(new Runnable() {
                 @Override
@@ -331,8 +339,8 @@ public class Game extends AppCompatActivity {
                     totemObject.setVisibility(View.GONE);
                 }
             });
-            mpEffects = MediaPlayer.create(Game.this, R.raw.splash);
-            mpEffects.start();
+//            mpEffects = MediaPlayer.create(Game.this, R.raw.splash);
+//            mpEffects.start();
         }
     }
 
@@ -344,8 +352,8 @@ public class Game extends AppCompatActivity {
         if (Rect.intersects(myViewRect, otherViewRect1)) {
             generatePowder();
             scoreB++;
-            mpEffects = MediaPlayer.create(this, R.raw.score);
-            mpEffects.start();
+//            mpEffects = MediaPlayer.create(this, R.raw.score);
+//            mpEffects.start();
         }
         if (powder.getY() >= vyska) {
             generatePowder();
@@ -360,8 +368,8 @@ public class Game extends AppCompatActivity {
         if (Rect.intersects(myViewRect, otherViewRect1)) {
             totemObject.setX(sirka - 1000);
             totemB++;
-            mpEffects = MediaPlayer.create(this, R.raw.score);
-            mpEffects.start();
+//            mpEffects = MediaPlayer.create(this, R.raw.score);
+//            mpEffects.start();
         }
         if (totemObject.getY() >= vyska) {
             totemObject.setX(sirka - 1000);
@@ -369,10 +377,10 @@ public class Game extends AppCompatActivity {
     }
 
     protected void stop() {
-        mp.reset();
-        mp = MediaPlayer.create(this, R.raw.dead);
-        mp.setLooping(true);
-        mp.start();
+//        mp.reset();
+//        mp = MediaPlayer.create(this, R.raw.dead);
+//        mp.setLooping(true);
+//        mp.start();
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -406,16 +414,24 @@ public class Game extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         stop();
-        mp.reset();
-        mpEffects.reset();
+//        mp.reset();
+//        mpEffects.reset();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         stop();
-        mp.reset();
-        mpEffects.reset();
+//        mp.reset();
+//        mpEffects.reset();
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user == null){
+            startActivity(new Intent(Game.this, LoginActivity.class));
+        }
     }
 
     @Override
@@ -424,34 +440,13 @@ public class Game extends AppCompatActivity {
     }
 
     public void createReport(View view) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                LinearLayout a = new LinearLayout(Game.this);
-                a.setOrientation(LinearLayout.VERTICAL);
-                a.setPadding(25, 10, 25, 10);
-
-                final EditText descriptionEditText = new EditText(Game.this);
-                descriptionEditText.setHint("Enter nickname");
-                descriptionEditText.setMinimumWidth(a.getWidth());
-
-                a.addView(descriptionEditText);
-
-                new AlertDialog.Builder(Game.this)
-                        .setTitle("Enter Shall of Fame")
-                        .setView(a)
-
-                        .setPositiveButton("Save", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                String nazov = descriptionEditText.getText().toString();
-                                insertIntoContentProvider(nazov, String.valueOf(scoreB));
-                            }
-                        })
-                        .setNegativeButton("Cancel", DISMISS_ACTION)
-                        .show();
-            }
-        });
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user == null){
+            startActivity(new Intent(Game.this, LoginActivity.class));
+        }
+        else{
+            insertIntoContentProvider(user.getEmail().toString(), String.valueOf(scoreB));
+        }
     }
 
 
