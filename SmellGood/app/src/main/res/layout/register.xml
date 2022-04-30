@@ -23,6 +23,12 @@
             android:scaleType="center"
             app:srcCompat="@drawable/login" />
 
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+
         <EditText
             android:id="@+id/mail"
             android:layout_width="300dp"
@@ -78,7 +84,8 @@
             android:foregroundGravity="center"
             android:gravity="center"
             android:text="Login here"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="#737272" />
 
     </LinearLayout>
 

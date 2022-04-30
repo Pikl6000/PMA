@@ -70,8 +70,11 @@ public class Main extends AppCompatActivity {
         startActivity(homeIntent);
     }
     public void openProfile(View view){
-        Intent intent = new Intent(Main.this, LoginActivity.class);
-        startActivity(intent);
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null){
+            startActivity(new Intent(Main.this, Profile.class));
+        }
+        else  startActivity(new Intent(Main.this, LoginActivity.class));
     }
 
     @Override
@@ -85,11 +88,6 @@ public class Main extends AppCompatActivity {
         super.onStart();
         mp.setLooping(true);
         mp.start();
-
-        FirebaseUser user = mAuth.getCurrentUser();
-        if (user == null){
-            startActivity(new Intent(Main.this, LoginActivity.class));
-        }
     }
 
 
