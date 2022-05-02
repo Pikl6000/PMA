@@ -42,7 +42,7 @@
             android:backgroundTint="#4A4A4A"
             android:ems="10"
             android:hint="Password"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
             android:textColor="#000000"
             android:textColorHint="#606060" />
 

@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="380dp"
-        android:layout_height="570dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/border"
         android:gravity="center_horizontal|top"
         android:orientation="vertical">
@@ -93,5 +93,15 @@
             android:text="Change Robo"
             android:textColor="#FFFFFF"
             android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/logout"
+            android:layout_width="125dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center|clip_vertical"
+            android:text="Log out"
+            android:textColor="#737272" />
     </LinearLayout>
 </LinearLayout>

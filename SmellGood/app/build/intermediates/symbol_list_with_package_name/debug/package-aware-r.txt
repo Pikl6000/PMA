@@ -2741,7 +2741,6 @@ id disableIntraAutoTransition
 id disablePostScroll
 id disableScroll
 id disjoint
-id divider2
 id dragAnticlockwise
 id dragClockwise
 id dragDown
@@ -2831,6 +2830,7 @@ id linear
 id listMode
 id list_item
 id login
+id logout
 id mail
 id mail2
 id masked

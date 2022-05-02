@@ -34,7 +34,6 @@ drawable title
 drawable vanish
 id bottom
 id change
-id divider2
 id exitButton
 id gamePanel
 id imageView
@@ -44,6 +43,7 @@ id imageView4
 id imageView5
 id imageView6
 id login
+id logout
 id mail
 id mail2
 id mud

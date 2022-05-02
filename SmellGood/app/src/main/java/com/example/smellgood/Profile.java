@@ -18,7 +18,7 @@ public class Profile extends AppCompatActivity {
     private FirebaseUser user;
     private FirebaseDatabase data;
     private DatabaseReference reference;
-    private TextView nickname,score;
+    private TextView nickname,score,logout;
     private Button change;
 
     @Override
@@ -36,19 +36,21 @@ public class Profile extends AppCompatActivity {
         nickname = findViewById(R.id.nickname);
         score = findViewById(R.id.scoreProfile);
         change = findViewById(R.id.change);
+        logout = findViewById(R.id.logout);
+
+        logout.setOnClickListener(view -> {
+            mAuth.signOut();
+            startActivity(new Intent(this, Main.class));
+        });
 
         nacitanie();
     }
-
 
     private void nacitanie(){
         String mail = user.getEmail();
         nickname.setText(mail);
 
     }
-
-
-
 
     @Override
     protected void onStart() {

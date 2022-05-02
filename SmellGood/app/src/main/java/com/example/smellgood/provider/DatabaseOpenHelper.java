@@ -22,9 +22,6 @@ DatabaseOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(createTableSql());
-        insertSampleEntry(db, "Test 1","-1");
-        insertSampleEntry(db, "Test 2","-1");
-        insertSampleEntry(db, "Test 3","-1");
     }
     private void insertSampleEntry(SQLiteDatabase db, String name,String score) {
         ContentValues contentValues = new ContentValues();
