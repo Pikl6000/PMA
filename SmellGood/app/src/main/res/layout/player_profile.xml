@@ -53,7 +53,8 @@
             android:text="Highest score :"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="#000000"
-            android:textSize="21sp" />
+            android:textSize="21sp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/scoreProfile"
@@ -63,7 +64,8 @@
             android:layout_marginBottom="12dp"
             android:text="No score stored on this device"
             android:textColor="#000000"
-            android:textSize="17sp" />
+            android:textSize="17sp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/textView6"

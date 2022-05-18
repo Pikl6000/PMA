@@ -10,6 +10,98 @@
     <LinearLayout
         android:layout_width="380dp"
         android:layout_height="500dp"
-        android:background="@drawable/border"
-        android:orientation="vertical"/>
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/border"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Robo v1"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="30sp" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="110dp"
+                android:layout_height="300dp"
+                app:srcCompat="@drawable/robostand" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="160dp"
+                android:layout_height="60dp"
+                android:backgroundTint="#a17aef"
+                android:text="Select" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/border"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="invisible">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Robo v2"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="30sp" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="110dp"
+                android:layout_height="300dp"
+                app:srcCompat="@drawable/robostand" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="160dp"
+                android:layout_height="60dp"
+                android:backgroundTint="#a17aef"
+                android:text="Select" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/border"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="invisible">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Robo v3"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="30sp" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="110dp"
+                android:layout_height="300dp"
+                app:srcCompat="@drawable/robostand" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="160dp"
+                android:layout_height="60dp"
+                android:backgroundTint="#a17aef"
+                android:text="Select" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

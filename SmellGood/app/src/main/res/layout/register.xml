@@ -45,7 +45,8 @@
             android:hint="Nickname | ZATIAL NEFUNKCNE"
             android:inputType="textShortMessage"
             android:textColor="#000000"
-            android:textColorHint="#606060" />
+            android:textColorHint="#606060"
+            android:visibility="gone" />
 
         <EditText
             android:id="@+id/password"

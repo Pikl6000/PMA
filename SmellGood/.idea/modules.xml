@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Smell_Good.iml" filepath="$PROJECT_DIR$/.idea/modules/Smell_Good.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Smell_Good.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Smell_Good.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Smell_Good.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Smell_Good.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Smell_Good.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Smell_Good.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Smell_Good.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Smell_Good.app.unitTest.iml" />
     </modules>
   </component>
 </project>
