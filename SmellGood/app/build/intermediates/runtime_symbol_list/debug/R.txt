@@ -3384,6 +3384,8 @@ int string common_open_on_phone 0x7f100035
 int string common_signin_button_text 0x7f100036
 int string common_signin_button_text_long 0x7f100037
 int string default_web_client_id 0x7f100038
+int string e_mail 0x7f100099
+int string email 0x7f10009a
 int string error_icon_content_description 0x7f100039
 int string exit 0x7f10003a
 int string exposed_dropdown_menu_content_description 0x7f10003b
@@ -3395,6 +3397,7 @@ int string google_app_id 0x7f100040
 int string google_crash_reporting_api_key 0x7f100041
 int string google_storage_bucket 0x7f100042
 int string hide_bottom_view_on_scroll_behavior 0x7f100043
+int string highest_score 0x7f10009b
 int string icon_content_description 0x7f100044
 int string item_view_role_description 0x7f100045
 int string label 0x7f100046

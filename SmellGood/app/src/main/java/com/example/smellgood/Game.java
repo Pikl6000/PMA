@@ -118,6 +118,9 @@ public class Game extends AppCompatActivity {
         if (id == 3){
             robko = new int[]{R.drawable.robostand3, R.drawable.robostandl, R.drawable.robodeadright, R.drawable.robodeadleft};
         }
+        if (id == 4){
+            robko = new int[]{R.drawable.robostand3, R.drawable.robostandl, R.drawable.robodeadright, R.drawable.robodeadleft};
+        }
     }
 
     public void klikloSa(View view) {

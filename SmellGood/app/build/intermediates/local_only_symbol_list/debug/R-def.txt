@@ -97,12 +97,15 @@ raw splash
 string app_name
 string back
 string default_web_client_id
+string e_mail
+string email
 string exit
 string gcm_defaultSenderId
 string google_api_key
 string google_app_id
 string google_crash_reporting_api_key
 string google_storage_bucket
+string highest_score
 string profile
 string project_id
 string scoreboard

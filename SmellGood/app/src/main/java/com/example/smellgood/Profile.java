@@ -53,8 +53,8 @@ public class Profile extends AppCompatActivity {
         });
         change.setOnClickListener(view -> {
             //startActivity(new Intent(this,));
-            Toast.makeText(this, "Treba dorobiť", Toast.LENGTH_SHORT).show();
-            if (i <= 2) i++;
+            Toast.makeText(this, "Robo Changed", Toast.LENGTH_SHORT).show();
+            if (i <= 3) i++;
             else i = 1;
             Main.roboid = i;
             updateRobo();

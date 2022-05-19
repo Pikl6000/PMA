@@ -37,7 +37,7 @@ public class Main extends AppCompatActivity {
     private MediaPlayer mp;
     private ImageButton profile;
 
-    public static int roboid = 0;
+    public static int roboid = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
