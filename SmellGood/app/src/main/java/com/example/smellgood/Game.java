@@ -113,10 +113,13 @@ public class Game extends AppCompatActivity {
            robko = new int[]{R.drawable.robostand, R.drawable.robostandl, R.drawable.robodeadright, R.drawable.robodeadleft};
         }
         if (id == 2){
-            robko = new int[]{R.drawable.robostand2, R.drawable.robostandl, R.drawable.robodeadright, R.drawable.robodeadleft};
+            robko = new int[]{R.drawable.robostandpink, R.drawable.robostandpinkl, R.drawable.robodeadrightpink, R.drawable.robodeadleftpink};
         }
         if (id == 3){
-            robko = new int[]{R.drawable.robostand3, R.drawable.robostandl, R.drawable.robodeadright, R.drawable.robodeadleft};
+            robko = new int[]{R.drawable.robostandblue, R.drawable.robostandbluel, R.drawable.robodeadrightblue, R.drawable.robodeadleftblue};
+        }
+        if (id == 4){
+            robko = new int[]{R.drawable.robostandwhite, R.drawable.robostandwhitel, R.drawable.robodeadrightwhite, R.drawable.robodeadlefttwhite};
         }
         if (id == 4){
             robko = new int[]{R.drawable.robostand3, R.drawable.robostandl, R.drawable.robodeadright, R.drawable.robodeadleft};
@@ -174,7 +177,6 @@ public class Game extends AppCompatActivity {
         }
     }
 
-
     public void pohyb() {
         //pohyb hracej postavy
         if (hybeSa) {
@@ -229,7 +231,6 @@ public class Game extends AppCompatActivity {
             }
         }
     }
-
 
     public void pohybMud() {
         if (hybeSa) {
