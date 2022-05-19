@@ -76,8 +76,7 @@ public class Main extends AppCompatActivity {
             startActivity(new Intent(Main.this, Profile.class));
         }
         else {
-            startActivity(new Intent(this, Shop.class));
-//            startActivity(new Intent(Main.this, LoginActivity.class));
+            startActivity(new Intent(Main.this, LoginActivity.class));
         }
     }
 
