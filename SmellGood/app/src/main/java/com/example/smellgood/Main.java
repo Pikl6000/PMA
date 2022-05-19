@@ -75,7 +75,10 @@ public class Main extends AppCompatActivity {
         if (user != null){
             startActivity(new Intent(Main.this, Profile.class));
         }
-        else  startActivity(new Intent(Main.this, LoginActivity.class));
+        else {
+            startActivity(new Intent(this, Shop.class));
+//            startActivity(new Intent(Main.this, LoginActivity.class));
+        }
     }
 
     @Override

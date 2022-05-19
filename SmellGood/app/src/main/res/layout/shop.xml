@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#449BDC"
+    android:backgroundTint="#449BDC"
     android:orientation="vertical"
     android:paddingLeft="16dp"
     android:paddingTop="16dp"
@@ -11,16 +13,14 @@
 
     <ImageView
         android:id="@+id/shopImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:scaleType="fitStart"
-        app:srcCompat="@drawable/shop" />
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:scaleType="center"
+        app:srcCompat="@drawable/shopdocas" />
 
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="100dp"
         android:paddingTop="20dp">
 
 
@@ -30,7 +30,6 @@
             android:layout_row="0"
             android:layout_column="0"
             android:background="@drawable/border"
-            android:backgroundTint="#449BDC"
             android:orientation="vertical">
 
 
@@ -42,14 +41,14 @@
                 app:srcCompat="@drawable/robostand" />
 
             <Button
+                android:id="@+id/shop1"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:backgroundTint="#a17aef"
-                android:text="Buy!"
-                android:textColor="#FFFFFF">
-            </Button>
+                android:text="SELECT"
+                android:textColor="#FFFFFF"></Button>
         </LinearLayout>
 
         <LinearLayout
@@ -59,7 +58,6 @@
             android:layout_column="1"
             android:layout_marginLeft="40dp"
             android:background="@drawable/border"
-            android:backgroundTint="#449BDC"
             android:orientation="vertical">
 
             <ImageView
@@ -70,14 +68,14 @@
                 app:srcCompat="@drawable/robostandpink" />
 
             <Button
+                android:id="@+id/shop2"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:backgroundTint="#a17aef"
-                android:text="Buy!"
-                android:textColor="#FFFFFF">
-            </Button>
+                android:text="SELECT"
+                android:textColor="#FFFFFF"></Button>
         </LinearLayout>
 
         <LinearLayout
@@ -87,7 +85,6 @@
             android:layout_column="0"
             android:layout_marginTop="20dp"
             android:background="@drawable/border"
-            android:backgroundTint="#449BDC"
             android:orientation="vertical">
 
             <ImageView
@@ -98,14 +95,14 @@
                 app:srcCompat="@drawable/robostandblue" />
 
             <Button
+                android:id="@+id/shop3"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:backgroundTint="#a17aef"
-                android:text="Buy!"
-                android:textColor="#FFFFFF">
-            </Button>
+                android:text="SELECT"
+                android:textColor="#FFFFFF"></Button>
         </LinearLayout>
 
         <LinearLayout
@@ -116,7 +113,6 @@
             android:layout_marginLeft="40dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/border"
-            android:backgroundTint="#449BDC"
             android:orientation="vertical">
 
             <ImageView
@@ -127,17 +123,18 @@
                 app:srcCompat="@drawable/robostandwhite" />
 
             <Button
+                android:id="@+id/shop4"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:backgroundTint="#a17aef"
-                android:text="Buy!"
-                android:textColor="#FFFFFF">
-            </Button>
+                android:text="SELECT"
+                android:textColor="#FFFFFF" />
+
         </LinearLayout>
 
 
     </GridLayout>
-</RelativeLayout>
+</LinearLayout>
 

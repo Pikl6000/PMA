@@ -25,12 +25,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Game"
-            android:screenOrientation="portrait"/>
+        <activity android:name=".Game" android:screenOrientation="portrait"/>
         <activity android:name=".ScoreBoard"/>
         <activity android:name=".Profile"/>
         <activity android:name=".RegisterActivity"/>
         <activity android:name=".LoginActivity"/>
+        <activity android:name=".Shop" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

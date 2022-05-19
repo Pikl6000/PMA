@@ -78,8 +78,6 @@ public class Game extends AppCompatActivity {
             startActivity(new Intent(Game.this, LoginActivity.class));
         }
 
-        updateRobo();
-
         period = 1;
         scoreB = 0;
         totemB = 0;
@@ -104,25 +102,27 @@ public class Game extends AppCompatActivity {
         });
 
         right = true;
+        updateRobo();
     }
 
     //MENENIE ROBA , TREBA DOROBIT PODLA POSLEDNEHO POCTU VARIACII
     public void updateRobo(){
         int id = Main.roboid;
         if (id == 1){
+            robo.setImageResource(R.drawable.robostand);
            robko = new int[]{R.drawable.robostand, R.drawable.robostandl, R.drawable.robodeadright, R.drawable.robodeadleft};
         }
         if (id == 2){
+            robo.setImageResource(R.drawable.robostandpink);
             robko = new int[]{R.drawable.robostandpink, R.drawable.robostandpinkl, R.drawable.robodeadrightpink, R.drawable.robodeadleftpink};
         }
         if (id == 3){
+            robo.setImageResource(R.drawable.robostandblue);
             robko = new int[]{R.drawable.robostandblue, R.drawable.robostandbluel, R.drawable.robodeadrightblue, R.drawable.robodeadleftblue};
         }
         if (id == 4){
+            robo.setImageResource(R.drawable.robostandwhite);
             robko = new int[]{R.drawable.robostandwhite, R.drawable.robostandwhitel, R.drawable.robodeadrightwhite, R.drawable.robodeadlefttwhite};
-        }
-        if (id == 4){
-            robko = new int[]{R.drawable.robostand3, R.drawable.robostandl, R.drawable.robodeadright, R.drawable.robodeadleft};
         }
     }
 
@@ -148,6 +148,7 @@ public class Game extends AppCompatActivity {
         generatePowder();
         setTimer();
     }
+
 
     public void updateText() {
         runOnUiThread(new Runnable() {

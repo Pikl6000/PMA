@@ -154,27 +154,33 @@ ADDED from D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:25:17-77
 	android:name
 		ADDED from D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:25:27-74
 activity#com.example.smellgood.Game
-ADDED from D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:28:9-29:51
+ADDED from D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:28:9-78
 	android:screenOrientation
-		ADDED from D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:29:13-49
+		ADDED from D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:28:40-76
 	android:name
 		ADDED from D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:28:19-39
 activity#com.example.smellgood.ScoreBoard
-ADDED from D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:30:9-47
+ADDED from D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:29:9-47
 	android:name
-		ADDED from D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:30:19-45
+		ADDED from D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:29:19-45
 activity#com.example.smellgood.Profile
-ADDED from D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:31:9-44
+ADDED from D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:30:9-44
 	android:name
-		ADDED from D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:31:19-42
+		ADDED from D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:30:19-42
 activity#com.example.smellgood.RegisterActivity
-ADDED from D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:32:9-53
+ADDED from D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:31:9-53
 	android:name
-		ADDED from D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:32:19-51
+		ADDED from D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:31:19-51
 activity#com.example.smellgood.LoginActivity
-ADDED from D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:33:9-50
+ADDED from D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:32:9-50
 	android:name
-		ADDED from D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:33:19-48
+		ADDED from D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:32:19-48
+activity#com.example.smellgood.Shop
+ADDED from D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:33:9-78
+	android:screenOrientation
+		ADDED from D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:33:40-76
+	android:name
+		ADDED from D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:33:19-39
 uses-sdk
 INJECTED from D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml

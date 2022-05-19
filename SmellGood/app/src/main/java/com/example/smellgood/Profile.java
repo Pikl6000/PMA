@@ -6,28 +6,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 
 public class Profile extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseUser user;
-    private FirebaseDatabase data;
-    private DatabaseReference reference;
     private TextView nickname,score,logout;
     private Button change;
     private ImageView robko;
     private int i = 1;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,11 +43,7 @@ public class Profile extends AppCompatActivity {
         });
         change.setOnClickListener(view -> {
             //startActivity(new Intent(this,));
-            Toast.makeText(this, "Robo Changed", Toast.LENGTH_SHORT).show();
-            if (i <= 3) i++;
-            else i = 1;
-            Main.roboid = i;
-            updateRobo();
+            startActivity(new Intent(this, Shop.class));
         });
 
         updateRobo();
@@ -67,7 +53,6 @@ public class Profile extends AppCompatActivity {
     private void nacitanie(){
         String mail = user.getEmail();
         nickname.setText(mail);
-
     }
     public void updateRobo(){
         int id = Main.roboid;
@@ -75,21 +60,24 @@ public class Profile extends AppCompatActivity {
             robko.setImageResource(R.drawable.robostand);
         }
         if (id == 2){
-            robko.setImageResource(R.drawable.robostand2);
+            robko.setImageResource(R.drawable.robostandpink);
         }
         if (id == 3){
-            robko.setImageResource(R.drawable.robostand3);
+            robko.setImageResource(R.drawable.robostandblue);
+        }
+        if (id == 4){
+            robko.setImageResource(R.drawable.robostandwhite);
         }
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-
         FirebaseUser user = mAuth.getCurrentUser();
         if (user == null){
             startActivity(new Intent(Profile.this, LoginActivity.class));
         }
+        updateRobo();
     }
 
 
