@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,6 +15,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+
 public class Profile extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseUser user;
@@ -21,6 +23,11 @@ public class Profile extends AppCompatActivity {
     private DatabaseReference reference;
     private TextView nickname,score,logout;
     private Button change;
+    private ImageView robko;
+    private int i = 1;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +45,7 @@ public class Profile extends AppCompatActivity {
         score = findViewById(R.id.scoreProfile);
         change = findViewById(R.id.change);
         logout = findViewById(R.id.logout);
+        robko = findViewById(R.id.robko);
 
         logout.setOnClickListener(view -> {
             mAuth.signOut();
@@ -46,8 +54,13 @@ public class Profile extends AppCompatActivity {
         change.setOnClickListener(view -> {
             //startActivity(new Intent(this,));
             Toast.makeText(this, "Treba dorobiť", Toast.LENGTH_SHORT).show();
+            if (i <= 2) i++;
+            else i = 1;
+            Main.roboid = i;
+            updateRobo();
         });
 
+        updateRobo();
         nacitanie();
     }
 
@@ -55,6 +68,18 @@ public class Profile extends AppCompatActivity {
         String mail = user.getEmail();
         nickname.setText(mail);
 
+    }
+    public void updateRobo(){
+        int id = Main.roboid;
+        if (id == 1){
+            robko.setImageResource(R.drawable.robostand);
+        }
+        if (id == 2){
+            robko.setImageResource(R.drawable.robostand2);
+        }
+        if (id == 3){
+            robko.setImageResource(R.drawable.robostand3);
+        }
     }
 
     @Override

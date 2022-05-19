@@ -2498,7 +2498,6 @@ drawable common_google_signin_btn_text_light
 drawable common_google_signin_btn_text_light_focused
 drawable common_google_signin_btn_text_light_normal
 drawable common_google_signin_btn_text_light_normal_background
-drawable concrete
 drawable design_fab_background
 drawable design_ic_visibility
 drawable design_ic_visibility_off
@@ -2570,6 +2569,8 @@ drawable robo
 drawable robodeadleft
 drawable robodeadright
 drawable robostand
+drawable robostand2
+drawable robostand3
 drawable robostandl
 drawable robotoright
 drawable score
@@ -2685,6 +2686,7 @@ id browser_actions_menu_item_icon
 id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
+id button
 id buttonPanel
 id cache_measures
 id callMeasure
@@ -2821,8 +2823,8 @@ id imageView
 id imageView2
 id imageView3
 id imageView4
-id imageView5
 id imageView6
+id imageView7
 id immediateStop
 id included
 id info
@@ -2967,6 +2969,7 @@ id right
 id rightToLeft
 id right_icon
 id right_side
+id robko
 id robo
 id rounded
 id row_index_key
@@ -3061,6 +3064,7 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
+id textView
 id textView2
 id textView4
 id textView6

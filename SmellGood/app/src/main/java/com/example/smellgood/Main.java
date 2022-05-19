@@ -19,7 +19,6 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Random;
 import java.util.Timer;
-import java.util.TimerTask;
 
 public class Main extends AppCompatActivity {
     FirebaseAuth mAuth;
@@ -37,6 +36,8 @@ public class Main extends AppCompatActivity {
     private Random rd=new Random();
     private MediaPlayer mp;
     private ImageButton profile;
+
+    public static int roboid = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

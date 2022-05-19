@@ -58,7 +58,7 @@ public class Game extends AppCompatActivity {
     private boolean right = false, boolPowder = false, prvyBod = true, hybeSa = false, firstGen = true;
     private boolean left = false, prvaZmena = true, roboRight;
     private Random rd = new Random();
-    private int[] robko = {R.drawable.robostand, R.drawable.robostandl, R.drawable.robodeadright, R.drawable.robodeadleft};
+    private int[] robko;
     private static final int NOTES_LOADER_ID = 0;
     private static final int INSERT_NOTE_TOKEN = 0;
     private static final int DELETE_NOTE_TOKEN = 0;
@@ -77,6 +77,8 @@ public class Game extends AppCompatActivity {
         if (user == null){
             startActivity(new Intent(Game.this, LoginActivity.class));
         }
+
+        updateRobo();
 
         period = 1;
         scoreB = 0;
@@ -102,6 +104,20 @@ public class Game extends AppCompatActivity {
         });
 
         right = true;
+    }
+
+    //MENENIE ROBA , TREBA DOROBIT PODLA POSLEDNEHO POCTU VARIACII
+    public void updateRobo(){
+        int id = Main.roboid;
+        if (id == 1){
+           robko = new int[]{R.drawable.robostand, R.drawable.robostandl, R.drawable.robodeadright, R.drawable.robodeadleft};
+        }
+        if (id == 2){
+            robko = new int[]{R.drawable.robostand2, R.drawable.robostandl, R.drawable.robodeadright, R.drawable.robodeadleft};
+        }
+        if (id == 3){
+            robko = new int[]{R.drawable.robostand3, R.drawable.robostandl, R.drawable.robodeadright, R.drawable.robodeadleft};
+        }
     }
 
     public void klikloSa(View view) {
