@@ -56,10 +56,12 @@ id imageView3
 id imageView4
 id imageView6
 id imageView7
+id imageView8
 id login
 id logout
 id mail
 id mail2
+id mail4
 id mud
 id nickname
 id notesGridView
@@ -70,6 +72,7 @@ id playButton
 id powder
 id profileButton
 id register
+id resetB
 id robko
 id robo
 id saveButton
@@ -90,6 +93,7 @@ id totem
 id totemObject
 id tvLoginHere
 id tvRegisterHere
+id tvReset
 layout activity_menu
 layout change_robo
 layout game_layout
@@ -97,6 +101,7 @@ layout login
 layout note
 layout player_profile
 layout register
+layout reset_pass
 layout scoreboard_layout
 layout shop
 menu menu_main

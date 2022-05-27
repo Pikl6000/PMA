@@ -47,6 +47,7 @@
         <activity
             android:name="com.example.smellgood.Shop"
             android:screenOrientation="portrait" />
+        <activity android:name="com.example.smellgood.ResetPassword" />
         <activity
             android:name="com.google.firebase.auth.internal.GenericIdpActivity"
             android:excludeFromRecents="true"

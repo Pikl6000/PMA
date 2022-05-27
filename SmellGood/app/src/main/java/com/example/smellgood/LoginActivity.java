@@ -3,6 +3,7 @@ package com.example.smellgood;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,7 +22,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class LoginActivity extends AppCompatActivity {
 
     EditText etLoginEmail,etLoginPassword;
-    TextView tvRegisterHere;
+    TextView tvRegisterHere,tvReset;
     Button btnLogin;
 
     FirebaseAuth mAuth;
@@ -35,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         etLoginPassword = findViewById(R.id.password2);
         tvRegisterHere = findViewById(R.id.tvRegisterHere);
         btnLogin = findViewById(R.id.login);
+        tvReset = findViewById(R.id.tvReset);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -48,6 +50,9 @@ public class LoginActivity extends AppCompatActivity {
         });
         tvRegisterHere.setOnClickListener(view ->{
             startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+        });
+        tvReset.setOnClickListener(view -> {
+            startActivity(new Intent(LoginActivity.this,ResetPassword.class));
         });
     }
 

@@ -2837,6 +2837,7 @@ id imageView3
 id imageView4
 id imageView6
 id imageView7
+id imageView8
 id immediateStop
 id included
 id info
@@ -2865,6 +2866,7 @@ id login
 id logout
 id mail
 id mail2
+id mail4
 id masked
 id match_constraint
 id match_parent
@@ -2975,6 +2977,7 @@ id radio
 id ratio
 id rectangles
 id register
+id resetB
 id reverseSawtooth
 id right
 id rightToLeft
@@ -3113,6 +3116,7 @@ id transition_transform
 id triangle
 id tvLoginHere
 id tvRegisterHere
+id tvReset
 id unchecked
 id uniform
 id unlabeled
@@ -3308,6 +3312,7 @@ layout notification_template_part_chronometer
 layout notification_template_part_time
 layout player_profile
 layout register
+layout reset_pass
 layout scoreboard_layout
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
