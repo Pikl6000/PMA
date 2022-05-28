@@ -2713,6 +2713,7 @@ id chain
 id chain2
 id chains
 id change
+id changepass
 id checkbox
 id checked
 id chip
@@ -2811,6 +2812,12 @@ id fullscreen_header
 id gamePanel
 id ghost_view
 id ghost_view_holder
+id goBack
+id goBack1
+id goBack2
+id goBack3
+id goBack4
+id goBack5
 id gone
 id graph
 id graph_wrap
@@ -2958,7 +2965,10 @@ id parent
 id parentPanel
 id parentRelative
 id parent_matrix
+id pass1
+id pass2
 id password
+id password1
 id password2
 id password_toggle
 id path
@@ -2977,7 +2987,7 @@ id radio
 id ratio
 id rectangles
 id register
-id resetB
+id resetPass
 id reverseSawtooth
 id right
 id rightToLeft
@@ -3313,6 +3323,7 @@ layout notification_template_part_time
 layout player_profile
 layout register
 layout reset_pass
+layout reset_pass_log
 layout scoreboard_layout
 layout select_dialog_item_material
 layout select_dialog_multichoice_material

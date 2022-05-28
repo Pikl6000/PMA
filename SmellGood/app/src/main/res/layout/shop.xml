@@ -20,7 +20,7 @@
 
     <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:paddingTop="20dp">
 
 
@@ -136,5 +136,17 @@
 
 
     </GridLayout>
+
+    <TextView
+        android:id="@+id/goBack2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:text="Go to Main menu"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp" />
 </LinearLayout>
 

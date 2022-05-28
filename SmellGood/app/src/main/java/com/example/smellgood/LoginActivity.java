@@ -22,7 +22,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class LoginActivity extends AppCompatActivity {
 
     EditText etLoginEmail,etLoginPassword;
-    TextView tvRegisterHere,tvReset;
+    TextView tvRegisterHere,tvReset,back;
     Button btnLogin;
 
     FirebaseAuth mAuth;
@@ -37,6 +37,11 @@ public class LoginActivity extends AppCompatActivity {
         tvRegisterHere = findViewById(R.id.tvRegisterHere);
         btnLogin = findViewById(R.id.login);
         tvReset = findViewById(R.id.tvReset);
+        back = findViewById(R.id.goBack4);
+
+        back.setOnClickListener(view -> {
+            startActivity(new Intent(this,Main.class));
+        });
 
         mAuth = FirebaseAuth.getInstance();
 

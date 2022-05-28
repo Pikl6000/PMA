@@ -19,8 +19,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterActivity extends AppCompatActivity {
-    EditText etRegEmail,etRegPassword;
-    TextView tvLoginHere;
+    EditText etRegEmail,etRegPassword,password1;
+    TextView tvLoginHere,back;
     Button btnRegister;
 
     FirebaseAuth mAuth;
@@ -34,6 +34,12 @@ public class RegisterActivity extends AppCompatActivity {
         etRegPassword = findViewById(R.id.password);
         tvLoginHere = findViewById(R.id.tvLoginHere);
         btnRegister = findViewById(R.id.register);
+        password1 = findViewById(R.id.password1);
+        back = findViewById(R.id.goBack5);
+
+        back.setOnClickListener(view -> {
+            startActivity(new Intent(this,Main.class));
+        });
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -48,7 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void createUser(){
         String email = etRegEmail.getText().toString();
-        String password = etRegPassword.getText().toString();
+        String password = etRegPassword.getText().toString(),passworD = password1.getText().toString();
 
         if (TextUtils.isEmpty(email)){
             etRegEmail.setError("Email cannot be empty");
@@ -56,7 +62,23 @@ public class RegisterActivity extends AppCompatActivity {
         }else if (TextUtils.isEmpty(password)){
             etRegPassword.setError("Password cannot be empty");
             etRegPassword.requestFocus();
-        }else{
+        }else if (TextUtils.isEmpty(passworD)){
+            password1.setError("Password cannot be empty");
+            password1.requestFocus();
+        }
+        else if (password.length() < 6){
+            etRegPassword.setError("Password must be at least 6 characters");
+            etRegPassword.requestFocus();
+        }
+        else if (passworD.length() < 6){
+            password1.setError("Password must be at least 6 characters");
+            password1.requestFocus();
+        }
+        else if (!password.equals(passworD)) {
+            password1.setError("Passwords must be the same");
+            password1.requestFocus();
+        }
+        else{
             mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {

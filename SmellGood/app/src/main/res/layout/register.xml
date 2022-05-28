@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#449BDC"
-    android:gravity="center"
+    android:gravity="bottom|center"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="380dp"
-        android:layout_height="380dp"
+        android:layout_height="440dp"
 
         android:background="@drawable/border"
         android:gravity="center"
@@ -23,27 +24,71 @@
             android:scaleType="center"
             app:srcCompat="@drawable/login" />
 
-        <EditText
-            android:id="@+id/mail"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="#4A4A4A"
-            android:hint="E - mail"
-            android:inputType="textWebEmailAddress"
-            android:textColor="#000000"
-            android:textColorHint="#606060" />
 
-        <EditText
-            android:id="@+id/password"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:backgroundTint="#4A4A4A"
-            android:ems="10"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:textColor="#000000"
-            android:textColorHint="#606060" />
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="22dp"
+            android:background="#E4E4E4"
+            android:backgroundTint="#E4E4E4">
+
+            <EditText
+                android:id="@+id/mail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="-7dp"
+                android:background="#E4E4E4"
+                android:hint="E - mail"
+                android:inputType="textWebEmailAddress"
+                android:textColorHint="#606060"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="22dp"
+            android:background="#E4E4E4"
+            android:backgroundTint="#E4E4E4"
+            app:passwordToggleEnabled="true">
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="-7dp"
+                android:background="#E4E4E4"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:textColorHint="#606060"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="22dp"
+            android:background="#E4E4E4"
+            android:backgroundTint="#E4E4E4"
+            app:passwordToggleEnabled="true">
+
+            <EditText
+                android:id="@+id/password1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-7dp"
+                android:background="#E4E4E4"
+                android:hint="Repeat password"
+                android:inputType="textPassword"
+                android:textColorHint="#606060"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/register"
@@ -60,7 +105,7 @@
         <TextView
             android:id="@+id/tvLoginHere"
             android:layout_width="90dp"
-            android:layout_height="25dp"
+            android:layout_height="30dp"
             android:layout_marginTop="5dp"
             android:foregroundGravity="center"
             android:gravity="center"
@@ -69,5 +114,17 @@
             android:textColor="#737272" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/goBack5"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="170dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:text="Go to Main menu"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp" />
 
 </LinearLayout>

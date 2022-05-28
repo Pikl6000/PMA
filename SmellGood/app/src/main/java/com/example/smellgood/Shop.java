@@ -1,13 +1,16 @@
 package com.example.smellgood;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Shop extends AppCompatActivity {
     Button option1,option2,option3,option4;
+    TextView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,22 +22,31 @@ public class Shop extends AppCompatActivity {
         option2 = findViewById(R.id.shop2);
         option3 = findViewById(R.id.shop3);
         option4 = findViewById(R.id.shop4);
+        back = findViewById(R.id.goBack2);
+
+        back.setOnClickListener(view -> {
+            startActivity(new Intent(this,Main.class));
+        });
 
         option1.setOnClickListener(view -> {
             Main.roboid = 1;
             Toast.makeText(this, "Robo Changed", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, Profile.class));
         });
         option2.setOnClickListener(view -> {
             Main.roboid = 2;
             Toast.makeText(this, "Robo Changed", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, Profile.class));
         });
         option3.setOnClickListener(view -> {
             Main.roboid = 3;
             Toast.makeText(this, "Robo Changed", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, Profile.class));
         });
         option4.setOnClickListener(view -> {
             Main.roboid = 4;
             Toast.makeText(this, "Robo Changed", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, Profile.class));
         });
     }
 

@@ -40,14 +40,25 @@
         <activity
             android:name="com.example.smellgood.Game"
             android:screenOrientation="portrait" />
-        <activity android:name="com.example.smellgood.ScoreBoard" />
+        <activity
+            android:name="com.example.smellgood.ScoreBoard"
+            android:screenOrientation="portrait" />
         <activity android:name="com.example.smellgood.Profile" />
-        <activity android:name="com.example.smellgood.RegisterActivity" />
-        <activity android:name="com.example.smellgood.LoginActivity" />
+        <activity
+            android:name="com.example.smellgood.RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.smellgood.LoginActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.example.smellgood.Shop"
             android:screenOrientation="portrait" />
-        <activity android:name="com.example.smellgood.ResetPassword" />
+        <activity
+            android:name="com.example.smellgood.ResetPassword"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.smellgood.ResetPasswordLogged"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.google.firebase.auth.internal.GenericIdpActivity"
             android:excludeFromRecents="true"

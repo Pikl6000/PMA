@@ -26,12 +26,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".Game" android:screenOrientation="portrait"/>
-        <activity android:name=".ScoreBoard"/>
+        <activity android:name=".ScoreBoard" android:screenOrientation="portrait"/>
         <activity android:name=".Profile"/>
-        <activity android:name=".RegisterActivity"/>
-        <activity android:name=".LoginActivity"/>
+        <activity android:name=".RegisterActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".LoginActivity" android:screenOrientation="portrait"/>
         <activity android:name=".Shop" android:screenOrientation="portrait"/>
-        <activity android:name=".ResetPassword"/>
+        <activity android:name=".ResetPassword" android:screenOrientation="portrait"/>
+        <activity android:name=".ResetPasswordLogged" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

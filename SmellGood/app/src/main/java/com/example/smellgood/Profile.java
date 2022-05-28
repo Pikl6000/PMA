@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class Profile extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseUser user;
-    private TextView nickname,score,logout;
+    private TextView nickname,score,logout,changeP,back;
     private Button change;
     private ImageView robko;
     private int i = 1;
@@ -36,14 +36,21 @@ public class Profile extends AppCompatActivity {
         change = findViewById(R.id.change);
         logout = findViewById(R.id.logout);
         robko = findViewById(R.id.robko);
+        changeP = findViewById(R.id.changepass);
+        back = findViewById(R.id.goBack3);
 
+        back.setOnClickListener(view -> {
+            startActivity(new Intent(this,Main.class));
+        });
         logout.setOnClickListener(view -> {
             mAuth.signOut();
             startActivity(new Intent(this, Main.class));
         });
         change.setOnClickListener(view -> {
-            //startActivity(new Intent(this,));
             startActivity(new Intent(this, Shop.class));
+        });
+        changeP.setOnClickListener(view ->{
+            startActivity(new Intent(this, ResetPasswordLogged.class));
         });
 
         updateRobo();
