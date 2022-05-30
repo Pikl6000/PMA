@@ -1,24 +1,14 @@
 package com.example.smellgood;
-import android.app.AlertDialog;
 import android.content.AsyncQueryHandler;
 import android.content.ContentValues;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Rect;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,43 +17,28 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.smellgood.provider.NoteContentProvider;
 import com.example.smellgood.provider.Provider;
 
-import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
-import static com.example.smellgood.Defaults.NO_CURSOR;
-import static com.example.smellgood.Defaults.DISMISS_ACTION;
+
 import static com.example.smellgood.Defaults.NO_COOKIE;
-import static com.example.smellgood.Defaults.NO_CURSOR;
-import static com.example.smellgood.Defaults.NO_FLAGS;
-import static com.example.smellgood.Defaults.NO_SELECTION;
-import static com.example.smellgood.Defaults.NO_SELECTION_ARGS;
-import com.example.smellgood.provider.NoteContentProvider;
-import com.example.smellgood.provider.Provider;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 
 public class Game extends AppCompatActivity {
     FirebaseAuth mAuth;
-
-    private Handler handler = new Handler();
     private Timer timer;
-    private SharedPreferences settings;
-    private ImageView robo, roboDeadRight, roboStand, roboToRight, mud, powder, bottom, totemObject;
-    private Button play, save;
-    private TextView score, totem;
+    private ImageView robo, mud, powder, bottom, totem;
+    private Button playButton, saveButton;
+    private TextView scoreText, totemText;
     private LinearLayout gamePanel;
-    private int speedMud, speedRobo, period, round, body, tBody, totemB, scoreB, media_length;
-    private float roboX, mudY, powderY, sirka, vyska, totemObjectY;
-    private boolean right = false, boolPowder = false, prvyBod = true, hybeSa = false, firstGen = true;
-    private boolean left = false, prvaZmena = true, roboRight;
-    private Random rd = new Random();
-    private int[] robko;
-    private static final int NOTES_LOADER_ID = 0;
+    private int period, totemCount, scoreCount, media_length;
+    private float roboX, mudY, powderY,totemY, sirka, vyska;
+    private boolean right = false, isMoving = false, firstGen = true;
+    private boolean firstChange = true, roboRight;
+    private int[] listOfImages;
     private static final int INSERT_NOTE_TOKEN = 0;
-    private static final int DELETE_NOTE_TOKEN = 0;
-    private MediaPlayer mpEffects;
-    private MediaPlayer mp;
 
 
     @Override
@@ -79,20 +54,20 @@ public class Game extends AppCompatActivity {
         }
 
         period = 1;
-        scoreB = 0;
-        totemB = 0;
+        scoreCount = 0;
+        totemCount = 0;
         media_length = 0;
 
         robo = findViewById(R.id.robo);
-        totem = findViewById(R.id.totem);
-        score = findViewById(R.id.score);
+        totemText = findViewById(R.id.totem);
+        scoreText = findViewById(R.id.score);
         gamePanel = findViewById(R.id.gamePanel);
-        play = findViewById(R.id.startButton);
+        playButton = findViewById(R.id.startButton);
         mud = findViewById(R.id.mud);
         powder = findViewById(R.id.powder);
         bottom = findViewById(R.id.bottom);
-        save = findViewById(R.id.saveButton);
-        totemObject = findViewById(R.id.totemObject);
+        saveButton = findViewById(R.id.saveButton);
+        totem = findViewById(R.id.totemObject);
 
         gamePanel.post(new Runnable() {
             public void run() {
@@ -110,19 +85,19 @@ public class Game extends AppCompatActivity {
         int id = Main.roboid;
         if (id == 1){
             robo.setImageResource(R.drawable.robostand);
-           robko = new int[]{R.drawable.robostand, R.drawable.robostandl, R.drawable.robodeadright, R.drawable.robodeadleft};
+           listOfImages = new int[]{R.drawable.robostand, R.drawable.robostandl, R.drawable.robodeadright, R.drawable.robodeadleft};
         }
         if (id == 2){
             robo.setImageResource(R.drawable.robostandpink);
-            robko = new int[]{R.drawable.robostandpink, R.drawable.robostandpinkl, R.drawable.robodeadrightpink, R.drawable.robodeadleftpink};
+            listOfImages = new int[]{R.drawable.robostandpink, R.drawable.robostandpinkl, R.drawable.robodeadrightpink, R.drawable.robodeadleftpink};
         }
         if (id == 3){
             robo.setImageResource(R.drawable.robostandblue);
-            robko = new int[]{R.drawable.robostandblue, R.drawable.robostandbluel, R.drawable.robodeadrightblue, R.drawable.robodeadleftblue};
+            listOfImages = new int[]{R.drawable.robostandblue, R.drawable.robostandbluel, R.drawable.robodeadrightblue, R.drawable.robodeadleftblue};
         }
         if (id == 4){
             robo.setImageResource(R.drawable.robostandwhite);
-            robko = new int[]{R.drawable.robostandwhite, R.drawable.robostandwhitel, R.drawable.robodeadrightwhite, R.drawable.robodeadlefttwhite};
+            listOfImages = new int[]{R.drawable.robostandwhite, R.drawable.robostandwhitel, R.drawable.robodeadrightwhite, R.drawable.robodeadlefttwhite};
         }
     }
 
@@ -133,16 +108,16 @@ public class Game extends AppCompatActivity {
 ////        mp = MediaPlayer.create(this, R.raw.game);
 //        mp.setLooping(true);
 //        mp.start();
-        scoreB = 0;
-        totemB = 0;
-        score.setText("Score : 0");
-        if (totemB > 0){
-            totemB--;
+        scoreCount = 0;
+        totemCount = 0;
+        scoreText.setText("Score : 0");
+        if (totemCount > 0){
+            totemCount--;
         }
-        totem.setText("Totem : " + totemB);
-        save.setVisibility(View.GONE);
-        play.setVisibility(View.GONE);
-        robo.setImageResource(robko[0]);
+        totemText.setText("Totem : " + totemCount);
+        saveButton.setVisibility(View.GONE);
+        playButton.setVisibility(View.GONE);
+        robo.setImageResource(listOfImages[0]);
         robo.setLayoutParams(new LinearLayout.LayoutParams(dpToPx(85), dpToPx(140)));
         generateMud();
         generatePowder();
@@ -154,17 +129,17 @@ public class Game extends AppCompatActivity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                score.setText("Score : " + scoreB);
-                totem.setText("Totem : " + totemB);
+                scoreText.setText("Score : " + scoreCount);
+                totemText.setText("Totem : " + totemCount);
             }
         });
     }
 
     public void setTimer() {
-        if (hybeSa) {
+        if (isMoving) {
             return;
         } else {
-            hybeSa = true;
+            isMoving = true;
             timer = new Timer();
             timer.schedule(new TimerTask() {
                 @Override
@@ -180,14 +155,14 @@ public class Game extends AppCompatActivity {
 
     public void pohyb() {
         //pohyb hracej postavy
-        if (hybeSa) {
+        if (isMoving) {
             if (right) {
-                if (prvaZmena) {
-                    prvaZmena = false;
+                if (firstChange) {
+                    firstChange = false;
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            robo.setImageResource(robko[0]);
+                            robo.setImageResource(listOfImages[0]);
                             roboRight = true;
                         }
                     });
@@ -200,7 +175,7 @@ public class Game extends AppCompatActivity {
                             robo.setX(roboX);
                         }
                     });
-                    prvaZmena = true;
+                    firstChange = true;
                 } else {
                     roboX += 1;
                     runOnUiThread(new Runnable() {
@@ -211,12 +186,12 @@ public class Game extends AppCompatActivity {
                     });
                 }
             } else {
-                if (prvaZmena) {
-                    prvaZmena = false;
+                if (firstChange) {
+                    firstChange = false;
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            robo.setImageResource(robko[1]);
+                            robo.setImageResource(listOfImages[1]);
                             roboRight = false;
                         }
                     });
@@ -224,7 +199,7 @@ public class Game extends AppCompatActivity {
                 if ((roboX - 1) < 0) {
                     roboX = 0;
                     robo.setX(roboX);
-                    prvaZmena = true;
+                    firstChange = true;
                 } else {
                     roboX -= 1;
                     robo.setX(roboX);
@@ -234,7 +209,7 @@ public class Game extends AppCompatActivity {
     }
 
     public void pohybMud() {
-        if (hybeSa) {
+        if (isMoving) {
             mudY += 1.35;
             runOnUiThread(new Runnable() {
                 @Override
@@ -250,7 +225,7 @@ public class Game extends AppCompatActivity {
     }
 
     public void pohybPowder() {
-        if (hybeSa) {
+        if (isMoving) {
             powderY += 1.35;
             runOnUiThread(new Runnable() {
                 @Override
@@ -263,12 +238,12 @@ public class Game extends AppCompatActivity {
     }
 
     public void pohybTotem() {
-        if (hybeSa) {
-            totemObjectY += 1.35;
+        if (isMoving) {
+            totemY += 1.35;
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    totemObject.setY(totemObjectY);
+                    totem.setY(totemY);
                     dotykajuSaTotem();
                 }
             });
@@ -276,7 +251,7 @@ public class Game extends AppCompatActivity {
     }
 
     public void klik(View view) {
-        prvaZmena = true;
+        firstChange = true;
         if (right) {
             right = false;
         } else right = true;
@@ -315,24 +290,24 @@ public class Game extends AppCompatActivity {
 
         float mudStart = mud.getX(), mudEnd = mudStart + mud.getWidth();
         float powderStart = powder.getX(), powderEnd = powderStart + powder.getWidth();
-        float totemStart = totemObject.getX(), totemEnd = totemStart + totemObject.getWidth();
+        float totemStart = totem.getX(), totemEnd = totemStart + totem.getWidth();
         do {
-            totemObject.setX((float) Math.random() * (sirka - powder.getWidth()));
+            totem.setX((float) Math.random() * (sirka - powder.getWidth()));
             powderStart = powder.getX();
             powderEnd = powderStart + powder.getWidth();
             mudStart = mud.getX();
             mudEnd = mudStart + mud.getWidth();
-            totemStart = totemObject.getX();
-            totemEnd = totemStart + totemObject.getWidth();
+            totemStart = totem.getX();
+            totemEnd = totemStart + totem.getWidth();
         } while (inRange(totemStart, mudStart, mudEnd) ||
                 inRange(totemEnd, mudStart, mudEnd) ||
                 inRange(totemStart, powderStart, powderEnd) ||
                 inRange(totemEnd, powderStart, powderEnd)
         );
 
-        totemObject.setY(-40);
-        totemObject.setVisibility(View.VISIBLE);
-        totemObjectY = totemObject.getY();
+        totem.setY(-40);
+        totem.setVisibility(View.VISIBLE);
+        totemY = totem.getY();
     }
 
     private void dotykajuSaMud() {
@@ -346,9 +321,9 @@ public class Game extends AppCompatActivity {
                 @Override
                 public void run() {
                     if (roboRight) {
-                        robo.setImageResource(robko[2]);
+                        robo.setImageResource(listOfImages[2]);
                     } else{
-                        robo.setImageResource(robko[3]);
+                        robo.setImageResource(listOfImages[3]);
                     }
                     if (robo.getX() + robo.getWidth() >= sirka) {
                         roboX = sirka - robo.getWidth();
@@ -357,7 +332,7 @@ public class Game extends AppCompatActivity {
                     robo.setLayoutParams(new LinearLayout.LayoutParams(dpToPx(140), dpToPx(85)));
                     powder.setVisibility(View.GONE);
                     mud.setVisibility(View.GONE);
-                    totemObject.setVisibility(View.GONE);
+                    totem.setVisibility(View.GONE);
                 }
             });
 //            mpEffects = MediaPlayer.create(Game.this, R.raw.splash);
@@ -372,8 +347,8 @@ public class Game extends AppCompatActivity {
         powder.getHitRect(otherViewRect1);
         if (Rect.intersects(myViewRect, otherViewRect1)) {
             generatePowder();
-            scoreB++;
-//            mpEffects = MediaPlayer.create(this, R.raw.score);
+            scoreCount++;
+//            mpEffects = MediaPlayer.create(this, R.raw.scoreText);
 //            mpEffects.start();
         }
         if (powder.getY() >= vyska) {
@@ -385,15 +360,15 @@ public class Game extends AppCompatActivity {
         Rect myViewRect = new Rect();
         robo.getHitRect(myViewRect);
         Rect otherViewRect1 = new Rect();
-        totemObject.getHitRect(otherViewRect1);
+        totem.getHitRect(otherViewRect1);
         if (Rect.intersects(myViewRect, otherViewRect1)) {
-            totemObject.setX(sirka - 1000);
-            totemB++;
-//            mpEffects = MediaPlayer.create(this, R.raw.score);
+            totem.setX(sirka - 1000);
+            totemCount++;
+//            mpEffects = MediaPlayer.create(this, R.raw.scoreText);
 //            mpEffects.start();
         }
-        if (totemObject.getY() >= vyska) {
-            totemObject.setX(sirka - 1000);
+        if (totem.getY() >= vyska) {
+            totem.setX(sirka - 1000);
         }
     }
 
@@ -405,26 +380,26 @@ public class Game extends AppCompatActivity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                save.setVisibility(View.VISIBLE);
-                play.setVisibility(View.VISIBLE);
-                if (totemB == 0){
-                    play.setText("RESTART");
-                    save.setVisibility(View.VISIBLE);
-                    play.setVisibility(View.VISIBLE);
+                saveButton.setVisibility(View.VISIBLE);
+                playButton.setVisibility(View.VISIBLE);
+                if (totemCount == 0){
+                    playButton.setText("RESTART");
+                    saveButton.setVisibility(View.VISIBLE);
+                    playButton.setVisibility(View.VISIBLE);
                     firstGen = true;
                     if (timer != null) {
                         timer.cancel();
                         right = true;
-                        hybeSa = false;
+                        isMoving = false;
                     }
                 } else {
-                    play.setText("Continue ( " + totemB + " )");
-                    save.setVisibility(View.VISIBLE);
-                    play.setVisibility(View.VISIBLE);
+                    playButton.setText("Continue ( " + totemCount + " )");
+                    saveButton.setVisibility(View.VISIBLE);
+                    playButton.setVisibility(View.VISIBLE);
                     if (timer != null) {
                         timer.cancel();
                         right = true;
-                        hybeSa = false;
+                        isMoving = false;
                     }
                 }
             }
@@ -466,7 +441,7 @@ public class Game extends AppCompatActivity {
             startActivity(new Intent(Game.this, LoginActivity.class));
         }
         else{
-            insertIntoContentProvider(user.getEmail().toString(), String.valueOf(scoreB));
+            insertIntoContentProvider(user.getEmail().toString(), String.valueOf(scoreCount));
         }
     }
 
