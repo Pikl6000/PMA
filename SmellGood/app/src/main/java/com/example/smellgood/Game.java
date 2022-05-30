@@ -1,10 +1,14 @@
 package com.example.smellgood;
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.AsyncQueryHandler;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -28,13 +32,14 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Game extends AppCompatActivity {
     FirebaseAuth mAuth;
+    private AnimatorSet animations;
     private Timer timer;
     private ImageView robo, mud, powder, bottom, totem;
     private Button playButton, saveButton;
     private TextView scoreText, totemText;
     private LinearLayout gamePanel;
     private int period, totemCount, scoreCount, media_length;
-    private float roboX, mudY, powderY,totemY, sirka, vyska;
+    private float roboX, toFall;
     private boolean right = false, isMoving = false, firstGen = true;
     private boolean firstChange = true, roboRight;
     private int[] listOfImages;
@@ -69,12 +74,8 @@ public class Game extends AppCompatActivity {
         saveButton = findViewById(R.id.saveButton);
         totem = findViewById(R.id.totemObject);
 
-        gamePanel.post(new Runnable() {
-            public void run() {
-                sirka = gamePanel.getWidth();
-                vyska = gamePanel.getHeight() - bottom.getHeight() - mud.getHeight();
-            }
-        });
+        mud.setVisibility(View.GONE); powder.setVisibility(View.GONE); totem.setVisibility(View.GONE);
+        mud.setY(-100); powder.setY(-100); totem.setY(-100);
 
         right = true;
         updateRobo();
@@ -119,9 +120,75 @@ public class Game extends AppCompatActivity {
         playButton.setVisibility(View.GONE);
         robo.setImageResource(listOfImages[0]);
         robo.setLayoutParams(new LinearLayout.LayoutParams(dpToPx(85), dpToPx(140)));
-        generateMud();
-        generatePowder();
         setTimer();
+        toFall = gamePanel.getBottom();
+        animations = new AnimatorSet();
+        animations.playTogether(
+                fallAnimation(mud, 500, powder, totem, false, false),
+                fallAnimation(powder, 1000, mud, totem, false, true),
+                fallAnimation(totem, 20000, mud, powder, true, false));
+        animations.start();
+    }
+
+    public Animator fallAnimation(
+            ImageView img,
+            int postDelay,
+            ImageView img1,
+            ImageView img2,
+            boolean isTotem,
+            boolean isPowder
+    ){
+        ObjectAnimator animator = ObjectAnimator.ofFloat(img, "y", toFall);
+        animator.setDuration(2500);
+        animator.setStartDelay(postDelay);
+        animator.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+                img.setX(generateX(img, img1, img2));
+                img.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                int delay;
+
+                if (isTotem) delay = 20000;
+                else if (isPowder) delay = (int) (Math.random()*1500);
+                else delay = 0;
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        animator.setStartDelay(delay);
+                        animator.start();
+                    }
+                }, 0);
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+            }
+        });
+        return animator;
+    }
+
+    public float generateX(ImageView generatedImg, ImageView img1, ImageView img2){
+        float x;
+        float [] img1Range = new float[2];
+        float [] img2Range = new float[2];
+        img1Range[0] = img1.getX() - img1.getWidth();
+        img1Range[1] = img1.getX() + img1.getWidth();
+        img2Range[0] = img2.getX() - img2.getWidth();
+        img2Range[1] = img2.getX() + img2.getWidth();
+
+        do {
+            x = (float) (Math.random() * (gamePanel.getWidth() - generatedImg.getWidth()));
+        } while ((x >= img1Range[0] && x <= img1Range[1]) || (x >= img2Range[0] && x <= img2Range[1]));
+        return x;
     }
 
 
@@ -145,8 +212,6 @@ public class Game extends AppCompatActivity {
                 @Override
                 public void run() {
                     pohyb();
-                    pohybMud();
-                    pohybPowder();
                     updateText();
                 }
             }, 0, period);
@@ -198,17 +263,27 @@ public class Game extends AppCompatActivity {
                 }
                 if ((roboX - 1) < 0) {
                     roboX = 0;
-                    robo.setX(roboX);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            robo.setX(roboX);
+                        }
+                    });
                     firstChange = true;
                 } else {
                     roboX -= 1;
-                    robo.setX(roboX);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            robo.setX(roboX);
+                        }
+                    });
                 }
             }
         }
     }
 
-    public void pohybMud() {
+    /*public void pohybMud() {
         if (isMoving) {
             mudY += 1.35;
             runOnUiThread(new Runnable() {
@@ -248,7 +323,7 @@ public class Game extends AppCompatActivity {
                 }
             });
         }
-    }
+    }*/
 
     public void klik(View view) {
         firstChange = true;
@@ -258,15 +333,15 @@ public class Game extends AppCompatActivity {
     }
 
     /* generovanie objektov, ktorym sa treba vyhybat */
-    public void generateMud() {
+    /*public void generateMud() {
         mud.setY(-40);
         mud.setX((float) Math.random() * (sirka - mud.getWidth()));
         mudY = mud.getY();
         mud.setVisibility(View.VISIBLE);
-    }
+    }*/
 
     /* generovanie objektov, ktore treba zbierat */
-    public void generatePowder() {
+    /*public void generatePowder() {
         if (firstGen) {
             powder.setY(-500);
             firstGen = !firstGen;
@@ -370,7 +445,7 @@ public class Game extends AppCompatActivity {
         if (totem.getY() >= vyska) {
             totem.setX(sirka - 1000);
         }
-    }
+    }*/
 
     protected void stop() {
 //        mp.reset();
