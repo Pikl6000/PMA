@@ -70,6 +70,7 @@ id mail
 id mail2
 id mail4
 id mud
+id nick
 id nickname
 id notesGridView
 id notesGridViewItem
@@ -133,6 +134,7 @@ string default_web_client_id
 string e_mail
 string email
 string exit
+string firebase_database_url
 string gcm_defaultSenderId
 string google_api_key
 string google_app_id

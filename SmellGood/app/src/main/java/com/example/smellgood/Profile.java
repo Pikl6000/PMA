@@ -1,7 +1,10 @@
 package com.example.smellgood;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -10,6 +13,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
 public class Profile extends AppCompatActivity {
     private FirebaseAuth mAuth;
@@ -17,6 +23,7 @@ public class Profile extends AppCompatActivity {
     private TextView nickname,score,logout,changeP,back;
     private Button change;
     private ImageView robko;
+    private Fdata data;
     private int i = 1;
 
     @Override
@@ -30,6 +37,8 @@ public class Profile extends AppCompatActivity {
         if (user == null){
             startActivity(new Intent(Profile.this, LoginActivity.class));
         }
+
+        data = RegisterActivity.data;
 
         nickname = findViewById(R.id.nickname);
         score = findViewById(R.id.scoreProfile);
@@ -86,6 +95,24 @@ public class Profile extends AppCompatActivity {
         }
         updateRobo();
     }
+
+//    private void updateUI(){
+//        data.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                // This method is called once with the initial value and again
+//                // whenever data at this location is updated.
+//                String value = dataSnapshot.getValue(String.class);
+//                Log.d(TAG, "Value is: " + value);
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError error) {
+//                // Failed to read value
+//                Log.w(TAG, "Failed to read value.", error.toException());
+//            }
+//        });
+//    }
 
 
     @Override
