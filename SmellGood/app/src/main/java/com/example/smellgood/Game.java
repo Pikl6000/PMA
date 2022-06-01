@@ -125,7 +125,7 @@ public class Game extends AppCompatActivity {
         animations.playTogether(
                 fallAnimation(mud, 500, powder, totem, false, false),
                 fallAnimation(powder, 1000, mud, totem, false, true),
-                fallAnimation(totem, 20000, mud, powder, true, false)
+                fallAnimation(totem, 15000, mud, powder, true, false)
         );
         animations.start();
         stopAnimation = false;
@@ -150,8 +150,7 @@ public class Game extends AppCompatActivity {
             boolean isPowder
     ){
         ObjectAnimator animator = ObjectAnimator.ofFloat(img, "y", toFall);
-        if (!isPowder && !isTotem) animator.setDuration(1800);
-        else animator.setDuration(2500);
+        animator.setDuration(1800);
         animator.setStartDelay(postDelay);
         animator.addListener(new Animator.AnimatorListener() {
             @Override
@@ -167,7 +166,10 @@ public class Game extends AppCompatActivity {
             public void onAnimationEnd(Animator animation) {
                 int delay;
 
-                if (isTotem) delay = 20000;
+                if (isTotem){
+                    delay = 30000;
+                    img.setVisibility(View.INVISIBLE);
+                }
                 else if (isPowder) delay = (int) (Math.random()*1500);
                 else delay = 0;
                 new Handler().postDelayed(new Runnable() {
@@ -175,10 +177,10 @@ public class Game extends AppCompatActivity {
                     public void run() {
                         if (!stopAnimation){
                             animator.setStartDelay(delay);
-                            if (scoreCount % 100 == 0 && !isPowder && !isTotem){
-                                animator.setDuration(animator.getDuration() - 50);
-                            }
                             animator.start();
+                        } else {
+                            mud.setVisibility(View.GONE); powder.setVisibility(View.GONE); totem.setVisibility(View.GONE);
+                            mud.setY(-100); powder.setY(-100); totem.setY(-100);
                         }
                     }
                 }, 0);
@@ -186,7 +188,6 @@ public class Game extends AppCompatActivity {
 
             @Override
             public void onAnimationCancel(Animator animation) {
-                animator.setRepeatCount(0);
             }
 
             @Override
@@ -257,8 +258,7 @@ public class Game extends AppCompatActivity {
                                     totemCount++;
                                     firstTotem = false;
                                 }
-                                totem.setVisibility(View.INVISIBLE);
-                                System.out.println("powder");
+                                System.out.println("totem");
                             }
                         }
                     });
