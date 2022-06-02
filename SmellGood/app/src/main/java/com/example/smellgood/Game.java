@@ -3,7 +3,6 @@ import android.content.AsyncQueryHandler;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.graphics.Rect;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -35,7 +34,7 @@ public class Game extends AppCompatActivity {
     private TextView scoreText, totemText;
     private LinearLayout gamePanel;
     private int period, totemCount, scoreCount, media_length;
-    private float roboX, mudY, powderY,totemY, sirka, vyska;
+    private float roboX, mudY, powderY,totemY, width, height;
     private boolean right = false, isMoving = false, firstGen = true;
     private boolean firstChange = true, roboRight;
     private int[] listOfImages;
@@ -94,9 +93,9 @@ public class Game extends AppCompatActivity {
         }
     }
 
-    public void klikloSa(View view) {
-        sirka = gamePanel.getWidth();
-        vyska = gamePanel.getHeight() - bottom.getHeight() - mud.getHeight();
+    public void startGame(View view) {
+        width = gamePanel.getWidth();
+        height = gamePanel.getHeight() - bottom.getHeight() - mud.getHeight();
         if (totemCount > 0){
             totemCount--;
         } else {
@@ -191,8 +190,8 @@ public class Game extends AppCompatActivity {
                     public void run() {
                         mudY += 1.35;
                         mud.setY(mudY);
-                        dotykajuSaMud();
-                        if (mud.getY() >= vyska) generateMud();
+                        if (collisionMud()) collidedMud();
+                        if (mud.getY() >= height) generateMud();
                     }
                 });
             } else if (isPowder){
@@ -202,7 +201,7 @@ public class Game extends AppCompatActivity {
                         powderY += 1.35;
                         powder.setY(powderY);
                         dotykajuSaPowder();
-                        if (powder.getY() >= vyska) generatePowder();
+                        if (powder.getY() >= height) generatePowder();
                     }
                 });
             } else {
@@ -212,41 +211,12 @@ public class Game extends AppCompatActivity {
                         totemY += 1.35;
                         totem.setY(totemY);
                         dotykajuSaTotem();
-                        if (totem.getY() >= vyska) generateTotem();
+                        if (totem.getY() >= height) generateTotem();
                     }
                 });
             }
         }
 
-    }
-
-    public void pohybMud() {
-        if (isMoving) {
-            mudY += 1.35;
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    mud.setY(mudY);
-                    dotykajuSaMud();
-                }
-            });
-            if (mudY >= vyska) {
-                generateMud();
-            }
-        }
-    }
-
-    public void pohybPowder() {
-        if (isMoving) {
-            powderY += 1.35;
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    powder.setY(powderY);
-                    dotykajuSaPowder();
-                }
-            });
-        }
     }
 
     public void pohybTotem() {
@@ -272,7 +242,7 @@ public class Game extends AppCompatActivity {
     /* generovanie objektov, ktorym sa treba vyhybat */
     public void generateMud() {
         mud.setY(-40);
-        mud.setX((float) Math.random() * (sirka - mud.getWidth()));
+        mud.setX((float) Math.random() * (width - mud.getWidth()));
         mudY = mud.getY();
         mud.setVisibility(View.VISIBLE);
     }
@@ -288,7 +258,7 @@ public class Game extends AppCompatActivity {
         float mudStart = mud.getX(), mudEnd = mudStart + mud.getWidth();
         float powderStart = powder.getX(), powderEnd = powderStart + powder.getWidth();
         do {
-            powder.setX((float) Math.random() * (sirka - powder.getWidth()));
+            powder.setX((float) Math.random() * (width - powder.getWidth()));
             powderStart = powder.getX();
             powderEnd = powderStart + powder.getWidth();
             mudStart = mud.getX();
@@ -304,7 +274,7 @@ public class Game extends AppCompatActivity {
         float powderStart = powder.getX(), powderEnd = powderStart + powder.getWidth();
         float totemStart = totem.getX(), totemEnd = totemStart + totem.getWidth();
         do {
-            totem.setX((float) Math.random() * (sirka - powder.getWidth()));
+            totem.setX((float) Math.random() * (width - powder.getWidth()));
             powderStart = powder.getX();
             powderEnd = powderStart + powder.getWidth();
             mudStart = mud.getX();
@@ -322,34 +292,67 @@ public class Game extends AppCompatActivity {
         totemY = totem.getY();
     }
 
-    private void dotykajuSaMud() {
-        Rect myViewRect = new Rect();
-        robo.getHitRect(myViewRect);
-        Rect otherViewRect1 = new Rect();
-        mud.getHitRect(otherViewRect1);
-        if (Rect.intersects(myViewRect, otherViewRect1)) {
-            stop();
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    if (roboRight) {
-                        robo.setImageResource(listOfImages[2]);
-                    } else{
-                        robo.setImageResource(listOfImages[3]);
-                    }
-                    if (robo.getX() + robo.getWidth() >= sirka) {
-                        roboX = sirka - robo.getWidth();
-                        robo.setX(roboX);
-                    }
-                    robo.setLayoutParams(new LinearLayout.LayoutParams(dpToPx(140), dpToPx(85)));
-                    powder.setVisibility(View.GONE);
-                    mud.setVisibility(View.GONE);
-                    totem.setVisibility(View.GONE);
+    public boolean collisionMud() {
+        float startX = mud.getX();
+        float endX = startX + mud.getWidth();
+        float endY = mud.getY() - mud.getHeight();
+        float startRoboX = robo.getX();
+        float endRoboX = startRoboX + robo.getWidth();
+        float startRoboY = robo.getY();
+
+        if (((startX >= startRoboX && startX <= endRoboX) && (endY >= startRoboY && endY <= startRoboY + robo.getHeight())) ||
+                ((endX >= startRoboX && endX <= endRoboX) && (endY >= startRoboY && endY <= startRoboY + robo.getHeight()))
+        ) return true;
+        return false;
+    }
+    public void collidedMud(){
+        stop();
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (roboRight) {
+                    robo.setImageResource(listOfImages[2]);
+                } else{
+                    robo.setImageResource(listOfImages[3]);
                 }
-            });
-//            mpEffects = MediaPlayer.create(Game.this, R.raw.splash);
-//            mpEffects.start();
-        }
+                if (robo.getX() + robo.getWidth() >= width) {
+                    roboX = width - robo.getWidth();
+                    robo.setX(roboX);
+                }
+                robo.setLayoutParams(new LinearLayout.LayoutParams(dpToPx(140), dpToPx(85)));
+                powder.setVisibility(View.GONE);
+                mud.setVisibility(View.GONE);
+                totem.setVisibility(View.GONE);
+            }
+        });
+    }
+
+    public boolean collisionPowder() {
+        float startX = powder.getX();
+        float endX = startX + powder.getWidth();
+        float endY = powder.getY() - powder.getHeight();
+        float startRoboX = robo.getX();
+        float endRoboX = startRoboX + robo.getWidth();
+        float startRoboY = robo.getY();
+
+        if (((startX >= startRoboX && startX <= endRoboX) && (endY >= startRoboY && endY <= startRoboY + robo.getHeight())) ||
+                ((endX >= startRoboX && endX <= endRoboX) && (endY >= startRoboY && endY <= startRoboY + robo.getHeight()))
+        ) return true;
+        return false;
+    }
+
+    public boolean collisionTotem() {
+        float startX = totem.getX();
+        float endX = startX + totem.getWidth();
+        float endY = totem.getY() - totem.getHeight();
+        float startRoboX = robo.getX();
+        float endRoboX = startRoboX + robo.getWidth();
+        float startRoboY = robo.getY();
+
+        if (((startX >= startRoboX && startX <= endRoboX) && (endY >= startRoboY && endY <= startRoboY + robo.getHeight())) ||
+                ((endX >= startRoboX && endX <= endRoboX) && (endY >= startRoboY && endY <= startRoboY + robo.getHeight()))
+        ) return true;
+        return false;
     }
 
     private void dotykajuSaPowder() {
@@ -363,7 +366,7 @@ public class Game extends AppCompatActivity {
 //            mpEffects = MediaPlayer.create(this, R.raw.scoreText);
 //            mpEffects.start();
         }
-        if (powder.getY() >= vyska) {
+        if (powder.getY() >= height) {
             generatePowder();
         }
     }
@@ -374,13 +377,13 @@ public class Game extends AppCompatActivity {
         Rect otherViewRect1 = new Rect();
         totem.getHitRect(otherViewRect1);
         if (Rect.intersects(myViewRect, otherViewRect1)) {
-            totem.setX(sirka - 1000);
+            totem.setX(width - 1000);
             totemCount++;
 //            mpEffects = MediaPlayer.create(this, R.raw.scoreText);
 //            mpEffects.start();
         }
-        if (totem.getY() >= vyska) {
-            totem.setX(sirka - 1000);
+        if (totem.getY() >= height) {
+            totem.setX(width - 1000);
         }
     }
 
