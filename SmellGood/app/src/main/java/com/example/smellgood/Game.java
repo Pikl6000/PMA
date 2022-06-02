@@ -242,7 +242,18 @@ public class Game extends AppCompatActivity {
     /* generovanie objektov, ktorym sa treba vyhybat */
     public void generateMud() {
         mud.setY(-40);
-        mud.setX((float) Math.random() * (width - mud.getWidth()));
+        float x;
+        float [] img1Range = new float[2];
+        float [] img2Range = new float[2];
+        img1Range[0] = powder.getX() - powder.getWidth();
+        img1Range[1] = powder.getX() + powder.getWidth();
+        img2Range[0] = totem.getX() - totem.getWidth();
+        img2Range[1] = totem.getX() + totem.getWidth();
+
+        do {
+            x = (float) (Math.random() * (gamePanel.getWidth() - powder.getWidth()));
+        } while ((x >= img1Range[0] && x <= img1Range[1]) || (x >= img2Range[0] && x <= img2Range[1]));
+        mud.setX(x);
         mudY = mud.getY();
         mud.setVisibility(View.VISIBLE);
     }
@@ -255,15 +266,18 @@ public class Game extends AppCompatActivity {
         } else {
             powder.setY(-40);
         }
-        float mudStart = mud.getX(), mudEnd = mudStart + mud.getWidth();
-        float powderStart = powder.getX(), powderEnd = powderStart + powder.getWidth();
+        float x;
+        float [] img1Range = new float[2];
+        float [] img2Range = new float[2];
+        img1Range[0] = mud.getX() - mud.getWidth();
+        img1Range[1] = mud.getX() + mud.getWidth();
+        img2Range[0] = totem.getX() - totem.getWidth();
+        img2Range[1] = totem.getX() + totem.getWidth();
+
         do {
-            powder.setX((float) Math.random() * (width - powder.getWidth()));
-            powderStart = powder.getX();
-            powderEnd = powderStart + powder.getWidth();
-            mudStart = mud.getX();
-            mudEnd = mudStart + mud.getWidth();
-        } while (inRange(powderStart, mudStart, mudEnd) || inRange(powderEnd, mudStart, mudEnd));
+            x = (float) (Math.random() * (gamePanel.getWidth() - powder.getWidth()));
+        } while ((x >= img1Range[0] && x <= img1Range[1]) || (x >= img2Range[0] && x <= img2Range[1]));
+        powder.setX(x);
         powderY = powder.getY();
         powder.setVisibility(View.VISIBLE);
     }
@@ -295,7 +309,7 @@ public class Game extends AppCompatActivity {
     public boolean collisionMud() {
         float startX = mud.getX();
         float endX = startX + mud.getWidth();
-        float endY = mud.getY() - mud.getHeight();
+        float endY = mud.getY() + mud.getHeight();
         float startRoboX = robo.getX();
         float endRoboX = startRoboX + robo.getWidth();
         float startRoboY = robo.getY();
@@ -330,7 +344,7 @@ public class Game extends AppCompatActivity {
     public boolean collisionPowder() {
         float startX = powder.getX();
         float endX = startX + powder.getWidth();
-        float endY = powder.getY() - powder.getHeight();
+        float endY = powder.getY() + powder.getHeight();
         float startRoboX = robo.getX();
         float endRoboX = startRoboX + robo.getWidth();
         float startRoboY = robo.getY();
@@ -340,7 +354,7 @@ public class Game extends AppCompatActivity {
         ) return true;
         return false;
     }
-    
+
     public void collidedPowder(){
         generatePowder();
         scoreCount++;
