@@ -3,6 +3,7 @@ import android.content.AsyncQueryHandler;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.graphics.Rect;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -134,8 +135,8 @@ public class Game extends AppCompatActivity {
                 @Override
                 public void run() {
                     moveRobo();
-                    pohybMud();
-                    pohybPowder();
+                    fallAnimation(true, false);
+                    fallAnimation(false, true);
                     updateText();
                 }
             }, 0, period);
@@ -180,6 +181,43 @@ public class Game extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void fallAnimation(boolean isMud, boolean isPowder){
+        if (isMoving) {
+            if (isMud){
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mudY += 1.35;
+                        mud.setY(mudY);
+                        dotykajuSaMud();
+                        if (mud.getY() >= vyska) generateMud();
+                    }
+                });
+            } else if (isPowder){
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        powderY += 1.35;
+                        powder.setY(powderY);
+                        dotykajuSaPowder();
+                        if (powder.getY() >= vyska) generatePowder();
+                    }
+                });
+            } else {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        totemY += 1.35;
+                        totem.setY(totemY);
+                        dotykajuSaTotem();
+                        if (totem.getY() >= vyska) generateTotem();
+                    }
+                });
+            }
+        }
+
     }
 
     public void pohybMud() {
