@@ -200,7 +200,7 @@ public class Game extends AppCompatActivity {
                     public void run() {
                         powderY += 1.35;
                         powder.setY(powderY);
-                        dotykajuSaPowder();
+                        if (collisionPowder()) collidedPowder();
                         if (powder.getY() >= height) generatePowder();
                     }
                 });
@@ -339,6 +339,11 @@ public class Game extends AppCompatActivity {
                 ((endX >= startRoboX && endX <= endRoboX) && (endY >= startRoboY && endY <= startRoboY + robo.getHeight()))
         ) return true;
         return false;
+    }
+    
+    public void collidedPowder(){
+        generatePowder();
+        scoreCount++;
     }
 
     public boolean collisionTotem() {
