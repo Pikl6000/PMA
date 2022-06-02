@@ -68,14 +68,6 @@ public class Game extends AppCompatActivity {
         bottom = findViewById(R.id.bottom);
         saveButton = findViewById(R.id.saveButton);
         totem = findViewById(R.id.totemObject);
-
-        gamePanel.post(new Runnable() {
-            public void run() {
-                sirka = gamePanel.getWidth();
-                vyska = gamePanel.getHeight() - bottom.getHeight() - mud.getHeight();
-            }
-        });
-
         right = true;
         updateRobo();
     }
@@ -102,18 +94,15 @@ public class Game extends AppCompatActivity {
     }
 
     public void klikloSa(View view) {
-//        if (mp != null){
-//            mp.reset();
-//        }
-////        mp = MediaPlayer.create(this, R.raw.game);
-//        mp.setLooping(true);
-//        mp.start();
-        scoreCount = 0;
-        totemCount = 0;
-        scoreText.setText("Score : 0");
+        sirka = gamePanel.getWidth();
+        vyska = gamePanel.getHeight() - bottom.getHeight() - mud.getHeight();
         if (totemCount > 0){
             totemCount--;
+        } else {
+            scoreCount = 0;
+            totemCount = 0;
         }
+        scoreText.setText("Score : " + scoreCount);
         totemText.setText("Totem : " + totemCount);
         saveButton.setVisibility(View.GONE);
         playButton.setVisibility(View.GONE);
@@ -144,7 +133,7 @@ public class Game extends AppCompatActivity {
             timer.schedule(new TimerTask() {
                 @Override
                 public void run() {
-                    pohyb();
+                    moveRobo();
                     pohybMud();
                     pohybPowder();
                     updateText();
@@ -153,59 +142,44 @@ public class Game extends AppCompatActivity {
         }
     }
 
-    public void pohyb() {
+    public void moveRobo() {
         //pohyb hracej postavy
-        if (isMoving) {
-            if (right) {
-                if (firstChange) {
-                    firstChange = false;
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (isMoving) {
+                    if (right) {
+                        if (firstChange) {
+                            firstChange = false;
                             robo.setImageResource(listOfImages[0]);
                             roboRight = true;
                         }
-                    });
-                }
-                if (roboX + robo.getWidth() > gamePanel.getWidth()) {
-                    roboX = gamePanel.getWidth() - robo.getWidth();
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
+                        if (roboX + robo.getWidth() > gamePanel.getWidth()) {
+                            roboX = gamePanel.getWidth() - robo.getWidth();
+                            robo.setX(roboX);
+                            firstChange = true;
+                        } else {
+                            roboX += 1;
                             robo.setX(roboX);
                         }
-                    });
-                    firstChange = true;
-                } else {
-                    roboX += 1;
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            robo.setX(roboX);
-                        }
-                    });
-                }
-            } else {
-                if (firstChange) {
-                    firstChange = false;
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
+                    } else {
+                        if (firstChange) {
+                            firstChange = false;
                             robo.setImageResource(listOfImages[1]);
                             roboRight = false;
                         }
-                    });
-                }
-                if ((roboX - 1) < 0) {
-                    roboX = 0;
-                    robo.setX(roboX);
-                    firstChange = true;
-                } else {
-                    roboX -= 1;
-                    robo.setX(roboX);
+                        if ((robo.getX() - 1) < 0) {
+                            roboX = 0;
+                            robo.setX(roboX);
+                            firstChange = true;
+                        } else {
+                            roboX -= 1;
+                            robo.setX(roboX);
+                        }
+                    }
                 }
             }
-        }
+        });
     }
 
     public void pohybMud() {
