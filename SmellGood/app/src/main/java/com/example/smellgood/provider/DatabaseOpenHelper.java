@@ -14,7 +14,7 @@ import static com.example.smellgood.Defaults.DEFAULT_CURSOR_FACTORY;
 
 public class
 DatabaseOpenHelper extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "film";
+    public static final String DATABASE_NAME = "scoreboard";
     public static final int DATABASE_VERSION = 1;
     public DatabaseOpenHelper(Context context) {
         super(context, DATABASE_NAME, DEFAULT_CURSOR_FACTORY, DATABASE_VERSION);
@@ -22,9 +22,6 @@ DatabaseOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(createTableSql());
-        insertSampleEntry(db, "Test 1","-1");
-        insertSampleEntry(db, "Test 2","-1");
-        insertSampleEntry(db, "Test 3","-1");
     }
     private void insertSampleEntry(SQLiteDatabase db, String name,String score) {
         ContentValues contentValues = new ContentValues();

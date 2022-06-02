@@ -1,24 +1,18 @@
 package com.example.smellgood;
-import android.app.AlertDialog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.AsyncQueryHandler;
 import android.content.ContentValues;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Rect;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,43 +21,30 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.smellgood.provider.NoteContentProvider;
 import com.example.smellgood.provider.Provider;
 
-import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
-import static com.example.smellgood.Defaults.NO_CURSOR;
-import static com.example.smellgood.Defaults.DISMISS_ACTION;
+
 import static com.example.smellgood.Defaults.NO_COOKIE;
-import static com.example.smellgood.Defaults.NO_CURSOR;
-import static com.example.smellgood.Defaults.NO_FLAGS;
-import static com.example.smellgood.Defaults.NO_SELECTION;
-import static com.example.smellgood.Defaults.NO_SELECTION_ARGS;
-import com.example.smellgood.provider.NoteContentProvider;
-import com.example.smellgood.provider.Provider;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 
 public class Game extends AppCompatActivity {
     FirebaseAuth mAuth;
-
-    private Handler handler = new Handler();
+    private AnimatorSet animations;
+    private Animator mudAnimator, powderAnimator, totemAnimator;
     private Timer timer;
-    private SharedPreferences settings;
-    private ImageView robo, roboDeadRight, roboStand, roboToRight, mud, powder, bottom, totemObject;
-    private Button play, save;
-    private TextView score, totem;
+    private ImageView robo, mud, powder, bottom, totem;
+    private Button playButton, saveButton;
+    private TextView scoreText, totemText;
     private LinearLayout gamePanel;
-    private int speedMud, speedRobo, period, round, body, tBody, totemB, scoreB, media_length;
-    private float roboX, mudY, powderY, sirka, vyska, totemObjectY;
-    private boolean right = false, boolPowder = false, prvyBod = true, hybeSa = false, firstGen = true;
-    private boolean left = false, prvaZmena = true, roboRight;
-    private Random rd = new Random();
-    private int[] robko = {R.drawable.robostand, R.drawable.robostandl, R.drawable.robodeadright, R.drawable.robodeadleft};
-    private static final int NOTES_LOADER_ID = 0;
+    private int period, totemCount, scoreCount, media_length;
+    private float roboX, toFall;
+    private boolean right = false, isMoving = false, firstGen = true;
+    private boolean firstChange = true, roboRight, firstMud, firstPowder, firstTotem, stopAnimation;
+    private int[] listOfImages;
     private static final int INSERT_NOTE_TOKEN = 0;
-    private static final int DELETE_NOTE_TOKEN = 0;
-    private MediaPlayer mpEffects;
-    private MediaPlayer mp;
 
 
     @Override
@@ -79,98 +60,228 @@ public class Game extends AppCompatActivity {
         }
 
         period = 1;
-        scoreB = 0;
-        totemB = 0;
+        scoreCount = 0;
+        totemCount = 0;
         media_length = 0;
 
+        firstMud = true;
+        firstPowder = true;
+        firstTotem = true;
         robo = findViewById(R.id.robo);
-        totem = findViewById(R.id.totem);
-        score = findViewById(R.id.score);
+        totemText = findViewById(R.id.totem);
+        scoreText = findViewById(R.id.score);
         gamePanel = findViewById(R.id.gamePanel);
-        play = findViewById(R.id.startButton);
+        playButton = findViewById(R.id.startButton);
         mud = findViewById(R.id.mud);
         powder = findViewById(R.id.powder);
         bottom = findViewById(R.id.bottom);
-        save = findViewById(R.id.saveButton);
-        totemObject = findViewById(R.id.totemObject);
+        saveButton = findViewById(R.id.saveButton);
+        totem = findViewById(R.id.totemObject);
 
-        gamePanel.post(new Runnable() {
-            public void run() {
-                sirka = gamePanel.getWidth();
-                vyska = gamePanel.getHeight() - bottom.getHeight() - mud.getHeight();
-            }
-        });
+        mud.setVisibility(View.GONE); powder.setVisibility(View.GONE); totem.setVisibility(View.GONE);
+        mud.setY(-100); powder.setY(-100); totem.setY(-100);
 
         right = true;
+        updateRobo();
+    }
+
+    //MENENIE ROBA , TREBA DOROBIT PODLA POSLEDNEHO POCTU VARIACII
+    public void updateRobo(){
+        int id = Main.roboid;
+        if (id == 1){
+            robo.setImageResource(R.drawable.robostand);
+           listOfImages = new int[]{R.drawable.robostand, R.drawable.robostandl, R.drawable.robodeadright, R.drawable.robodeadleft};
+        }
+        if (id == 2){
+            robo.setImageResource(R.drawable.robostandpink);
+            listOfImages = new int[]{R.drawable.robostandpink, R.drawable.robostandpinkl, R.drawable.robodeadrightpink, R.drawable.robodeadleftpink};
+        }
+        if (id == 3){
+            robo.setImageResource(R.drawable.robostandblue);
+            listOfImages = new int[]{R.drawable.robostandblue, R.drawable.robostandbluel, R.drawable.robodeadrightblue, R.drawable.robodeadleftblue};
+        }
+        if (id == 4){
+            robo.setImageResource(R.drawable.robostandwhite);
+            listOfImages = new int[]{R.drawable.robostandwhite, R.drawable.robostandwhitel, R.drawable.robodeadrightwhite, R.drawable.robodeadlefttwhite};
+        }
     }
 
     public void klikloSa(View view) {
-//        if (mp != null){
-//            mp.reset();
-//        }
-////        mp = MediaPlayer.create(this, R.raw.game);
-//        mp.setLooping(true);
-//        mp.start();
-        scoreB = 0;
-        totemB = 0;
-        score.setText("Score : 0");
-        if (totemB > 0){
-            totemB--;
+        scoreText.setText("Score : " + scoreCount);
+        if (totemCount > 0){
+            totemCount--;
+        } else {
+            scoreCount = 0;
+            totemCount = 0;
         }
-        totem.setText("Totem : " + totemB);
-        save.setVisibility(View.GONE);
-        play.setVisibility(View.GONE);
-        robo.setImageResource(robko[0]);
+        totemText.setText("Totem : " + totemCount);
+        saveButton.setVisibility(View.GONE);
+        playButton.setVisibility(View.GONE);
+        robo.setImageResource(listOfImages[0]);
         robo.setLayoutParams(new LinearLayout.LayoutParams(dpToPx(85), dpToPx(140)));
-        generateMud();
-        generatePowder();
         setTimer();
+        toFall = gamePanel.getBottom();
+        animations = new AnimatorSet();
+        animations.playTogether(
+                fallAnimation(mud, 500, powder, totem, false, false),
+                fallAnimation(powder, 1000, mud, totem, false, true),
+                fallAnimation(totem, 15000, mud, powder, true, false)
+        );
+        animations.start();
+        stopAnimation = false;
+
+        animations.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                for (Animator animatorSet : animations.getChildAnimations()) {
+                    animatorSet.cancel();
+                }
+            }
+        });
     }
+
+    public Animator fallAnimation(
+            ImageView img,
+            int postDelay,
+            ImageView img1,
+            ImageView img2,
+            boolean isTotem,
+            boolean isPowder
+    ){
+        ObjectAnimator animator = ObjectAnimator.ofFloat(img, "y", toFall);
+        animator.setDuration(1800);
+        animator.setStartDelay(postDelay);
+        animator.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+                if (isTotem) firstTotem = true;
+                else if (isPowder) firstPowder = true;
+                else firstMud = true;
+                img.setX(generateX(img, img1, img2));
+                img.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                int delay;
+
+                if (isTotem){
+                    delay = 30000;
+                    img.setVisibility(View.INVISIBLE);
+                }
+                else if (isPowder) delay = (int) (Math.random()*1500);
+                else delay = 0;
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (!stopAnimation){
+                            animator.setStartDelay(delay);
+                            animator.start();
+                        } else {
+                            mud.setVisibility(View.GONE); powder.setVisibility(View.GONE); totem.setVisibility(View.GONE);
+                            mud.setY(-100); powder.setY(-100); totem.setY(-100);
+                        }
+                    }
+                }, 0);
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+            }
+        });
+        return animator;
+    }
+
+    public float generateX(ImageView generatedImg, ImageView img1, ImageView img2){
+        float x;
+        float [] img1Range = new float[2];
+        float [] img2Range = new float[2];
+        img1Range[0] = img1.getX() - img1.getWidth();
+        img1Range[1] = img1.getX() + img1.getWidth();
+        img2Range[0] = img2.getX() - img2.getWidth();
+        img2Range[1] = img2.getX() + img2.getWidth();
+
+        do {
+            x = (float) (Math.random() * (gamePanel.getWidth() - generatedImg.getWidth()));
+        } while ((x >= img1Range[0] && x <= img1Range[1]) || (x >= img2Range[0] && x <= img2Range[1]));
+        return x;
+    }
+
 
     public void updateText() {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                score.setText("Score : " + scoreB);
-                totem.setText("Totem : " + totemB);
+                scoreText.setText("Score : " + scoreCount);
+                totemText.setText("Totem : " + totemCount);
             }
         });
     }
 
     public void setTimer() {
-        if (hybeSa) {
+        if (isMoving) {
             return;
         } else {
-            hybeSa = true;
+            isMoving = true;
             timer = new Timer();
             timer.schedule(new TimerTask() {
                 @Override
                 public void run() {
                     pohyb();
-                    pohybMud();
-                    pohybPowder();
                     updateText();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (collisionMud() && mud.getVisibility() != View.GONE){
+                                if (firstMud){
+                                    stop();
+                                    firstMud = false;
+                                }
+                                mud.setVisibility(View.INVISIBLE);
+                                System.out.println("mud");
+                            }
+                            if (collisionPowder() && powder.getVisibility() != View.GONE){
+                                if (firstPowder){
+                                    scoreCount += 10;
+                                    firstPowder = false;
+                                }
+                                powder.setVisibility(View.INVISIBLE);
+                                System.out.println("powder");
+                            }
+                            if (collisionTotem() && totem.getVisibility() != View.GONE){
+                                if (firstTotem){
+                                    totemCount++;
+                                    firstTotem = false;
+                                }
+                                System.out.println("totem");
+                            }
+                        }
+                    });
                 }
             }, 0, period);
         }
     }
 
-
     public void pohyb() {
         //pohyb hracej postavy
-        if (hybeSa) {
+        if (isMoving) {
             if (right) {
-                if (prvaZmena) {
-                    prvaZmena = false;
+                if (firstChange) {
+                    firstChange = false;
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            robo.setImageResource(robko[0]);
+                            robo.setImageResource(listOfImages[0]);
                             roboRight = true;
                         }
                     });
                 }
-                if (roboX + robo.getWidth() > gamePanel.getWidth()) {
+                if (roboX + robo.getWidth() >= gamePanel.getWidth()) {
                     roboX = gamePanel.getWidth() - robo.getWidth();
                     runOnUiThread(new Runnable() {
                         @Override
@@ -178,7 +289,7 @@ public class Game extends AppCompatActivity {
                             robo.setX(roboX);
                         }
                     });
-                    prvaZmena = true;
+                    firstChange = true;
                 } else {
                     roboX += 1;
                     runOnUiThread(new Runnable() {
@@ -189,221 +300,117 @@ public class Game extends AppCompatActivity {
                     });
                 }
             } else {
-                if (prvaZmena) {
-                    prvaZmena = false;
+                if (firstChange) {
+                    firstChange = false;
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            robo.setImageResource(robko[1]);
+                            robo.setImageResource(listOfImages[1]);
                             roboRight = false;
                         }
                     });
                 }
                 if ((roboX - 1) < 0) {
                     roboX = 0;
-                    robo.setX(roboX);
-                    prvaZmena = true;
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            robo.setX(roboX);
+                        }
+                    });
+                    firstChange = true;
                 } else {
                     roboX -= 1;
-                    robo.setX(roboX);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            robo.setX(roboX);
+                        }
+                    });
                 }
             }
         }
     }
 
+    public boolean collisionMud() {
+        float startX = mud.getX();
+        float endX = startX + mud.getWidth();
+        float endY = mud.getY() - mud.getHeight();
+        float startRoboX = robo.getX();
+        float endRoboX = startRoboX + robo.getWidth();
+        float startRoboY = robo.getY();
 
-    public void pohybMud() {
-        if (hybeSa) {
-            mudY += 1.35;
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    mud.setY(mudY);
-                    dotykajuSaMud();
-                }
-            });
-            if (mudY >= vyska) {
-                generateMud();
-            }
-        }
+        if (((startX >= startRoboX && startX <= endRoboX) && (endY >= startRoboY && endY <= startRoboY + robo.getHeight())) ||
+            ((endX >= startRoboX && endX <= endRoboX) && (endY >= startRoboY && endY <= startRoboY + robo.getHeight()))
+        ) return true;
+        return false;
     }
 
-    public void pohybPowder() {
-        if (hybeSa) {
-            powderY += 1.35;
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    powder.setY(powderY);
-                    dotykajuSaPowder();
-                }
-            });
-        }
+    public boolean collisionPowder() {
+        float startX = powder.getX();
+        float endX = startX + powder.getWidth();
+        float endY = powder.getY() - powder.getHeight();
+        float startRoboX = robo.getX();
+        float endRoboX = startRoboX + robo.getWidth();
+        float startRoboY = robo.getY();
+
+        if (((startX >= startRoboX && startX <= endRoboX) && (endY >= startRoboY && endY <= startRoboY + robo.getHeight())) ||
+            ((endX >= startRoboX && endX <= endRoboX) && (endY >= startRoboY && endY <= startRoboY + robo.getHeight()))
+        ) return true;
+        return false;
     }
 
-    public void pohybTotem() {
-        if (hybeSa) {
-            totemObjectY += 1.35;
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    totemObject.setY(totemObjectY);
-                    dotykajuSaTotem();
-                }
-            });
-        }
+    public boolean collisionTotem() {
+        float startX = totem.getX();
+        float endX = startX + totem.getWidth();
+        float endY = totem.getY() - totem.getHeight();
+        float startRoboX = robo.getX();
+        float endRoboX = startRoboX + robo.getWidth();
+        float startRoboY = robo.getY();
+
+        if (((startX >= startRoboX && startX <= endRoboX) && (endY >= startRoboY && endY <= startRoboY + robo.getHeight())) ||
+            ((endX >= startRoboX && endX <= endRoboX) && (endY >= startRoboY && endY <= startRoboY + robo.getHeight()))
+        ) return true;
+        return false;
     }
 
     public void klik(View view) {
-        prvaZmena = true;
+        firstChange = true;
         if (right) {
             right = false;
         } else right = true;
     }
 
-    /* generovanie objektov, ktorym sa treba vyhybat */
-    public void generateMud() {
-        mud.setY(-40);
-        mud.setX((float) Math.random() * (sirka - mud.getWidth()));
-        mudY = mud.getY();
-        mud.setVisibility(View.VISIBLE);
-    }
 
-    /* generovanie objektov, ktore treba zbierat */
-    public void generatePowder() {
-        if (firstGen) {
-            powder.setY(-500);
-            firstGen = !firstGen;
-        } else {
-            powder.setY(-40);
-        }
-        float mudStart = mud.getX(), mudEnd = mudStart + mud.getWidth();
-        float powderStart = powder.getX(), powderEnd = powderStart + powder.getWidth();
-        do {
-            powder.setX((float) Math.random() * (sirka - powder.getWidth()));
-            powderStart = powder.getX();
-            powderEnd = powderStart + powder.getWidth();
-            mudStart = mud.getX();
-            mudEnd = mudStart + mud.getWidth();
-        } while (inRange(powderStart, mudStart, mudEnd) || inRange(powderEnd, mudStart, mudEnd));
-        powderY = powder.getY();
-        powder.setVisibility(View.VISIBLE);
-    }
-
-    public void generateTotem() {
-
-        float mudStart = mud.getX(), mudEnd = mudStart + mud.getWidth();
-        float powderStart = powder.getX(), powderEnd = powderStart + powder.getWidth();
-        float totemStart = totemObject.getX(), totemEnd = totemStart + totemObject.getWidth();
-        do {
-            totemObject.setX((float) Math.random() * (sirka - powder.getWidth()));
-            powderStart = powder.getX();
-            powderEnd = powderStart + powder.getWidth();
-            mudStart = mud.getX();
-            mudEnd = mudStart + mud.getWidth();
-            totemStart = totemObject.getX();
-            totemEnd = totemStart + totemObject.getWidth();
-        } while (inRange(totemStart, mudStart, mudEnd) ||
-                inRange(totemEnd, mudStart, mudEnd) ||
-                inRange(totemStart, powderStart, powderEnd) ||
-                inRange(totemEnd, powderStart, powderEnd)
-        );
-
-        totemObject.setY(-40);
-        totemObject.setVisibility(View.VISIBLE);
-        totemObjectY = totemObject.getY();
-    }
-
-    private void dotykajuSaMud() {
-        Rect myViewRect = new Rect();
-        robo.getHitRect(myViewRect);
-        Rect otherViewRect1 = new Rect();
-        mud.getHitRect(otherViewRect1);
-        if (Rect.intersects(myViewRect, otherViewRect1)) {
-            stop();
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    if (roboRight) {
-                        robo.setImageResource(robko[2]);
-                    } else{
-                        robo.setImageResource(robko[3]);
-                    }
-                    if (robo.getX() + robo.getWidth() >= sirka) {
-                        roboX = sirka - robo.getWidth();
-                        robo.setX(roboX);
-                    }
-                    robo.setLayoutParams(new LinearLayout.LayoutParams(dpToPx(140), dpToPx(85)));
-                    powder.setVisibility(View.GONE);
-                    mud.setVisibility(View.GONE);
-                    totemObject.setVisibility(View.GONE);
-                }
-            });
-//            mpEffects = MediaPlayer.create(Game.this, R.raw.splash);
-//            mpEffects.start();
-        }
-    }
-
-    private void dotykajuSaPowder() {
-        Rect myViewRect = new Rect();
-        robo.getHitRect(myViewRect);
-        Rect otherViewRect1 = new Rect();
-        powder.getHitRect(otherViewRect1);
-        if (Rect.intersects(myViewRect, otherViewRect1)) {
-            generatePowder();
-            scoreB++;
-//            mpEffects = MediaPlayer.create(this, R.raw.score);
-//            mpEffects.start();
-        }
-        if (powder.getY() >= vyska) {
-            generatePowder();
-        }
-    }
-
-    private void dotykajuSaTotem() {
-        Rect myViewRect = new Rect();
-        robo.getHitRect(myViewRect);
-        Rect otherViewRect1 = new Rect();
-        totemObject.getHitRect(otherViewRect1);
-        if (Rect.intersects(myViewRect, otherViewRect1)) {
-            totemObject.setX(sirka - 1000);
-            totemB++;
-//            mpEffects = MediaPlayer.create(this, R.raw.score);
-//            mpEffects.start();
-        }
-        if (totemObject.getY() >= vyska) {
-            totemObject.setX(sirka - 1000);
-        }
-    }
 
     protected void stop() {
-//        mp.reset();
-//        mp = MediaPlayer.create(this, R.raw.dead);
-//        mp.setLooping(true);
-//        mp.start();
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                save.setVisibility(View.VISIBLE);
-                play.setVisibility(View.VISIBLE);
-                if (totemB == 0){
-                    play.setText("RESTART");
-                    save.setVisibility(View.VISIBLE);
-                    play.setVisibility(View.VISIBLE);
+                stopAnimation = true;
+                animations.cancel();
+                mud.setY(-100); powder.setY(-100); totem.setY(-100);
+                mud.setVisibility(View.GONE); powder.setVisibility(View.GONE); totem.setVisibility(View.GONE);
+                saveButton.setVisibility(View.VISIBLE);
+                playButton.setVisibility(View.VISIBLE);
+                if (totemCount == 0){
+                    playButton.setText("RESTART");
+                    saveButton.setVisibility(View.VISIBLE);
+                    playButton.setVisibility(View.VISIBLE);
                     firstGen = true;
                     if (timer != null) {
                         timer.cancel();
                         right = true;
-                        hybeSa = false;
+                        isMoving = false;
                     }
                 } else {
-                    play.setText("Continue ( " + totemB + " )");
-                    save.setVisibility(View.VISIBLE);
-                    play.setVisibility(View.VISIBLE);
+                    playButton.setText("Continue ( " + totemCount + " )");
+                    saveButton.setVisibility(View.VISIBLE);
+                    playButton.setVisibility(View.VISIBLE);
                     if (timer != null) {
                         timer.cancel();
                         right = true;
-                        hybeSa = false;
+                        isMoving = false;
                     }
                 }
             }
@@ -445,7 +452,7 @@ public class Game extends AppCompatActivity {
             startActivity(new Intent(Game.this, LoginActivity.class));
         }
         else{
-            insertIntoContentProvider(user.getEmail().toString(), String.valueOf(scoreB));
+            insertIntoContentProvider(user.getEmail().toString(), String.valueOf(scoreCount));
         }
     }
 

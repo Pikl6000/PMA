@@ -44,6 +44,8 @@ public class ScoreBoard extends AppCompatActivity implements
         notesGridView = (GridView) findViewById(R.id.notesGridView);
         notesGridView.setAdapter(initializeAdapter());
         notesGridView.setOnItemClickListener(this);
+
+
     }
 
     @Override

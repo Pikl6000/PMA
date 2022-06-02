@@ -5,4 +5,7 @@
     <string name="back">BACK</string>
     <string name="totems_0">Totems : 0</string>
     <string name="profile">Profile</string>
+    <string name="email">email</string>
+    <string name="e_mail">E - mail :</string>
+    <string name="highest_score">Highest score :</string>
 </resources>

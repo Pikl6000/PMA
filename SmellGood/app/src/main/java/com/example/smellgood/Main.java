@@ -19,10 +19,10 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Random;
 import java.util.Timer;
-import java.util.TimerTask;
 
 public class Main extends AppCompatActivity {
     FirebaseAuth mAuth;
+    public static Fdata data;
 
     private Handler handler=new Handler();
     private Timer timer;
@@ -38,12 +38,16 @@ public class Main extends AppCompatActivity {
     private MediaPlayer mp;
     private ImageButton profile;
 
+    public static int roboid = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         setContentView(R.layout.activity_menu);
         mAuth = FirebaseAuth.getInstance();
+        data = new Fdata();
+
 
         mp = MediaPlayer.create(this, R.raw.main);
         mp.setLooping(true);
@@ -70,8 +74,13 @@ public class Main extends AppCompatActivity {
         startActivity(homeIntent);
     }
     public void openProfile(View view){
-        Intent intent = new Intent(Main.this, LoginActivity.class);
-        startActivity(intent);
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null){
+            startActivity(new Intent(Main.this, Profile.class));
+        }
+        else {
+            startActivity(new Intent(Main.this, LoginActivity.class));
+        }
     }
 
     @Override
@@ -85,11 +94,6 @@ public class Main extends AppCompatActivity {
         super.onStart();
         mp.setLooping(true);
         mp.start();
-
-        FirebaseUser user = mAuth.getCurrentUser();
-        if (user == null){
-            startActivity(new Intent(Main.this, LoginActivity.class));
-        }
     }
 
 

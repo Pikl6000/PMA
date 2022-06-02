@@ -97,6 +97,13 @@ public class NoteContentProvider extends ContentProvider {
         long newId = db.insert(Provider.Note.TABLE_NAME, NO_NULL_COLUMN_HACK, note);
         return ContentUris.withAppendedId(CONTENT_URI, newId);
     }
+    public String getScore(Uri uri, String nickname){
+        String score = "";
+        SQLiteDatabase db = databaseHelper.getWritableDatabase();
+        score = db.toString();
+
+        return score;
+    }
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
         switch(uriMatcher.match(uri)) {
