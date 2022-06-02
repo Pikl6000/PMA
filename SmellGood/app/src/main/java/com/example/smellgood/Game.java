@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -28,6 +29,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Game extends AppCompatActivity {
     FirebaseAuth mAuth;
+    private Handler handler;
     private Timer timer;
     private ImageView robo, mud, powder, bottom, totem;
     private Button playButton, saveButton;
@@ -69,6 +71,7 @@ public class Game extends AppCompatActivity {
         saveButton = findViewById(R.id.saveButton);
         totem = findViewById(R.id.totemObject);
         right = true;
+        handler = new Handler();
         updateRobo();
     }
 
@@ -110,6 +113,7 @@ public class Game extends AppCompatActivity {
         robo.setLayoutParams(new LinearLayout.LayoutParams(dpToPx(85), dpToPx(140)));
         generateMud();
         generatePowder();
+        generateTotem();
         setTimer();
     }
 
@@ -136,6 +140,7 @@ public class Game extends AppCompatActivity {
                     moveRobo();
                     fallAnimation(true, false);
                     fallAnimation(false, true);
+                    fallAnimation(false, false);
                     updateText();
                 }
             }, 0, period);
@@ -210,26 +215,13 @@ public class Game extends AppCompatActivity {
                     public void run() {
                         totemY += 1.35;
                         totem.setY(totemY);
-                        dotykajuSaTotem();
+                        if (collisionTotem()) collidedTotem();
                         if (totem.getY() >= height) generateTotem();
                     }
                 });
             }
         }
 
-    }
-
-    public void pohybTotem() {
-        if (isMoving) {
-            totemY += 1.35;
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    totem.setY(totemY);
-                    dotykajuSaTotem();
-                }
-            });
-        }
     }
 
     public void klik(View view) {
@@ -239,9 +231,13 @@ public class Game extends AppCompatActivity {
         } else right = true;
     }
 
+    public void delayTotem(){
+        
+    }
+
     /* generovanie objektov, ktorym sa treba vyhybat */
     public void generateMud() {
-        mud.setY(-40);
+        mud.setY(-100);
         float x;
         float [] img1Range = new float[2];
         float [] img2Range = new float[2];
@@ -251,7 +247,7 @@ public class Game extends AppCompatActivity {
         img2Range[1] = totem.getX() + totem.getWidth();
 
         do {
-            x = (float) (Math.random() * (gamePanel.getWidth() - powder.getWidth()));
+            x = (float) (Math.random() * (gamePanel.getWidth() - mud.getWidth()));
         } while ((x >= img1Range[0] && x <= img1Range[1]) || (x >= img2Range[0] && x <= img2Range[1]));
         mud.setX(x);
         mudY = mud.getY();
@@ -264,7 +260,7 @@ public class Game extends AppCompatActivity {
             powder.setY(-500);
             firstGen = !firstGen;
         } else {
-            powder.setY(-40);
+            powder.setY(-100);
         }
         float x;
         float [] img1Range = new float[2];
@@ -283,25 +279,25 @@ public class Game extends AppCompatActivity {
     }
 
     public void generateTotem() {
+        if (firstGen) {
+            powder.setY(-500);
+            firstGen = !firstGen;
+        } else {
+            powder.setY(-40);
+        }
+        float x;
+        float [] img1Range = new float[2];
+        float [] img2Range = new float[2];
+        img1Range[0] = mud.getX() - mud.getWidth();
+        img1Range[1] = mud.getX() + mud.getWidth();
+        img2Range[0] = powder.getX() - powder.getWidth();
+        img2Range[1] = powder.getX() + powder.getWidth();
 
-        float mudStart = mud.getX(), mudEnd = mudStart + mud.getWidth();
-        float powderStart = powder.getX(), powderEnd = powderStart + powder.getWidth();
-        float totemStart = totem.getX(), totemEnd = totemStart + totem.getWidth();
         do {
-            totem.setX((float) Math.random() * (width - powder.getWidth()));
-            powderStart = powder.getX();
-            powderEnd = powderStart + powder.getWidth();
-            mudStart = mud.getX();
-            mudEnd = mudStart + mud.getWidth();
-            totemStart = totem.getX();
-            totemEnd = totemStart + totem.getWidth();
-        } while (inRange(totemStart, mudStart, mudEnd) ||
-                inRange(totemEnd, mudStart, mudEnd) ||
-                inRange(totemStart, powderStart, powderEnd) ||
-                inRange(totemEnd, powderStart, powderEnd)
-        );
-
-        totem.setY(-40);
+            x = (float) (Math.random() * (gamePanel.getWidth() - totem.getWidth()));
+        } while ((x >= img1Range[0] && x <= img1Range[1]) || (x >= img2Range[0] && x <= img2Range[1]));
+        totem.setY(-100);
+        totem.setX(x);
         totem.setVisibility(View.VISIBLE);
         totemY = totem.getY();
     }
@@ -374,36 +370,9 @@ public class Game extends AppCompatActivity {
         return false;
     }
 
-    private void dotykajuSaPowder() {
-        Rect myViewRect = new Rect();
-        robo.getHitRect(myViewRect);
-        Rect otherViewRect1 = new Rect();
-        powder.getHitRect(otherViewRect1);
-        if (Rect.intersects(myViewRect, otherViewRect1)) {
-            generatePowder();
-            scoreCount++;
-//            mpEffects = MediaPlayer.create(this, R.raw.scoreText);
-//            mpEffects.start();
-        }
-        if (powder.getY() >= height) {
-            generatePowder();
-        }
-    }
-
-    private void dotykajuSaTotem() {
-        Rect myViewRect = new Rect();
-        robo.getHitRect(myViewRect);
-        Rect otherViewRect1 = new Rect();
-        totem.getHitRect(otherViewRect1);
-        if (Rect.intersects(myViewRect, otherViewRect1)) {
-            totem.setX(width - 1000);
-            totemCount++;
-//            mpEffects = MediaPlayer.create(this, R.raw.scoreText);
-//            mpEffects.start();
-        }
-        if (totem.getY() >= height) {
-            totem.setX(width - 1000);
-        }
+    public void collidedTotem(){
+        generateTotem();
+        totemCount++;
     }
 
     protected void stop() {
