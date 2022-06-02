@@ -2682,6 +2682,7 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id ball
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -2943,6 +2944,7 @@ id never
 id neverCompleteToEnd
 id neverCompleteToStart
 id nick
+id nickP
 id nickname
 id noScroll
 id noState
@@ -3096,8 +3098,10 @@ id textStart
 id textTop
 id textView
 id textView2
+id textView3
 id textView4
 id textView6
+id textView7
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon

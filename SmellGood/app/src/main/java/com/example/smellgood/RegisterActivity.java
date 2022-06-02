@@ -29,8 +29,8 @@ public class RegisterActivity extends AppCompatActivity {
     EditText etRegEmail,etRegPassword,password1,nickname;
     TextView tvLoginHere,back;
     Button btnRegister;
-
-    public static Fdata data;
+    boolean good;
+    Fdata data;
 
     FirebaseAuth mAuth;
 
@@ -39,7 +39,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
 
-        data = new Fdata();
+        data = Main.data;
 
         etRegEmail = findViewById(R.id.mail);
         etRegPassword = findViewById(R.id.password);
@@ -65,6 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void createUser(){
+        good = true;
         String email = etRegEmail.getText().toString(),nick = nickname.getText().toString();
         String password = etRegPassword.getText().toString(),passworD = password1.getText().toString();
 
@@ -100,52 +101,38 @@ public class RegisterActivity extends AppCompatActivity {
             Player p = new Player(email,nick,"0","1","0");
             data.getDatabaseReference().addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     for(DataSnapshot dataP: dataSnapshot.getChildren()){
-                        if (dataP.child(nick).exists()) {
+                        if (dataP.getKey().equals(nick)) {
                             Toast.makeText(RegisterActivity.this, "User with this nickname already exist", Toast.LENGTH_SHORT).show();
                             nickname.setError("Nickname taken");
                             nickname.requestFocus();
-                            return;
+                            good = false;
                         }
                     }
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                }
-            });
-            data.getDatabaseReference().addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    for(DataSnapshot dataP: dataSnapshot.getChildren()){
-                        if (dataP.child(nick).exists()) {
-                            Toast.makeText(RegisterActivity.this, "User with this nickname already exist", Toast.LENGTH_SHORT).show();
-                            etRegEmail.setError("Email already registered");
-                            etRegEmail.requestFocus();
-                            return;
-                        }
-                    }
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                }
-            });
-            mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()){
-                        Toast.makeText(RegisterActivity.this, "User registered successfully", Toast.LENGTH_SHORT).show();
+                    if (good){
+                        Profile.userId = nick;
+                        mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()){
+                                    Toast.makeText(RegisterActivity.this, "User registered successfully", Toast.LENGTH_SHORT).show();
 
-                        data.add(p).addOnSuccessListener(suc->{
-                            Toast.makeText(RegisterActivity.this, "success", Toast.LENGTH_SHORT).show();
-                        }).addOnFailureListener(er->{
-                            Toast.makeText(RegisterActivity.this, "Not GUT", Toast.LENGTH_SHORT).show();
+                                    data.add(p).addOnSuccessListener(suc->{
+                                        Toast.makeText(RegisterActivity.this, "success", Toast.LENGTH_SHORT).show();
+                                    }).addOnFailureListener(er->{
+                                        Toast.makeText(RegisterActivity.this, "Not GUT", Toast.LENGTH_SHORT).show();
+                                    });
+                                    startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                                }else{
+                                    Toast.makeText(RegisterActivity.this, "Email address already taken", Toast.LENGTH_SHORT).show();
+                                }
+                            }
                         });
-
-                        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                    }else{
-                        Toast.makeText(RegisterActivity.this, "Registration Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
                 }
             });
         }

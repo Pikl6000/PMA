@@ -43,7 +43,9 @@
         <activity
             android:name="com.example.smellgood.ScoreBoard"
             android:screenOrientation="portrait" />
-        <activity android:name="com.example.smellgood.Profile" />
+        <activity
+            android:name="com.example.smellgood.Profile"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.example.smellgood.RegisterActivity"
             android:screenOrientation="portrait" />

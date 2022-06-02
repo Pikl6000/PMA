@@ -1,16 +1,12 @@
-<<<<<<< Updated upstream
-#Wed Jun 01 11:31:19 CEST 2022
-=======
-#Wed Jun 01 19:35:37 CEST 2022
->>>>>>> Stashed changes
+#Thu Jun 02 11:38:53 CEST 2022
 path.3=4/classes.dex
 path.2=15/classes.dex
 path.1=0/classes.dex
 path.0=classes.dex
-base.3=C\:\\Moje subory\\Git\\PMA\\SmellGood\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\4\\classes.dex
-base.2=C\:\\Moje subory\\Git\\PMA\\SmellGood\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\15\\classes.dex
-base.1=C\:\\Moje subory\\Git\\PMA\\SmellGood\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.0=C\:\\Moje subory\\Git\\PMA\\SmellGood\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.3=D\:\\GitHub\\PMA\\SmellGood\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\4\\classes.dex
+base.2=D\:\\GitHub\\PMA\\SmellGood\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\15\\classes.dex
+base.1=D\:\\GitHub\\PMA\\SmellGood\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.0=D\:\\GitHub\\PMA\\SmellGood\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 renamed.3=classes4.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex

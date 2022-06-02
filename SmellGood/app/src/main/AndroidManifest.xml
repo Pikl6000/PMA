@@ -27,7 +27,7 @@
         </activity>
         <activity android:name=".Game" android:screenOrientation="portrait"/>
         <activity android:name=".ScoreBoard" android:screenOrientation="portrait"/>
-        <activity android:name=".Profile"/>
+        <activity android:name=".Profile" android:screenOrientation="portrait"/>
         <activity android:name=".RegisterActivity" android:screenOrientation="portrait"/>
         <activity android:name=".LoginActivity" android:screenOrientation="portrait"/>
         <activity android:name=".Shop" android:screenOrientation="portrait"/>

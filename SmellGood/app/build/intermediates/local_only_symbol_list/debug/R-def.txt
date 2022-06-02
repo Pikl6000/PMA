@@ -45,6 +45,7 @@ drawable shop
 drawable shopdocas
 drawable title
 drawable vanish
+id ball
 id bottom
 id button
 id change
@@ -71,6 +72,7 @@ id mail2
 id mail4
 id mud
 id nick
+id nickP
 id nickname
 id notesGridView
 id notesGridViewItem
@@ -98,8 +100,10 @@ id shopImage
 id startButton
 id textView
 id textView2
+id textView3
 id textView4
 id textView6
+id textView7
 id totem
 id totemObject
 id tvLoginHere

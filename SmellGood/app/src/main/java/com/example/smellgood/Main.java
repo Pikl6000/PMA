@@ -22,6 +22,7 @@ import java.util.Timer;
 
 public class Main extends AppCompatActivity {
     FirebaseAuth mAuth;
+    public static Fdata data;
 
     private Handler handler=new Handler();
     private Timer timer;
@@ -45,6 +46,8 @@ public class Main extends AppCompatActivity {
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         setContentView(R.layout.activity_menu);
         mAuth = FirebaseAuth.getInstance();
+        data = new Fdata();
+
 
         mp = MediaPlayer.create(this, R.raw.main);
         mp.setLooping(true);
