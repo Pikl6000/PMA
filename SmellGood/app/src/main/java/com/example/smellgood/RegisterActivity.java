@@ -78,6 +78,9 @@ public class RegisterActivity extends AppCompatActivity {
         }else if(nick.length() < 4){
             nickname.setError("Nickname must be at least 3 characters");
             nickname.requestFocus();
+        }else if(nick.length() > 15){
+            nickname.setError("Nickname max length is 16  characters");
+            nickname.requestFocus();
         } else if (TextUtils.isEmpty(password)){
             etRegPassword.setError("Password cannot be empty");
             etRegPassword.requestFocus();
@@ -98,7 +101,7 @@ public class RegisterActivity extends AppCompatActivity {
             password1.requestFocus();
         }
         else{
-            Player p = new Player(email,nick,"0","1","0");
+            Player p = new Player(email,nick,"0","1","0","");
             data.getDatabaseReference().addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

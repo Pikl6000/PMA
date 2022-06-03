@@ -2683,6 +2683,7 @@ id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
 id ball
+id ballanc
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -3100,6 +3101,7 @@ id textView
 id textView2
 id textView3
 id textView4
+id textView5
 id textView6
 id textView7
 id text_input_end_icon

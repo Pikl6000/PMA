@@ -70,15 +70,24 @@ public class Profile extends AppCompatActivity {
         changeP.setOnClickListener(view ->{
             startActivity(new Intent(this, ResetPasswordLogged.class));
         });
-
-        nacitanie();
         updateUI();
+        updateRobo();
+
+        data.getDatabaseReference().addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                updateUI();
+                updateRobo();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+
+            }
+        });
     }
 
-    private void nacitanie(){
-        String mail = user.getEmail();
-        nickname.setText(mail);
-    }
+
     public void updateRobo(){
         int id = Main.roboid;
         if (id == 1){
@@ -102,8 +111,14 @@ public class Profile extends AppCompatActivity {
         if (user == null){
             startActivity(new Intent(Profile.this, LoginActivity.class));
         }
-        updateRobo();
         updateUI();
+        updateRobo();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateUI();
+        updateRobo();
     }
 
     private void updateUI(){
@@ -117,6 +132,7 @@ public class Profile extends AppCompatActivity {
                         @Override
                         public void run() {
                             assert z != null;
+                            nickname.setText(z.getName());
                             score.setText(z.getScore());
                             nick.setText(z.getNickname());
                             ball.setText(z.getBallance());
