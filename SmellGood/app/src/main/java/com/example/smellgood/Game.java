@@ -6,6 +6,7 @@ import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -40,6 +41,7 @@ public class Game extends AppCompatActivity {
     private boolean right = false, isMoving = false, firstGen = true;
     private boolean firstChange = true, roboRight;
     private int[] listOfImages;
+    private long startTime;
     private static final int INSERT_NOTE_TOKEN = 0;
 
 
@@ -71,7 +73,7 @@ public class Game extends AppCompatActivity {
         saveButton = findViewById(R.id.saveButton);
         totem = findViewById(R.id.totemObject);
         right = true;
-        handler = new Handler();
+        handler = new Handler(Looper.getMainLooper());
         updateRobo();
     }
 
@@ -134,18 +136,20 @@ public class Game extends AppCompatActivity {
         } else {
             isMoving = true;
             timer = new Timer();
+            startTime = System.currentTimeMillis();
             timer.schedule(new TimerTask() {
                 @Override
                 public void run() {
                     moveRobo();
-                    fallAnimation(true, false);
-                    fallAnimation(false, true);
-                    fallAnimation(false, false);
+                    if (mud.getVisibility() != View.GONE) fallAnimation(true, false);
+                    if (powder.getVisibility() != View.GONE) fallAnimation(false, true);
+                    if (totem.getVisibility() != View.GONE) fallAnimation(false, false);
                     updateText();
                 }
             }, 0, period);
         }
     }
+
 
     public void moveRobo() {
         //pohyb hracej postavy
@@ -231,10 +235,6 @@ public class Game extends AppCompatActivity {
         } else right = true;
     }
 
-    public void delayTotem(){
-        
-    }
-
     /* generovanie objektov, ktorym sa treba vyhybat */
     public void generateMud() {
         mud.setY(-100);
@@ -279,12 +279,6 @@ public class Game extends AppCompatActivity {
     }
 
     public void generateTotem() {
-        if (firstGen) {
-            powder.setY(-500);
-            firstGen = !firstGen;
-        } else {
-            powder.setY(-40);
-        }
         float x;
         float [] img1Range = new float[2];
         float [] img2Range = new float[2];
@@ -296,7 +290,7 @@ public class Game extends AppCompatActivity {
         do {
             x = (float) (Math.random() * (gamePanel.getWidth() - totem.getWidth()));
         } while ((x >= img1Range[0] && x <= img1Range[1]) || (x >= img2Range[0] && x <= img2Range[1]));
-        totem.setY(-100);
+        totem.setY(-30000);
         totem.setX(x);
         totem.setVisibility(View.VISIBLE);
         totemY = totem.getY();
