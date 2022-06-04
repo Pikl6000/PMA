@@ -26,6 +26,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.smellgood.provider.NoteContentProvider;
 import com.example.smellgood.provider.Provider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class ScoreBoard extends AppCompatActivity implements
         LoaderManager.LoaderCallbacks<Cursor>, AdapterView.OnItemClickListener{
@@ -34,6 +38,7 @@ public class ScoreBoard extends AppCompatActivity implements
     private static final int DELETE_NOTE_TOKEN = 0;
     private GridView notesGridView;
     private SimpleCursorAdapter adapter;
+    Fdata data;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,6 +49,7 @@ public class ScoreBoard extends AppCompatActivity implements
         notesGridView = (GridView) findViewById(R.id.notesGridView);
         notesGridView.setAdapter(initializeAdapter());
         notesGridView.setOnItemClickListener(this);
+        data = Main.data;
 
 
     }
@@ -62,10 +68,12 @@ public class ScoreBoard extends AppCompatActivity implements
     }
 
     private ListAdapter initializeAdapter() {
+        final String playS = "";
+        final int poc = 0;
+        Query mquery = data.getDatabaseReference().child("users").orderByChild("score").limitToLast(10);
         String[] from = {Provider.Note.NICKNAME,Provider.Note.SCORE};
         int[] to = { R.id.notesGridViewItem };
-        this.adapter = new SimpleCursorAdapter(this, R.layout.note, NO_CURSOR,
-                from, to, NO_FLAGS);
+        this.adapter = new SimpleCursorAdapter(this, R.layout.note, NO_CURSOR, from, to, NO_FLAGS);
         return this.adapter;
     }
 

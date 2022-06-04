@@ -11,6 +11,8 @@ color white
 drawable arrow
 drawable background
 drawable border
+drawable coin
+drawable coing
 drawable grass
 drawable ic_launcher_background
 drawable ic_launcher_foreground
@@ -66,6 +68,7 @@ id imageView4
 id imageView6
 id imageView7
 id imageView8
+id imageView9
 id login
 id logout
 id mail

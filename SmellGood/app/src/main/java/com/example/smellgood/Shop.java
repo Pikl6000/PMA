@@ -19,7 +19,7 @@ import java.util.HashMap;
 
 public class Shop extends AppCompatActivity {
     Button option1,option2,option3,option4;
-    TextView back;
+    TextView back,ball;
     Fdata data;
     FirebaseAuth mAuth;
     private FirebaseUser user;
@@ -38,10 +38,13 @@ public class Shop extends AppCompatActivity {
         option4 = findViewById(R.id.shop4);
         back = findViewById(R.id.goBack2);
         data = Main.data;
+        ball = findViewById(R.id.ballanc);
 
         back.setOnClickListener(view -> {
             startActivity(new Intent(this,Main.class));
         });
+
+        updateUI();
 
         option1.setOnClickListener(view -> {
             Main.roboid = 1;
@@ -66,6 +69,40 @@ public class Shop extends AppCompatActivity {
             zapis(4);
             Toast.makeText(this, "Robo Changed", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, Profile.class));
+        });
+
+        data.getDatabaseReference().addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                updateUI();
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void updateUI(){
+        Query phoneQuery = data.getDatabaseReference().orderByChild("name").equalTo(user.getEmail());
+        phoneQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot singleSnapshot : dataSnapshot.getChildren()){
+                    Player z = singleSnapshot.getValue(Player.class);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            assert z != null;
+                            ball.setText(z.getBallance());
+                        }
+                    });
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("Not GUT");
+            }
         });
     }
 

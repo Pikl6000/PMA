@@ -79,10 +79,8 @@ public class Profile extends AppCompatActivity {
                 updateUI();
                 updateRobo();
             }
-
             @Override
             public void onCancelled(DatabaseError error) {
-
             }
         });
     }

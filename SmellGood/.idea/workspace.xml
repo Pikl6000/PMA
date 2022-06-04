@@ -88,9 +88,11 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="android-custom-viewD:/GitHub/PMA/SmellGood/app/build/generated/ap_generated_sources/debug/out/pl/droidsonroids/gif/GifImageView.java_GifImageView_DIMENSIONS" value="1080&#10;1920" />
+    <property name="android-custom-viewD:/GitHub/PMA/SmellGood/app/build/generated/ap_generated_sources/debug/out/pl/droidsonroids/gif/GifImageView.java_SELECTED" value="GifImageView" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Programovanie/Java/Android" />
-    <property name="project.structure.last.edited" value="SDK Location" />
+    <property name="project.structure.last.edited" value="Build Variants" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="experimental" />
@@ -101,6 +103,9 @@
     <option name="LAST_EDITED_BUILD_TYPE" value="release" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="pl.droidsonroids.gif" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Moje Subory\Programovanie\Git\PMA\SmellGood\app\src\main\res\raw" />
       <recent name="D:\Moje Subory\Programovanie\Git\PMA\SmellGood\app\src\main\res\drawable-v24" />
