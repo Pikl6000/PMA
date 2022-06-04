@@ -31,6 +31,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class ScoreBoard extends AppCompatActivity implements
         LoaderManager.LoaderCallbacks<Cursor>, AdapterView.OnItemClickListener{
     private static final int NOTES_LOADER_ID = 0;
@@ -68,10 +71,27 @@ public class ScoreBoard extends AppCompatActivity implements
     }
 
     private ListAdapter initializeAdapter() {
-        final String playS = "";
-        final int poc = 0;
+        List<String> names = new LinkedList<String>();
+
         Query mquery = data.getDatabaseReference().child("users").orderByChild("score").limitToLast(10);
-        String[] from = {Provider.Note.NICKNAME,Provider.Note.SCORE};
+        mquery.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot singleSnapshot : dataSnapshot.getChildren()){
+                    Player z = singleSnapshot.getValue(Player.class);
+                    String name = z.getNickname()+":\t"+z.getScore();
+                    names.add(0, name);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("Not GUT");
+            }
+        });
+
+
+
+        String[] from = names.toArray(new String[names.size()]);
         int[] to = { R.id.notesGridViewItem };
         this.adapter = new SimpleCursorAdapter(this, R.layout.note, NO_CURSOR, from, to, NO_FLAGS);
         return this.adapter;
