@@ -59,7 +59,7 @@
             android:layout_marginEnd="50dp"
             android:layout_marginBottom="100dp"
             android:backgroundTint="#a17aef"
-            android:onClick="klikloSa"
+            android:onClick="startGame"
             android:padding="25dp"
             android:text="START"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
