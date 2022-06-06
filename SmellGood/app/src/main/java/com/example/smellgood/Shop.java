@@ -23,6 +23,8 @@ public class Shop extends AppCompatActivity {
     Fdata data;
     FirebaseAuth mAuth;
     private FirebaseUser user;
+    int ballance = 0 , price1 = 0 , price2 = 100 , price3 = 250 , price4 = 500;
+    String[] unlocked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,28 +49,59 @@ public class Shop extends AppCompatActivity {
         updateUI();
 
         option1.setOnClickListener(view -> {
-            Main.roboid = 1;
-            zapis(1);
             Toast.makeText(this, "Robo Changed", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, Profile.class));
         });
         option2.setOnClickListener(view -> {
-            Main.roboid = 2;
-            zapis(2);
-            Toast.makeText(this, "Robo Changed", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, Profile.class));
+            if (price2 == 0){
+                Toast.makeText(this, "Robo Changed", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, Profile.class));
+            }
+            else {
+                if (ballance >= price2){
+                    ballance -= price2;
+                    zapis(2);
+                    Toast.makeText(this, "Robo purchased & equipped", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(this, Profile.class));
+                }
+                else {
+                    Toast.makeText(this, "Not enough ballance", Toast.LENGTH_SHORT).show();
+                }
+            }
         });
         option3.setOnClickListener(view -> {
-            Main.roboid = 3;
-            zapis(3);
-            Toast.makeText(this, "Robo Changed", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, Profile.class));
+            if (price3 == 0){
+                Toast.makeText(this, "Robo Changed", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, Profile.class));
+            }
+            else {
+                if (ballance >= price3){
+                    ballance -= price3;
+                    zapis(3);
+                    Toast.makeText(this, "Robo purchased & equipped", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(this, Profile.class));
+                }
+                else {
+                    Toast.makeText(this, "Not enough ballance", Toast.LENGTH_SHORT).show();
+                }
+            }
         });
         option4.setOnClickListener(view -> {
-            Main.roboid = 4;
-            zapis(4);
-            Toast.makeText(this, "Robo Changed", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, Profile.class));
+            if (price4 == 0){
+                Toast.makeText(this, "Robo Changed", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, Profile.class));
+            }
+            else {
+                if (ballance >= price4){
+                    ballance -= price4;
+                    zapis(4);
+                    Toast.makeText(this, "Robo purchased & equipped", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(this, Profile.class));
+                }
+                else {
+                    Toast.makeText(this, "Not enough ballance", Toast.LENGTH_SHORT).show();
+                }
+            }
         });
 
         data.getDatabaseReference().addValueEventListener(new ValueEventListener() {
@@ -95,6 +128,25 @@ public class Shop extends AppCompatActivity {
                         public void run() {
                             assert z != null;
                             ball.setText(z.getBallance());
+                            ballance = Integer.parseInt(z.getBallance());
+                            unlocked = z.getUnlock().split(",");
+                            for (String a : unlocked){
+                                if (a.equals("1")){
+                                    option1.setText("SELECT");
+                                }
+                                if (a.equals("2")){
+                                    option2.setText("SELECT");
+                                    price2 = 0;
+                                }
+                                if (a.equals("3")){
+                                    option3.setText("SELECT");
+                                    price3 = 0;
+                                }
+                                if (a.equals("4")){
+                                    option4.setText("SELECT");
+                                    price4 = 0;
+                                }
+                            }
                         }
                     });
                 }
@@ -118,9 +170,8 @@ public class Shop extends AppCompatActivity {
                     hashMap.put("name", z.getName());
                     hashMap.put("nickname", z.getNickname());
                     hashMap.put("score", z.getScore());
-                    System.out.println("rOBKO1 : "+robko);
                     hashMap.put("robo", String.valueOf(robko));
-                    hashMap.put("ballance", z.getBallance());
+                    hashMap.put("ballance", String.valueOf(ballance));
 
                     String u = z.getUnlock();
                     if (u.isEmpty()){
@@ -130,10 +181,10 @@ public class Shop extends AppCompatActivity {
                         String [] un = u.split(",");
                         if (un.length > 1){
                             boolean unlo = false;
-                            for (int i = 0; i < un.length; i++) {
-                                if (un[i].equals(String.valueOf(robko))){
+                            for (String a : un){
+                                System.out.println("a = "+a);
+                                if (a.equals(String.valueOf(robko))){
                                     unlo = true;
-                                    Toast.makeText(Shop.this, "Robo is already unlocked", Toast.LENGTH_SHORT).show();
                                 }
                             }
                             if (!unlo){
@@ -141,10 +192,7 @@ public class Shop extends AppCompatActivity {
                             }
                         }
                         else {
-                            if (un.length == 1 && un[0].equals(String.valueOf(robko))){
-                                Toast.makeText(Shop.this, "Robo is already unlocked", Toast.LENGTH_SHORT).show();
-                            }
-                            else {
+                            if (!un[0].equals(String.valueOf(robko))){
                                 u += String.valueOf(robko) + ",";
                             }
                         }

@@ -101,7 +101,7 @@ public class RegisterActivity extends AppCompatActivity {
             password1.requestFocus();
         }
         else{
-            Player p = new Player(email,nick,"0","1","0","");
+            Player p = new Player(email,nick,"0","1","0","1,");
             data.getDatabaseReference().addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
