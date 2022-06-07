@@ -49,11 +49,13 @@ public class Shop extends AppCompatActivity {
         updateUI();
 
         option1.setOnClickListener(view -> {
+            zapis(1);
             Toast.makeText(this, "Robo Changed", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, Profile.class));
         });
         option2.setOnClickListener(view -> {
             if (price2 == 0){
+                zapis(2);
                 Toast.makeText(this, "Robo Changed", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this, Profile.class));
             }
@@ -71,6 +73,7 @@ public class Shop extends AppCompatActivity {
         });
         option3.setOnClickListener(view -> {
             if (price3 == 0){
+                zapis(3);
                 Toast.makeText(this, "Robo Changed", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this, Profile.class));
             }
@@ -88,6 +91,7 @@ public class Shop extends AppCompatActivity {
         });
         option4.setOnClickListener(view -> {
             if (price4 == 0){
+                zapis(4);
                 Toast.makeText(this, "Robo Changed", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this, Profile.class));
             }
@@ -170,6 +174,7 @@ public class Shop extends AppCompatActivity {
                     hashMap.put("name", z.getName());
                     hashMap.put("nickname", z.getNickname());
                     hashMap.put("score", z.getScore());
+                    System.out.println("Robo = "+robko);
                     hashMap.put("robo", String.valueOf(robko));
                     hashMap.put("ballance", String.valueOf(ballance));
 
