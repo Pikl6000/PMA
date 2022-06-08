@@ -8,8 +8,8 @@
         android:minSdkVersion="21"
         android:targetSdkVersion="32" />
 
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -60,6 +60,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.example.smellgood.ResetPasswordLogged"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.smellgood.NoInternet"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.google.firebase.auth.internal.GenericIdpActivity"

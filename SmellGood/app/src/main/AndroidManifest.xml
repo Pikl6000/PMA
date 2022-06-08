@@ -33,6 +33,7 @@
         <activity android:name=".Shop" android:screenOrientation="portrait"/>
         <activity android:name=".ResetPassword" android:screenOrientation="portrait"/>
         <activity android:name=".ResetPasswordLogged" android:screenOrientation="portrait"/>
+        <activity android:name=".NoInternet" android:screenOrientation="portrait"/>
     </application>
-
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 </manifest>

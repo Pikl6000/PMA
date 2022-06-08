@@ -2,7 +2,10 @@ package com.example.smellgood;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -38,6 +41,7 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         setContentView(R.layout.player_profile);
+        checkInternet();
 
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
@@ -70,15 +74,32 @@ public class Profile extends AppCompatActivity {
         changeP.setOnClickListener(view ->{
             startActivity(new Intent(this, ResetPasswordLogged.class));
         });
-
-        nacitanie();
         updateUI();
+        updateRobo();
+
+        data.getDatabaseReference().addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                updateUI();
+                updateRobo();
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+            }
+        });
     }
 
-    private void nacitanie(){
-        String mail = user.getEmail();
-        nickname.setText(mail);
+    public void checkInternet(){
+        if (!isNetworkAvailable()){
+            startActivity(new Intent(Profile.this, NoInternet.class));
+        }
     }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
     public void updateRobo(){
         int id = Main.roboid;
         if (id == 1){
@@ -98,12 +119,20 @@ public class Profile extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        checkInternet();
         FirebaseUser user = mAuth.getCurrentUser();
         if (user == null){
             startActivity(new Intent(Profile.this, LoginActivity.class));
         }
-        updateRobo();
         updateUI();
+        updateRobo();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        checkInternet();
+        updateUI();
+        updateRobo();
     }
 
     private void updateUI(){
@@ -117,6 +146,7 @@ public class Profile extends AppCompatActivity {
                         @Override
                         public void run() {
                             assert z != null;
+                            nickname.setText(z.getName());
                             score.setText(z.getScore());
                             nick.setText(z.getNickname());
                             ball.setText(z.getBallance());

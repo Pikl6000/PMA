@@ -26,6 +26,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.smellgood.provider.NoteContentProvider;
 import com.example.smellgood.provider.Provider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class ScoreBoard extends AppCompatActivity implements
         LoaderManager.LoaderCallbacks<Cursor>, AdapterView.OnItemClickListener{
@@ -34,18 +41,18 @@ public class ScoreBoard extends AppCompatActivity implements
     private static final int DELETE_NOTE_TOKEN = 0;
     private GridView notesGridView;
     private SimpleCursorAdapter adapter;
+    Fdata data;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        data = Main.data;
         super.onCreate(savedInstanceState);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         setContentView(R.layout.scoreboard_layout);
         getLoaderManager().initLoader(NOTES_LOADER_ID, Bundle.EMPTY, this);
         notesGridView = (GridView) findViewById(R.id.notesGridView);
-        notesGridView.setAdapter(initializeAdapter());
+        initializeAdapter();
         notesGridView.setOnItemClickListener(this);
-
-
     }
 
     @Override
@@ -61,12 +68,33 @@ public class ScoreBoard extends AppCompatActivity implements
                 .show();
     }
 
-    private ListAdapter initializeAdapter() {
-        String[] from = {Provider.Note.NICKNAME,Provider.Note.SCORE};
+    private void initializeAdapter() {
+        List<String> names = new LinkedList<String>();
+
+        Query mquery = data.getDatabaseReference().child("users").orderByChild("score").limitToLast(10);
+        mquery.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot singleSnapshot : dataSnapshot.getChildren()){
+                    Player z = singleSnapshot.getValue(Player.class);
+                    String name = z.getNickname()+":\t"+z.getScore();
+                    System.out.println(name);
+                    names.add(0, name);
+                    a(names);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("Not GUT");
+            }
+        });
+    }
+
+    private void a(List<String> names){
+        String[] from = names.toArray(new String[names.size()]);
         int[] to = { R.id.notesGridViewItem };
-        this.adapter = new SimpleCursorAdapter(this, R.layout.note, NO_CURSOR,
-                from, to, NO_FLAGS);
-        return this.adapter;
+        this.adapter = new SimpleCursorAdapter(this, R.layout.note, NO_CURSOR, from, to, NO_FLAGS);
+        notesGridView.setAdapter(adapter);
     }
 
     @Override

@@ -4,6 +4,7 @@
     <shared>
       <config>
         <device id="_device_class_phone" />
+        <option name="nonWearDeviceLastStateName" value="Portrait" />
       </config>
     </shared>
   </component>
@@ -17,7 +18,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[RF8MA331AYK]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\asus\.android\avd\Pixel_3a_API_30_x86.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -59,8 +60,8 @@
       <list>
         <option value="Interface" />
         <option value="resourceFile" />
-        <option value="layoutResourceFile" />
         <option value="Class" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>
@@ -88,9 +89,11 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="android-custom-viewD:/GitHub/PMA/SmellGood/app/build/generated/ap_generated_sources/debug/out/pl/droidsonroids/gif/GifImageView.java_GifImageView_DIMENSIONS" value="1080&#10;1920" />
+    <property name="android-custom-viewD:/GitHub/PMA/SmellGood/app/build/generated/ap_generated_sources/debug/out/pl/droidsonroids/gif/GifImageView.java_SELECTED" value="GifImageView" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Programovanie/Java/Android" />
-    <property name="project.structure.last.edited" value="SDK Location" />
+    <property name="project.structure.last.edited" value="Suggestions" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="experimental" />
@@ -101,6 +104,9 @@
     <option name="LAST_EDITED_BUILD_TYPE" value="release" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="pl.droidsonroids.gif" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Moje Subory\Programovanie\Git\PMA\SmellGood\app\src\main\res\raw" />
       <recent name="D:\Moje Subory\Programovanie\Git\PMA\SmellGood\app\src\main\res\drawable-v24" />

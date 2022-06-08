@@ -72,6 +72,7 @@
             android:layout_width="280dp"
             android:layout_height="65dp"
             android:layout_marginTop="20dp"
+            android:background="@drawable/person"
             android:backgroundTint="#a17aef"
             android:text="Change Password"
             android:textColor="#FFFFFF" />

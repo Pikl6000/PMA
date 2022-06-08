@@ -2,9 +2,12 @@ package com.example.smellgood;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -13,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -45,6 +49,8 @@ public class Main extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         setContentView(R.layout.activity_menu);
+        checkInternet();
+
         mAuth = FirebaseAuth.getInstance();
         data = new Fdata();
 
@@ -54,6 +60,16 @@ public class Main extends AppCompatActivity {
         mp.start();
 
         profile = findViewById(R.id.profileButton);
+    }
+    public void checkInternet(){
+        if (!isNetworkAvailable()){
+            startActivity(new Intent(Main.this, NoInternet.class));
+        }
+    }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
     public void onStartButton(View view){
@@ -87,6 +103,7 @@ public class Main extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         mp.reset();
+        checkInternet();
     }
 
     @Override
@@ -94,6 +111,7 @@ public class Main extends AppCompatActivity {
         super.onStart();
         mp.setLooping(true);
         mp.start();
+        checkInternet();
     }
 
 

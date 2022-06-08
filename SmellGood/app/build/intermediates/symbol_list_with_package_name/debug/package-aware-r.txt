@@ -522,8 +522,10 @@ attr fontWeight
 attr forceApplySystemWindowInsetTop
 attr foregroundInsidePadding
 attr framePosition
+attr freezesAnimation
 attr gapBetweenBars
 attr gestureInsetBottomIgnored
+attr gifSource
 attr goIcon
 attr guidelineUseRtl
 attr haloColor
@@ -577,6 +579,7 @@ attr insetForeground
 attr isLightTheme
 attr isMaterial3Theme
 attr isMaterialTheme
+attr isOpaque
 attr itemActiveIndicatorStyle
 attr itemBackground
 attr itemFillColor
@@ -713,6 +716,7 @@ attr logo
 attr logoAdjustViewBounds
 attr logoDescription
 attr logoScaleType
+attr loopCount
 attr marginHorizontal
 attr marginLeftSystemWindowInsets
 attr marginRightSystemWindowInsets
@@ -2479,6 +2483,8 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable coin
+drawable coing
 drawable common_full_open_on_phone
 drawable common_google_signin_btn_icon_dark
 drawable common_google_signin_btn_icon_dark_focused
@@ -2549,6 +2555,7 @@ drawable mtrl_popupmenu_background_overlay
 drawable mtrl_tabs_default_indicator
 drawable mud
 drawable navigation_empty_icon
+drawable noconnection
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low
@@ -2585,6 +2592,7 @@ drawable robostandwhitel
 drawable robotoright
 drawable score
 drawable scoreboard
+drawable selectedrobo
 drawable shop
 drawable shopdocas
 drawable test_custom_background
@@ -2682,7 +2690,12 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id backR1
+id backR2
+id backR3
+id backR4
 id ball
+id ballanc
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -2729,6 +2742,10 @@ id clip_horizontal
 id clip_vertical
 id clockwise
 id closest
+id coin1
+id coin2
+id coin3
+id coin4
 id collapseActionView
 id compress
 id confirm_button
@@ -2843,9 +2860,11 @@ id imageView
 id imageView2
 id imageView3
 id imageView4
+id imageView5
 id imageView6
 id imageView7
 id imageView8
+id imageView9
 id immediateStop
 id included
 id info
@@ -2983,6 +3002,10 @@ id playButton
 id position
 id postLayout
 id powder
+id price1
+id price2
+id price3
+id price4
 id profileButton
 id progress_circular
 id progress_horizontal
@@ -2991,6 +3014,7 @@ id ratio
 id rectangles
 id register
 id resetPass
+id retryconn
 id reverseSawtooth
 id right
 id rightToLeft
@@ -3100,6 +3124,7 @@ id textView
 id textView2
 id textView3
 id textView4
+id textView5
 id textView6
 id textView7
 id text_input_end_icon
@@ -3132,6 +3157,10 @@ id triangle
 id tvLoginHere
 id tvRegisterHere
 id tvReset
+id un1
+id un2
+id un3
+id un4
 id unchecked
 id uniform
 id unlabeled
@@ -3318,6 +3347,7 @@ layout mtrl_picker_header_title_text
 layout mtrl_picker_header_toggle
 layout mtrl_picker_text_input_date
 layout mtrl_picker_text_input_date_range
+layout no_internet
 layout note
 layout notification_action
 layout notification_action_tombstone
@@ -4636,6 +4666,8 @@ styleable FontFamilyFont android_font android_fontWeight android_fontStyle andro
 styleable ForegroundLinearLayout android_foreground android_foregroundGravity foregroundInsidePadding
 styleable Fragment android_name android_id android_tag
 styleable FragmentContainerView android_name android_tag
+styleable GifTextureView gifSource isOpaque
+styleable GifView freezesAnimation loopCount
 styleable GradientColor android_startColor android_endColor android_type android_centerX android_centerY android_gradientRadius android_tileMode android_centerColor android_startX android_startY android_endX android_endY
 styleable GradientColorItem android_color android_offset
 styleable ImageFilterView altSrc blendSrc brightness contrast crossfade imagePanX imagePanY imageRotate imageZoom overlay round roundPercent saturation warmth

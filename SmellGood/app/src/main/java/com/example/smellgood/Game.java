@@ -1,14 +1,15 @@
 package com.example.smellgood;
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.content.AsyncQueryHandler;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Rect;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -32,18 +33,18 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Game extends AppCompatActivity {
     FirebaseAuth mAuth;
-    private AnimatorSet animations;
-    private Animator mudAnimator, powderAnimator, totemAnimator;
+    private Handler handler;
     private Timer timer;
     private ImageView robo, mud, powder, bottom, totem;
     private Button playButton, saveButton;
     private TextView scoreText, totemText;
     private LinearLayout gamePanel;
     private int period, totemCount, scoreCount, media_length;
-    private float roboX, toFall;
+    private float roboX, mudY, powderY,totemY, width, height;
     private boolean right = false, isMoving = false, firstGen = true;
-    private boolean firstChange = true, roboRight, firstMud, firstPowder, firstTotem, stopAnimation;
+    private boolean firstChange = true, roboRight;
     private int[] listOfImages;
+    private long startTime;
     private static final int INSERT_NOTE_TOKEN = 0;
 
 
@@ -52,6 +53,8 @@ public class Game extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         setContentView(R.layout.game_layout);
+        checkInternet();
+
         mAuth = FirebaseAuth.getInstance();
 
         FirebaseUser user = mAuth.getCurrentUser();
@@ -64,9 +67,6 @@ public class Game extends AppCompatActivity {
         totemCount = 0;
         media_length = 0;
 
-        firstMud = true;
-        firstPowder = true;
-        firstTotem = true;
         robo = findViewById(R.id.robo);
         totemText = findViewById(R.id.totem);
         scoreText = findViewById(R.id.score);
@@ -77,20 +77,27 @@ public class Game extends AppCompatActivity {
         bottom = findViewById(R.id.bottom);
         saveButton = findViewById(R.id.saveButton);
         totem = findViewById(R.id.totemObject);
-
-        mud.setVisibility(View.GONE); powder.setVisibility(View.GONE); totem.setVisibility(View.GONE);
-        mud.setY(-100); powder.setY(-100); totem.setY(-100);
-
         right = true;
+        handler = new Handler(Looper.getMainLooper());
         updateRobo();
     }
 
-    //MENENIE ROBA , TREBA DOROBIT PODLA POSLEDNEHO POCTU VARIACII
+    public void checkInternet(){
+        if (!isNetworkAvailable()){
+            startActivity(new Intent(Game.this, NoInternet.class));
+        }
+    }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
     public void updateRobo(){
         int id = Main.roboid;
         if (id == 1){
             robo.setImageResource(R.drawable.robostand);
-           listOfImages = new int[]{R.drawable.robostand, R.drawable.robostandl, R.drawable.robodeadright, R.drawable.robodeadleft};
+            listOfImages = new int[]{R.drawable.robostand, R.drawable.robostandl, R.drawable.robodeadright, R.drawable.robodeadleft};
         }
         if (id == 2){
             robo.setImageResource(R.drawable.robostandpink);
@@ -106,110 +113,25 @@ public class Game extends AppCompatActivity {
         }
     }
 
-    public void klikloSa(View view) {
-        scoreText.setText("Score : " + scoreCount);
+    public void startGame(View view) {
+        width = gamePanel.getWidth();
+        height = gamePanel.getHeight() - bottom.getHeight() - mud.getHeight();
         if (totemCount > 0){
             totemCount--;
         } else {
             scoreCount = 0;
             totemCount = 0;
         }
+        scoreText.setText("Score : " + scoreCount);
         totemText.setText("Totem : " + totemCount);
         saveButton.setVisibility(View.GONE);
         playButton.setVisibility(View.GONE);
         robo.setImageResource(listOfImages[0]);
         robo.setLayoutParams(new LinearLayout.LayoutParams(dpToPx(85), dpToPx(140)));
+        generateMud();
+        generatePowder();
+        generateTotem();
         setTimer();
-        toFall = gamePanel.getBottom();
-        animations = new AnimatorSet();
-        animations.playTogether(
-                fallAnimation(mud, 500, powder, totem, false, false),
-                fallAnimation(powder, 1000, mud, totem, false, true),
-                fallAnimation(totem, 15000, mud, powder, true, false)
-        );
-        animations.start();
-        stopAnimation = false;
-
-        animations.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                super.onAnimationEnd(animation);
-                for (Animator animatorSet : animations.getChildAnimations()) {
-                    animatorSet.cancel();
-                }
-            }
-        });
-    }
-
-    public Animator fallAnimation(
-            ImageView img,
-            int postDelay,
-            ImageView img1,
-            ImageView img2,
-            boolean isTotem,
-            boolean isPowder
-    ){
-        ObjectAnimator animator = ObjectAnimator.ofFloat(img, "y", toFall);
-        animator.setDuration(1800);
-        animator.setStartDelay(postDelay);
-        animator.addListener(new Animator.AnimatorListener() {
-            @Override
-            public void onAnimationStart(Animator animation) {
-                if (isTotem) firstTotem = true;
-                else if (isPowder) firstPowder = true;
-                else firstMud = true;
-                img.setX(generateX(img, img1, img2));
-                img.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                int delay;
-
-                if (isTotem){
-                    delay = 30000;
-                    img.setVisibility(View.INVISIBLE);
-                }
-                else if (isPowder) delay = (int) (Math.random()*1500);
-                else delay = 0;
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (!stopAnimation){
-                            animator.setStartDelay(delay);
-                            animator.start();
-                        } else {
-                            mud.setVisibility(View.GONE); powder.setVisibility(View.GONE); totem.setVisibility(View.GONE);
-                            mud.setY(-100); powder.setY(-100); totem.setY(-100);
-                        }
-                    }
-                }, 0);
-            }
-
-            @Override
-            public void onAnimationCancel(Animator animation) {
-            }
-
-            @Override
-            public void onAnimationRepeat(Animator animation) {
-            }
-        });
-        return animator;
-    }
-
-    public float generateX(ImageView generatedImg, ImageView img1, ImageView img2){
-        float x;
-        float [] img1Range = new float[2];
-        float [] img2Range = new float[2];
-        img1Range[0] = img1.getX() - img1.getWidth();
-        img1Range[1] = img1.getX() + img1.getWidth();
-        img2Range[0] = img2.getX() - img2.getWidth();
-        img2Range[1] = img2.getX() + img2.getWidth();
-
-        do {
-            x = (float) (Math.random() * (gamePanel.getWidth() - generatedImg.getWidth()));
-        } while ((x >= img1Range[0] && x <= img1Range[1]) || (x >= img2Range[0] && x <= img2Range[1]));
-        return x;
     }
 
 
@@ -229,135 +151,218 @@ public class Game extends AppCompatActivity {
         } else {
             isMoving = true;
             timer = new Timer();
+            startTime = System.currentTimeMillis();
             timer.schedule(new TimerTask() {
                 @Override
                 public void run() {
-                    pohyb();
+                    moveRobo();
+                    if (mud.getVisibility() != View.GONE) fallAnimation(true, false);
+                    if (powder.getVisibility() != View.GONE) fallAnimation(false, true);
+                    if (totem.getVisibility() != View.GONE) fallAnimation(false, false);
                     updateText();
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (collisionMud() && mud.getVisibility() != View.GONE){
-                                if (firstMud){
-                                    stop();
-                                    firstMud = false;
-                                }
-                                mud.setVisibility(View.INVISIBLE);
-                                System.out.println("mud");
-                            }
-                            if (collisionPowder() && powder.getVisibility() != View.GONE){
-                                if (firstPowder){
-                                    scoreCount += 10;
-                                    firstPowder = false;
-                                }
-                                powder.setVisibility(View.INVISIBLE);
-                                System.out.println("powder");
-                            }
-                            if (collisionTotem() && totem.getVisibility() != View.GONE){
-                                if (firstTotem){
-                                    totemCount++;
-                                    firstTotem = false;
-                                }
-                                System.out.println("totem");
-                            }
-                        }
-                    });
                 }
             }, 0, period);
         }
     }
 
-    public void pohyb() {
+
+    public void moveRobo() {
         //pohyb hracej postavy
-        if (isMoving) {
-            if (right) {
-                if (firstChange) {
-                    firstChange = false;
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (isMoving) {
+                    if (right) {
+                        if (firstChange) {
+                            firstChange = false;
                             robo.setImageResource(listOfImages[0]);
                             roboRight = true;
                         }
-                    });
-                }
-                if (roboX + robo.getWidth() >= gamePanel.getWidth()) {
-                    roboX = gamePanel.getWidth() - robo.getWidth();
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
+                        if (roboX + robo.getWidth() > gamePanel.getWidth()) {
+                            roboX = gamePanel.getWidth() - robo.getWidth();
+                            robo.setX(roboX);
+                            firstChange = true;
+                        } else {
+                            roboX += 1;
                             robo.setX(roboX);
                         }
-                    });
-                    firstChange = true;
-                } else {
-                    roboX += 1;
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            robo.setX(roboX);
-                        }
-                    });
-                }
-            } else {
-                if (firstChange) {
-                    firstChange = false;
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
+                    } else {
+                        if (firstChange) {
+                            firstChange = false;
                             robo.setImageResource(listOfImages[1]);
                             roboRight = false;
                         }
-                    });
-                }
-                if ((roboX - 1) < 0) {
-                    roboX = 0;
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
+                        if ((robo.getX() - 1) < 0) {
+                            roboX = 0;
+                            robo.setX(roboX);
+                            firstChange = true;
+                        } else {
+                            roboX -= 1;
                             robo.setX(roboX);
                         }
-                    });
-                    firstChange = true;
-                } else {
-                    roboX -= 1;
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            robo.setX(roboX);
-                        }
-                    });
+                    }
                 }
             }
+        });
+    }
+
+    public void fallAnimation(boolean isMud, boolean isPowder){
+        if (isMoving) {
+            if (isMud){
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mudY += 1.35;
+                        mud.setY(mudY);
+                        if (collisionMud()) collidedMud();
+                        if (mud.getY() >= height) generateMud();
+                    }
+                });
+            } else if (isPowder){
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        powderY += 1.35;
+                        powder.setY(powderY);
+                        if (collisionPowder()) collidedPowder();
+                        if (powder.getY() >= height) generatePowder();
+                    }
+                });
+            } else {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        totemY += 1.35;
+                        totem.setY(totemY);
+                        if (collisionTotem()) collidedTotem();
+                        if (totem.getY() >= height) generateTotem();
+                    }
+                });
+            }
         }
+
+    }
+
+    public void klik(View view) {
+        firstChange = true;
+        if (right) {
+            right = false;
+        } else right = true;
+    }
+
+    /* generovanie objektov, ktorym sa treba vyhybat */
+    public void generateMud() {
+        mud.setY(-100);
+        float x;
+        float [] img1Range = new float[2];
+        float [] img2Range = new float[2];
+        img1Range[0] = powder.getX() - powder.getWidth();
+        img1Range[1] = powder.getX() + powder.getWidth();
+        img2Range[0] = totem.getX() - totem.getWidth();
+        img2Range[1] = totem.getX() + totem.getWidth();
+
+        do {
+            x = (float) (Math.random() * (gamePanel.getWidth() - mud.getWidth()));
+        } while ((x >= img1Range[0] && x <= img1Range[1]) || (x >= img2Range[0] && x <= img2Range[1]));
+        mud.setX(x);
+        mudY = mud.getY();
+        mud.setVisibility(View.VISIBLE);
+    }
+
+    /* generovanie objektov, ktore treba zbierat */
+    public void generatePowder() {
+        if (firstGen) {
+            powder.setY(-500);
+            firstGen = !firstGen;
+        } else {
+            powder.setY(-100);
+        }
+        float x;
+        float [] img1Range = new float[2];
+        float [] img2Range = new float[2];
+        img1Range[0] = mud.getX() - mud.getWidth();
+        img1Range[1] = mud.getX() + mud.getWidth();
+        img2Range[0] = totem.getX() - totem.getWidth();
+        img2Range[1] = totem.getX() + totem.getWidth();
+
+        do {
+            x = (float) (Math.random() * (gamePanel.getWidth() - powder.getWidth()));
+        } while ((x >= img1Range[0] && x <= img1Range[1]) || (x >= img2Range[0] && x <= img2Range[1]));
+        powder.setX(x);
+        powderY = powder.getY();
+        powder.setVisibility(View.VISIBLE);
+    }
+
+    public void generateTotem() {
+        float x;
+        float [] img1Range = new float[2];
+        float [] img2Range = new float[2];
+        img1Range[0] = mud.getX() - mud.getWidth();
+        img1Range[1] = mud.getX() + mud.getWidth();
+        img2Range[0] = powder.getX() - powder.getWidth();
+        img2Range[1] = powder.getX() + powder.getWidth();
+
+        do {
+            x = (float) (Math.random() * (gamePanel.getWidth() - totem.getWidth()));
+        } while ((x >= img1Range[0] && x <= img1Range[1]) || (x >= img2Range[0] && x <= img2Range[1]));
+        totem.setY(-30000);
+        totem.setX(x);
+        totem.setVisibility(View.VISIBLE);
+        totemY = totem.getY();
     }
 
     public boolean collisionMud() {
         float startX = mud.getX();
         float endX = startX + mud.getWidth();
-        float endY = mud.getY() - mud.getHeight();
+        float endY = mud.getY() + mud.getHeight();
         float startRoboX = robo.getX();
         float endRoboX = startRoboX + robo.getWidth();
         float startRoboY = robo.getY();
 
         if (((startX >= startRoboX && startX <= endRoboX) && (endY >= startRoboY && endY <= startRoboY + robo.getHeight())) ||
-            ((endX >= startRoboX && endX <= endRoboX) && (endY >= startRoboY && endY <= startRoboY + robo.getHeight()))
+                ((endX >= startRoboX && endX <= endRoboX) && (endY >= startRoboY && endY <= startRoboY + robo.getHeight()))
         ) return true;
         return false;
+    }
+    public void collidedMud(){
+        stop();
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (roboRight) {
+                    robo.setImageResource(listOfImages[2]);
+                } else{
+                    robo.setImageResource(listOfImages[3]);
+                }
+                if (robo.getX() + robo.getWidth() >= width) {
+                    roboX = width - robo.getWidth();
+                    robo.setX(roboX);
+                }
+                robo.setLayoutParams(new LinearLayout.LayoutParams(dpToPx(140), dpToPx(85)));
+                powder.setVisibility(View.GONE);
+                mud.setVisibility(View.GONE);
+                totem.setVisibility(View.GONE);
+            }
+        });
     }
 
     public boolean collisionPowder() {
         float startX = powder.getX();
         float endX = startX + powder.getWidth();
-        float endY = powder.getY() - powder.getHeight();
+        float endY = powder.getY() + powder.getHeight();
         float startRoboX = robo.getX();
         float endRoboX = startRoboX + robo.getWidth();
         float startRoboY = robo.getY();
 
         if (((startX >= startRoboX && startX <= endRoboX) && (endY >= startRoboY && endY <= startRoboY + robo.getHeight())) ||
-            ((endX >= startRoboX && endX <= endRoboX) && (endY >= startRoboY && endY <= startRoboY + robo.getHeight()))
+                ((endX >= startRoboX && endX <= endRoboX) && (endY >= startRoboY && endY <= startRoboY + robo.getHeight()))
         ) return true;
         return false;
+    }
+
+    public void collidedPowder(){
+        generatePowder();
+        scoreCount++;
     }
 
     public boolean collisionTotem() {
@@ -369,28 +374,24 @@ public class Game extends AppCompatActivity {
         float startRoboY = robo.getY();
 
         if (((startX >= startRoboX && startX <= endRoboX) && (endY >= startRoboY && endY <= startRoboY + robo.getHeight())) ||
-            ((endX >= startRoboX && endX <= endRoboX) && (endY >= startRoboY && endY <= startRoboY + robo.getHeight()))
+                ((endX >= startRoboX && endX <= endRoboX) && (endY >= startRoboY && endY <= startRoboY + robo.getHeight()))
         ) return true;
         return false;
     }
 
-    public void klik(View view) {
-        firstChange = true;
-        if (right) {
-            right = false;
-        } else right = true;
+    public void collidedTotem(){
+        generateTotem();
+        totemCount++;
     }
 
-
-
     protected void stop() {
+//        mp.reset();
+//        mp = MediaPlayer.create(this, R.raw.dead);
+//        mp.setLooping(true);
+//        mp.start();
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                stopAnimation = true;
-                animations.cancel();
-                mud.setY(-100); powder.setY(-100); totem.setY(-100);
-                mud.setVisibility(View.GONE); powder.setVisibility(View.GONE); totem.setVisibility(View.GONE);
                 saveButton.setVisibility(View.VISIBLE);
                 playButton.setVisibility(View.VISIBLE);
                 if (totemCount == 0){

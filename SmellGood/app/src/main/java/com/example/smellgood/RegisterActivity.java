@@ -1,7 +1,10 @@
 package com.example.smellgood;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -38,6 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
+        checkInternet();
 
         data = Main.data;
 
@@ -64,6 +68,18 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+
+    public void checkInternet(){
+        if (!isNetworkAvailable()){
+            startActivity(new Intent(RegisterActivity.this, NoInternet.class));
+        }
+    }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
     private void createUser(){
         good = true;
         String email = etRegEmail.getText().toString(),nick = nickname.getText().toString();
@@ -77,6 +93,9 @@ public class RegisterActivity extends AppCompatActivity {
             nickname.requestFocus();
         }else if(nick.length() < 4){
             nickname.setError("Nickname must be at least 3 characters");
+            nickname.requestFocus();
+        }else if(nick.length() > 15){
+            nickname.setError("Nickname max length is 16  characters");
             nickname.requestFocus();
         } else if (TextUtils.isEmpty(password)){
             etRegPassword.setError("Password cannot be empty");
@@ -98,7 +117,7 @@ public class RegisterActivity extends AppCompatActivity {
             password1.requestFocus();
         }
         else{
-            Player p = new Player(email,nick,"0","1","0");
+            Player p = new Player(email,nick,"0","1","0","1,");
             data.getDatabaseReference().addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
