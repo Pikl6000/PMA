@@ -2,7 +2,10 @@ package com.example.smellgood;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -38,6 +41,7 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         setContentView(R.layout.player_profile);
+        checkInternet();
 
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
@@ -85,6 +89,16 @@ public class Profile extends AppCompatActivity {
         });
     }
 
+    public void checkInternet(){
+        if (!isNetworkAvailable()){
+            startActivity(new Intent(Profile.this, NoInternet.class));
+        }
+    }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
 
     public void updateRobo(){
         int id = Main.roboid;
@@ -105,6 +119,7 @@ public class Profile extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        checkInternet();
         FirebaseUser user = mAuth.getCurrentUser();
         if (user == null){
             startActivity(new Intent(Profile.this, LoginActivity.class));
@@ -115,6 +130,7 @@ public class Profile extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        checkInternet();
         updateUI();
         updateRobo();
     }

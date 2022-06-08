@@ -50,6 +50,7 @@
             android:layout_width="280dp"
             android:layout_height="65dp"
             android:layout_marginTop="40dp"
+            android:background="@drawable/person"
             android:backgroundTint="#a17aef"
             android:text="Reset Password"
             android:textColor="#FFFFFF" />

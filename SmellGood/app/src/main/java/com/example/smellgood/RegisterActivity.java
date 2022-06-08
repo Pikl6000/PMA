@@ -1,7 +1,10 @@
 package com.example.smellgood;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -38,6 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
+        checkInternet();
 
         data = Main.data;
 
@@ -62,6 +66,18 @@ public class RegisterActivity extends AppCompatActivity {
         tvLoginHere.setOnClickListener(view ->{
             startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
         });
+    }
+
+
+    public void checkInternet(){
+        if (!isNetworkAvailable()){
+            startActivity(new Intent(RegisterActivity.this, NoInternet.class));
+        }
+    }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
     private void createUser(){

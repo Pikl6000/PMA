@@ -1,8 +1,11 @@
 package com.example.smellgood;
 import android.content.AsyncQueryHandler;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -50,6 +53,8 @@ public class Game extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         setContentView(R.layout.game_layout);
+        checkInternet();
+
         mAuth = FirebaseAuth.getInstance();
 
         FirebaseUser user = mAuth.getCurrentUser();
@@ -77,7 +82,17 @@ public class Game extends AppCompatActivity {
         updateRobo();
     }
 
-    //MENENIE ROBA , TREBA DOROBIT PODLA POSLEDNEHO POCTU VARIACII
+    public void checkInternet(){
+        if (!isNetworkAvailable()){
+            startActivity(new Intent(Game.this, NoInternet.class));
+        }
+    }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
     public void updateRobo(){
         int id = Main.roboid;
         if (id == 1){

@@ -2555,6 +2555,7 @@ drawable mtrl_popupmenu_background_overlay
 drawable mtrl_tabs_default_indicator
 drawable mud
 drawable navigation_empty_icon
+drawable noconnection
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low
@@ -2591,6 +2592,7 @@ drawable robostandwhitel
 drawable robotoright
 drawable score
 drawable scoreboard
+drawable selectedrobo
 drawable shop
 drawable shopdocas
 drawable test_custom_background
@@ -2688,6 +2690,10 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id backR1
+id backR2
+id backR3
+id backR4
 id ball
 id ballanc
 id barrier
@@ -2736,6 +2742,10 @@ id clip_horizontal
 id clip_vertical
 id clockwise
 id closest
+id coin1
+id coin2
+id coin3
+id coin4
 id collapseActionView
 id compress
 id confirm_button
@@ -2847,8 +2857,6 @@ id ignore
 id ignoreRequest
 id image
 id imageView
-id imageView10
-id imageView12
 id imageView2
 id imageView3
 id imageView4
@@ -2994,6 +3002,10 @@ id playButton
 id position
 id postLayout
 id powder
+id price1
+id price2
+id price3
+id price4
 id profileButton
 id progress_circular
 id progress_horizontal
@@ -3002,6 +3014,7 @@ id ratio
 id rectangles
 id register
 id resetPass
+id retryconn
 id reverseSawtooth
 id right
 id rightToLeft
@@ -3108,16 +3121,12 @@ id textSpacerNoTitle
 id textStart
 id textTop
 id textView
-id textView10
-id textView11
 id textView2
 id textView3
 id textView4
 id textView5
 id textView6
 id textView7
-id textView8
-id textView9
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -3148,6 +3157,10 @@ id triangle
 id tvLoginHere
 id tvRegisterHere
 id tvReset
+id un1
+id un2
+id un3
+id un4
 id unchecked
 id uniform
 id unlabeled
@@ -3334,6 +3347,7 @@ layout mtrl_picker_header_title_text
 layout mtrl_picker_header_toggle
 layout mtrl_picker_text_input_date
 layout mtrl_picker_text_input_date_range
+layout no_internet
 layout note
 layout notification_action
 layout notification_action_tombstone

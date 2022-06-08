@@ -1,9 +1,16 @@
 package com.example.smellgood;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +31,10 @@ public class Shop extends AppCompatActivity {
     FirebaseAuth mAuth;
     private FirebaseUser user;
     int ballance = 0 , price1 = 0 , price2 = 100 , price3 = 250 , price4 = 500;
+    private TextView pr1,pr2,pr3,pr4;
+    private TextView un1,un2,un3,un4;
+    private ImageView coin1,coin2,coin3,coin4;
+    private LinearLayout back1,back2,back3,back4;
     String[] unlocked;
 
     @Override
@@ -31,6 +42,8 @@ public class Shop extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         setContentView(R.layout.shop);
+        checkInternet();
+
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
 
@@ -41,6 +54,26 @@ public class Shop extends AppCompatActivity {
         back = findViewById(R.id.goBack2);
         data = Main.data;
         ball = findViewById(R.id.ballanc);
+
+        pr1 = findViewById(R.id.price1);
+        pr2 = findViewById(R.id.price2);
+        pr3 = findViewById(R.id.price3);
+        pr4 = findViewById(R.id.price4);
+
+        un1 = findViewById(R.id.un1);
+        un2 = findViewById(R.id.un2);
+        un3 = findViewById(R.id.un3);
+        un4 = findViewById(R.id.un4);
+
+        coin1 = findViewById(R.id.coin1);
+        coin2 = findViewById(R.id.coin2);
+        coin3 = findViewById(R.id.coin3);
+        coin4 = findViewById(R.id.coin4);
+
+        back1 = findViewById(R.id.backR1);
+        back2 = findViewById(R.id.backR2);
+        back3 = findViewById(R.id.backR3);
+        back4 = findViewById(R.id.backR4);
 
         back.setOnClickListener(view -> {
             startActivity(new Intent(this,Main.class));
@@ -120,6 +153,63 @@ public class Shop extends AppCompatActivity {
         });
     }
 
+    public void checkInternet(){
+        if (!isNetworkAvailable()){
+            startActivity(new Intent(Shop.this, NoInternet.class));
+        }
+    }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+    private void updateRobo(String robo){
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                switch (robo){
+                    case "1":{
+                        coin1.setVisibility(View.GONE);
+                        pr1.setVisibility(View.GONE);
+                        un1.setVisibility(View.VISIBLE);
+                        un1.setText("SELECTED");
+                        back1.setBackgroundResource(R.drawable.selectedrobo);
+                        return;
+                    }
+                    case "2":{
+                        coin2.setVisibility(View.GONE);
+                        pr2.setVisibility(View.GONE);
+                        un2.setVisibility(View.VISIBLE);
+                        un2.setText("SELECTED");
+                        back2.setBackgroundResource(R.drawable.selectedrobo);
+                        return;
+                    }
+                    case "3":{
+                        coin3.setVisibility(View.GONE);
+                        pr3.setVisibility(View.GONE);
+                        un3.setVisibility(View.VISIBLE);
+                        un3.setText("SELECTED");
+                        back3.setBackgroundResource(R.drawable.selectedrobo);
+                        return;
+                    }
+                    case "4":{
+                        coin4.setVisibility(View.GONE);
+                        pr4.setVisibility(View.GONE);
+                        un4.setVisibility(View.VISIBLE);
+                        un4.setText("SELECTED");
+                        back4.setBackgroundResource(R.drawable.selectedrobo);
+                        return;
+                    }
+                    default:{
+                        System.out.println("Ehmm, problem");
+                        return;
+                    }
+                }
+            }
+        });
+    }
+
     private void updateUI(){
         Query phoneQuery = data.getDatabaseReference().orderByChild("name").equalTo(user.getEmail());
         phoneQuery.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -137,20 +227,38 @@ public class Shop extends AppCompatActivity {
                             for (String a : unlocked){
                                 if (a.equals("1")){
                                     option1.setText("SELECT");
+                                    coin1.setVisibility(View.GONE);
+                                    un1.setVisibility(View.VISIBLE);
+                                    un1.setText("UNLOCKED");
+                                    pr1.setVisibility(View.GONE);
+                                    un1.setVisibility(View.VISIBLE);
                                 }
                                 if (a.equals("2")){
+                                    coin2.setVisibility(View.GONE);
+                                    pr2.setVisibility(View.GONE);
+                                    un2.setText("UNLOCKED");
+                                    un2.setVisibility(View.VISIBLE);
                                     option2.setText("SELECT");
                                     price2 = 0;
                                 }
                                 if (a.equals("3")){
+                                    coin3.setVisibility(View.GONE);
+                                    pr3.setVisibility(View.GONE);
+                                    un3.setText("UNLOCKED");
+                                    un3.setVisibility(View.VISIBLE);
                                     option3.setText("SELECT");
                                     price3 = 0;
                                 }
                                 if (a.equals("4")){
+                                    coin4.setVisibility(View.GONE);
+                                    pr4.setVisibility(View.GONE);
+                                    un4.setText("UNLOCKED");
+                                    un4.setVisibility(View.VISIBLE);
                                     option4.setText("SELECT");
                                     price4 = 0;
                                 }
                             }
+                            updateRobo(z.getRobo());
                         }
                     });
                 }
