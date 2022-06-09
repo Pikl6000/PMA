@@ -22,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.smellgood.provider.NoteContentProvider;
 import com.example.smellgood.provider.Provider;
 
+import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -29,14 +30,19 @@ import static com.example.smellgood.Defaults.NO_COOKIE;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class Game extends AppCompatActivity {
     FirebaseAuth mAuth;
+    private FirebaseUser user;
     private Handler handler;
     private Timer timer;
     private ImageView robo, mud, powder, bottom, totem;
-    private Button playButton, saveButton;
+    private Button playButton;
     private TextView scoreText, totemText;
     private LinearLayout gamePanel;
     private int period, totemCount, scoreCount, media_length;
@@ -46,6 +52,7 @@ public class Game extends AppCompatActivity {
     private int[] listOfImages;
     private long startTime;
     private static final int INSERT_NOTE_TOKEN = 0;
+    private Fdata data;
 
 
     @Override
@@ -54,10 +61,11 @@ public class Game extends AppCompatActivity {
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         setContentView(R.layout.game_layout);
         checkInternet();
+        data = Main.data;
 
         mAuth = FirebaseAuth.getInstance();
 
-        FirebaseUser user = mAuth.getCurrentUser();
+        user = mAuth.getCurrentUser();
         if (user == null){
             startActivity(new Intent(Game.this, LoginActivity.class));
         }
@@ -75,7 +83,6 @@ public class Game extends AppCompatActivity {
         mud = findViewById(R.id.mud);
         powder = findViewById(R.id.powder);
         bottom = findViewById(R.id.bottom);
-        saveButton = findViewById(R.id.saveButton);
         totem = findViewById(R.id.totemObject);
         right = true;
         handler = new Handler(Looper.getMainLooper());
@@ -124,7 +131,6 @@ public class Game extends AppCompatActivity {
         }
         scoreText.setText("Score : " + scoreCount);
         totemText.setText("Totem : " + totemCount);
-        saveButton.setVisibility(View.GONE);
         playButton.setVisibility(View.GONE);
         robo.setImageResource(listOfImages[0]);
         robo.setLayoutParams(new LinearLayout.LayoutParams(dpToPx(85), dpToPx(140)));
@@ -392,11 +398,9 @@ public class Game extends AppCompatActivity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                saveButton.setVisibility(View.VISIBLE);
                 playButton.setVisibility(View.VISIBLE);
                 if (totemCount == 0){
                     playButton.setText("RESTART");
-                    saveButton.setVisibility(View.VISIBLE);
                     playButton.setVisibility(View.VISIBLE);
                     firstGen = true;
                     if (timer != null) {
@@ -406,7 +410,6 @@ public class Game extends AppCompatActivity {
                     }
                 } else {
                     playButton.setText("Continue ( " + totemCount + " )");
-                    saveButton.setVisibility(View.VISIBLE);
                     playButton.setVisibility(View.VISIBLE);
                     if (timer != null) {
                         timer.cancel();
@@ -500,5 +503,29 @@ public class Game extends AppCompatActivity {
     public int dpToPx(int dp) {
         float density = this.getResources().getDisplayMetrics().density;
         return Math.round((float) dp * density);
+    }
+
+    public void zapis(int ball, int scoreCount){
+        Query phoneQuery = data.getDatabaseReference().orderByChild("name").equalTo(user.getEmail());
+        phoneQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot singleSnapshot : dataSnapshot.getChildren()){
+                    Player z = singleSnapshot.getValue(Player.class);
+                    HashMap<String, Object> hashMap = new HashMap<>();
+                    hashMap.put("name", z.getName());
+                    if (Integer.parseInt(z.getScore()) < scoreCount){
+                        hashMap.put("score" , String.valueOf(scoreCount));
+                    }
+                    int ballance = Integer.parseInt(z.getBallance()) + ball;
+                    hashMap.put("ballance" , String.valueOf(ballance));
+                    data.update(z.getNickname(), hashMap);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("Not GUT");
+            }
+        });
     }
 }

@@ -34,8 +34,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ScoreBoard extends AppCompatActivity implements
-        LoaderManager.LoaderCallbacks<Cursor>, AdapterView.OnItemClickListener{
+public class ScoreBoard extends AppCompatActivity {
     private static final int NOTES_LOADER_ID = 0;
     private static final int INSERT_NOTE_TOKEN = 0;
     private static final int DELETE_NOTE_TOKEN = 0;
@@ -49,13 +48,13 @@ public class ScoreBoard extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         setContentView(R.layout.scoreboard_layout);
-        getLoaderManager().initLoader(NOTES_LOADER_ID, Bundle.EMPTY, this);
+//        getLoaderManager().initLoader(NOTES_LOADER_ID, Bundle.EMPTY, ScoreBoard.this);
         notesGridView = (GridView) findViewById(R.id.notesGridView);
         initializeAdapter();
-        notesGridView.setOnItemClickListener(this);
+        //notesGridView.setOnItemClickListener(this);
     }
 
-    @Override
+
     public void onItemClick(AdapterView<?> parent, View view, int position, final long id) {
         Cursor selectedNoteCursor = (Cursor) parent.getItemAtPosition(position);
         int dN = selectedNoteCursor.getColumnIndex(Provider.Note.NICKNAME),
@@ -71,7 +70,7 @@ public class ScoreBoard extends AppCompatActivity implements
     private void initializeAdapter() {
         List<String> names = new LinkedList<String>();
 
-        Query mquery = data.getDatabaseReference().child("users").orderByChild("score").limitToLast(10);
+        Query mquery = data.getDatabaseReference().child("users").orderByChild("score").limitToLast(2);
         mquery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -97,22 +96,22 @@ public class ScoreBoard extends AppCompatActivity implements
         notesGridView.setAdapter(adapter);
     }
 
-    @Override
-    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-        CursorLoader loader = new CursorLoader(this);
-        loader.setUri(NoteContentProvider.CONTENT_URI);
-        return loader;
-    }
-
-    @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
-        this.adapter.swapCursor(cursor);
-    }
-
-    @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
-        this.adapter.swapCursor(NO_CURSOR);
-    }
+//    @Override
+//    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
+//        CursorLoader loader = new CursorLoader(this);
+//        loader.setUri(NoteContentProvider.CONTENT_URI);
+//        return loader;
+//    }
+//
+////    @Override
+////    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+////        this.adapter.swapCursor(cursor);
+////    }
+//
+//    @Override
+//    public void onLoaderReset(Loader<Cursor> loader) {
+//        this.adapter.swapCursor(NO_CURSOR);
+//    }
 
 
 

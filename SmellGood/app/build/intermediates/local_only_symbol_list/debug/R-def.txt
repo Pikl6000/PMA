@@ -108,7 +108,6 @@ id resetPass
 id retryconn
 id robko
 id robo
-id saveButton
 id score
 id scoreButton
 id scoreProfile

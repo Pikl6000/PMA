@@ -33,6 +33,7 @@
             android:layout_width="260dp"
             android:layout_height="78dp"
             android:layout_marginBottom="30dp"
+            android:background="@drawable/person"
             android:backgroundTint="#a17aef"
             android:onClick="onStartButton"
             android:text="PLAY"
@@ -45,6 +46,7 @@
             android:layout_width="260dp"
             android:layout_height="78dp"
             android:layout_marginBottom="30dp"
+            android:background="@drawable/person"
             android:backgroundTint="#a17aef"
             android:onClick="onScoreButton"
             android:text="Shelf OFf Fame"
@@ -57,6 +59,7 @@
             android:layout_width="260dp"
             android:layout_height="78dp"
             android:layout_centerVertical="true"
+            android:background="@drawable/person"
             android:backgroundTint="#a17aef"
             android:onClick="onExitButton"
             android:text="@string/exit"
@@ -76,4 +79,5 @@
         android:onClick="openProfile"
         android:scaleType="centerInside"
         app:srcCompat="@drawable/profile" />
+
 </LinearLayout>
