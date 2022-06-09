@@ -178,7 +178,7 @@ public class Game extends AppCompatActivity {
                             robo.setImageResource(listOfImages[0]);
                             roboRight = true;
                         }
-                        if (roboX + robo.getWidth() > gamePanel.getWidth()) {
+                        if (roboX + robo.getWidth() >= gamePanel.getWidth()) {
                             roboX = gamePanel.getWidth() - robo.getWidth();
                             robo.setX(roboX);
                             firstChange = true;
