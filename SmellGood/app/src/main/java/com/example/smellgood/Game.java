@@ -3,7 +3,9 @@ import android.content.AsyncQueryHandler;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
 import android.graphics.Rect;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -22,6 +24,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.smellgood.provider.NoteContentProvider;
 import com.example.smellgood.provider.Provider;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -47,7 +50,7 @@ public class Game extends AppCompatActivity {
     private LinearLayout gamePanel;
     private int period, totemCount, scoreCount, media_length;
     private float roboX, mudY, powderY,totemY, width, height;
-    private boolean right = false, isMoving = false, firstGen = true;
+    private boolean right = false, isMoving = false, firstGen = true, mudHit = false, powderHit = false, totemHit = false;
     private boolean firstChange = true, roboRight;
     private int[] listOfImages;
     private long startTime;
@@ -123,6 +126,7 @@ public class Game extends AppCompatActivity {
     public void startGame(View view) {
         width = gamePanel.getWidth();
         height = gamePanel.getHeight() - bottom.getHeight() - mud.getHeight();
+        mudHit = false;
         if (totemCount > 0){
             totemCount--;
         } else {
@@ -390,17 +394,19 @@ public class Game extends AppCompatActivity {
         totemCount++;
     }
 
+    public void onMudCollision(){
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.splash);
+        mediaPlayer.start();
+    }
+
     protected void stop() {
-//        mp.reset();
-//        mp = MediaPlayer.create(this, R.raw.dead);
-//        mp.setLooping(true);
-//        mp.start();
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 playButton.setVisibility(View.VISIBLE);
                 if (totemCount == 0){
                     playButton.setText("RESTART");
+                    zapis(Integer.parseInt(String.valueOf(scoreCount / 15)), scoreCount);
                     playButton.setVisibility(View.VISIBLE);
                     firstGen = true;
                     if (timer != null) {
@@ -425,16 +431,12 @@ public class Game extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         stop();
-//        mp.reset();
-//        mpEffects.reset();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         stop();
-//        mp.reset();
-//        mpEffects.reset();
     }
     @Override
     protected void onStart() {
