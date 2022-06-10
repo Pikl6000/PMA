@@ -3391,6 +3391,7 @@ int plurals mtrl_badge_content_description 0x7f0e0000
 int raw dead 0x7f0f0000
 int raw game 0x7f0f0001
 int raw getscore 0x7f0f0002
+int raw keep 0x7f0f0006
 int raw main 0x7f0f0003
 int raw score 0x7f0f0004
 int raw splash 0x7f0f0005
@@ -3450,6 +3451,7 @@ int string common_google_play_services_wear_update_text 0x7f100034
 int string common_open_on_phone 0x7f100035
 int string common_signin_button_text 0x7f100036
 int string common_signin_button_text_long 0x7f100037
+int string copy_toast_msg 0x7f10009d
 int string default_web_client_id 0x7f100038
 int string e_mail 0x7f100039
 int string email 0x7f10003a
@@ -3458,6 +3460,9 @@ int string exit 0x7f10003c
 int string exposed_dropdown_menu_content_description 0x7f10003d
 int string fab_transformation_scrim_behavior 0x7f10003e
 int string fab_transformation_sheet_behavior 0x7f10003f
+int string fallback_menu_item_copy_link 0x7f10009e
+int string fallback_menu_item_open_in_browser 0x7f10009f
+int string fallback_menu_item_share_link 0x7f1000a0
 int string firebase_database_url 0x7f100040
 int string gcm_defaultSenderId 0x7f100041
 int string google_api_key 0x7f100042
@@ -6583,6 +6588,7 @@ int styleable ViewTransition_upDuration 13
 int styleable ViewTransition_viewTransitionMode 14
 int[] styleable include { 0x7f030106 }
 int styleable include_constraintSet 0
+int xml image_share_filepaths 0x7f130005
 int xml standalone_badge 0x7f130000
 int xml standalone_badge_gravity_bottom_end 0x7f130001
 int xml standalone_badge_gravity_bottom_start 0x7f130002

@@ -32,7 +32,7 @@ public class Main extends AppCompatActivity {
     private Timer timer;
     private SharedPreferences settings;
     private ImageView robo, roboDeadRight, roboStand, roboToRight, mud, powder;
-    private Button play;
+    private Button play, profile;
     private TextView score, totem;
     private RelativeLayout displej;
     private int speedMud, speedRobo, period, round, body, tBody;
@@ -40,7 +40,6 @@ public class Main extends AppCompatActivity {
     private boolean up=false, boolPowder=false, prvyBod=true;
     private Random rd=new Random();
     private MediaPlayer mp;
-    private ImageButton profile;
 
     public static int roboid = 1;
 
