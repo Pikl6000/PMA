@@ -21,15 +21,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.smellgood.provider.NoteContentProvider;
-import com.example.smellgood.provider.Provider;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import static com.example.smellgood.Defaults.NO_COOKIE;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -452,32 +447,6 @@ public class Game extends AppCompatActivity {
         super.onResume();
     }
 
-    public void createReport(View view) {
-        FirebaseUser user = mAuth.getCurrentUser();
-        if (user == null){
-            startActivity(new Intent(Game.this, LoginActivity.class));
-        }
-        else{
-            insertIntoContentProvider(user.getEmail().toString(), String.valueOf(scoreCount));
-        }
-    }
-
-
-    private void insertIntoContentProvider(String nickname, String score) {
-        Uri uri = NoteContentProvider.CONTENT_URI;
-        ContentValues values = new ContentValues();
-        values.put(Provider.Note.NICKNAME, nickname);
-        values.put(Provider.Note.SCORE, score);
-        AsyncQueryHandler insertHandler = new
-                AsyncQueryHandler(getContentResolver()) {
-                    @Override
-                    protected void onInsertComplete(int token, Object cookie, Uri uri) {
-                        Toast.makeText(Game.this, "Saved",
-                                Toast.LENGTH_SHORT).show();
-                    }
-                };
-        insertHandler.startInsert(INSERT_NOTE_TOKEN, NO_COOKIE, uri, values);
-    }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {

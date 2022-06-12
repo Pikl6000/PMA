@@ -11,8 +11,10 @@ color white
 drawable arrow
 drawable background
 drawable border
+drawable bronzemedal
 drawable coin
 drawable coing
+drawable goldmedal
 drawable grass
 drawable ic_launcher_background
 drawable ic_launcher_foreground
@@ -47,6 +49,7 @@ drawable scoreboard
 drawable selectedrobo
 drawable shop
 drawable shopdocas
+drawable silvermedal
 drawable title
 drawable vanish
 id backR1
@@ -71,6 +74,8 @@ id goBack2
 id goBack3
 id goBack4
 id goBack5
+id grid_item_image
+id grid_item_label
 id imageView
 id imageView2
 id imageView3
@@ -80,6 +85,7 @@ id imageView6
 id imageView7
 id imageView8
 id imageView9
+id label
 id login
 id logout
 id mail
@@ -144,6 +150,7 @@ layout register
 layout reset_pass
 layout reset_pass_log
 layout scoreboard_layout
+layout scoreboardperson
 layout shop
 menu menu_main
 mipmap ic_launcher
