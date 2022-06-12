@@ -84,7 +84,7 @@ public class Main extends AppCompatActivity {
     public void onExitButton(View view){
         mp.reset();
         Intent homeIntent = new Intent(Intent.ACTION_MAIN);
-        homeIntent.addCategory( Intent.CATEGORY_HOME );
+        homeIntent.addCategory( Intent.CATEGORY_HOME);
         homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(homeIntent);
     }
@@ -102,7 +102,6 @@ public class Main extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         mp.reset();
-        checkInternet();
     }
 
     @Override
@@ -110,6 +109,11 @@ public class Main extends AppCompatActivity {
         super.onStart();
         mp.setLooping(true);
         mp.start();
+        checkInternet();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
         checkInternet();
     }
 

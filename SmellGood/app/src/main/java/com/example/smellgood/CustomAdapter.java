@@ -8,13 +8,20 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
 public class CustomAdapter extends BaseAdapter {
     private Context context;
-    private final String[] values;
+    private final String[][] values;
+    Fdata data;
 
-    public CustomAdapter(Context context, String[] values) {
+    public CustomAdapter(Context context, String[][] values) {
         this.context = context;
         this.values = values;
+        data = Main.data;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -30,12 +37,26 @@ public class CustomAdapter extends BaseAdapter {
             gridView = inflater.inflate(R.layout.scoreboardperson, null);
 
             TextView textView = (TextView) gridView.findViewById(R.id.grid_item_label);
-            textView.setText(values[position]);
+            textView.setText(values[position][0]);
+
+            TextView scoreView = gridView.findViewById(R.id.grid_score_label);
+            scoreView.setText(values[position][1]);
+//            Query phoneQuery = data.getDatabaseReference().orderByChild("nickname").equalTo(values[position]);
+//            phoneQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(DataSnapshot dataSnapshot) {
+//                    for(DataSnapshot singleSnapshot : dataSnapshot.getChildren()){
+//                        Player z = singleSnapshot.getValue(Player.class);
+//                        scoreView.setText(z.getScore());
+//                    }
+//                }
+//                @Override
+//                public void onCancelled(DatabaseError databaseError) {
+//                    System.out.println("Not GUT");
+//                }
+//            });
 
             ImageView imageView = (ImageView) gridView.findViewById(R.id.grid_item_image);
-
-            String mobile = values[position];
-
             if (position < 1) {
                 imageView.setImageResource(R.drawable.goldmedal);
             }if (position < 3 && position > 0) {

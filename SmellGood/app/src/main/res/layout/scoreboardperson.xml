@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/border"
-    android:gravity="center"
+    android:gravity="center|start"
+    android:orientation="horizontal"
     android:padding="5dp"
     android:paddingStart="15dp">
 
@@ -18,12 +19,23 @@
 
     <TextView
         android:id="@+id/grid_item_label"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginTop="5px"
         android:gravity="center|start"
         android:paddingStart="15dp"
         android:text="@+id/label"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"></TextView>
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textStyle="bold"></TextView>
+
+    <TextView
+        android:id="@+id/grid_score_label"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="5px"
+        android:gravity="center|start"
+        android:paddingStart="15dp"
+        android:text="Loading"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"></TextView>
 
 </LinearLayout>

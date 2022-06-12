@@ -81,6 +81,16 @@ public class ResetPassword extends AppCompatActivity {
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        checkInternet();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        checkInternet();
+    }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {

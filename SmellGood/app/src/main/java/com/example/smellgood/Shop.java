@@ -325,6 +325,16 @@ public class Shop extends AppCompatActivity {
             }
         });
     }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        checkInternet();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        checkInternet();
+    }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {

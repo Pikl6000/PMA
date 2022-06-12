@@ -67,6 +67,7 @@
             android:backgroundTint="#a17aef"
             android:onClick="openProfile"
             android:text="PROFILE"
+            android:textColor="#FFFFFF"
             android:textSize="21sp"
             android:textStyle="bold"
             tools:ignore="TextContrastCheck" />

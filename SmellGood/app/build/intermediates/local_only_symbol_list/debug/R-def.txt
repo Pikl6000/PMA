@@ -76,6 +76,7 @@ id goBack4
 id goBack5
 id grid_item_image
 id grid_item_label
+id grid_score_label
 id imageView
 id imageView2
 id imageView3
