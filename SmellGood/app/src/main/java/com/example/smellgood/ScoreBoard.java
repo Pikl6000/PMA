@@ -11,8 +11,10 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -22,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,6 +37,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -45,8 +49,6 @@ public class ScoreBoard extends AppCompatActivity {
     Fdata data;
     private FirebaseAuth mAuth;
     GridView gridView;
-    static final String[] MOBILE_OS = new String[] {
-            "Mirko", "Mejo","Pikl", "100","Pikl","Pikl","Pikl","Pikl","Pikl","Pikl"};
     static String[][] player;
     static int counter = 0;
 
@@ -77,6 +79,7 @@ public class ScoreBoard extends AppCompatActivity {
         Query top10Query = data.getDatabaseReference().orderByChild("score").limitToLast(10);
         top10Query.addValueEventListener(new ValueEventListener() {
             ArrayList<String> a = new ArrayList<>();
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 counter = 0;
@@ -93,6 +96,7 @@ public class ScoreBoard extends AppCompatActivity {
                 System.out.println("a = "+a.size());
                 System.out.println(counter);
                 player = new String[counter][2];
+                System.out.println("Array size : "+player.length);
                 Collections.reverse(a);
                 System.out.println("R : "+a.size()/2);
                 int c = 0;
@@ -102,20 +106,20 @@ public class ScoreBoard extends AppCompatActivity {
                     System.out.println("P : "+ player[i][0]+" "+  player[i][1]);
                     c = c+2;
                 }
-                System.out.println(Arrays.toString(player));
-//                for (String b : a){
-//                    player[c] = b;
-//                    c++;
-//                }
+                Arrays.sort(player, (v1, v2) -> Integer.compare(Integer.parseInt(v2[1]), Integer.parseInt(v1[1])));
+                for (int i = 0; i < player.length; i++) {
+                    System.out.println("Pushing P : "+ player[i][0]+" "+  player[i][1]);
+                }
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         gridView = (GridView) findViewById(R.id.notesGridView);
                         gridView.setAdapter(null);
                         gridView.setAdapter(new CustomAdapter(ScoreBoard.this, player));
-//                        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-//
+//                        gridView.setOnTouchListener(new View.OnTouchListener() {
+//                            @Override
+//                            public boolean onTouch(View v, MotionEvent event) {
+//                                return event.getAction() == MotionEvent.ACTION_MOVE;
 //                            }
 //                        });
                     }

@@ -41,20 +41,6 @@ public class CustomAdapter extends BaseAdapter {
 
             TextView scoreView = gridView.findViewById(R.id.grid_score_label);
             scoreView.setText(values[position][1]);
-//            Query phoneQuery = data.getDatabaseReference().orderByChild("nickname").equalTo(values[position]);
-//            phoneQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(DataSnapshot dataSnapshot) {
-//                    for(DataSnapshot singleSnapshot : dataSnapshot.getChildren()){
-//                        Player z = singleSnapshot.getValue(Player.class);
-//                        scoreView.setText(z.getScore());
-//                    }
-//                }
-//                @Override
-//                public void onCancelled(DatabaseError databaseError) {
-//                    System.out.println("Not GUT");
-//                }
-//            });
 
             ImageView imageView = (ImageView) gridView.findViewById(R.id.grid_item_image);
             if (position < 1) {
