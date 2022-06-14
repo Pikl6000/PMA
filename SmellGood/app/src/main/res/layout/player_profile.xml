@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:scaleType="centerInside"
+            android:scaleType="fitCenter"
             app:srcCompat="@drawable/prof" />
 
         <LinearLayout

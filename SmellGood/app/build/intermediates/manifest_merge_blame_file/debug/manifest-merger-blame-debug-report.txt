@@ -6,250 +6,250 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="21"
-8-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml
+8-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="32" />
-9-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml
+9-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-11-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:33:5-79
-11-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:33:22-76
+11-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:33:5-79
+11-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:33:22-76
 12    <uses-permission android:name="android.permission.INTERNET" />
-12-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:23:5-67
-12-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:23:22-64
+12-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:23:5-67
+12-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:23:22-64
 13
 14    <application
-14-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:5:5-32:19
+14-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:5:5-32:19
 15        android:allowBackup="true"
-15-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:6:9-35
+15-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:6:9-35
 16        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-16-->[androidx.core:core:1.7.0] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\503affcca2bf1d66493cf2ffd93b77cc\transformed\core-1.7.0\AndroidManifest.xml:24:18-86
+16-->[androidx.core:core:1.7.0] C:\Users\mnemc\.gradle\caches\transforms-3\503affcca2bf1d66493cf2ffd93b77cc\transformed\core-1.7.0\AndroidManifest.xml:24:18-86
 17        android:debuggable="true"
 18        android:icon="@mipmap/icon"
-18-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:7:9-36
+18-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:7:9-36
 19        android:label="@string/app_name"
-19-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:8:9-41
+19-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:8:9-41
 20        android:roundIcon="@mipmap/ic_launcher_round"
-20-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:9:9-54
+20-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:9:9-54
 21        android:supportsRtl="true"
-21-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:10:9-35
+21-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:10:9-35
 22        android:testOnly="true"
 23        android:theme="@style/Theme.SmellGood" >
-23-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:11:9-47
+23-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:11:9-47
 24        <activity
-24-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:13:9-22:20
+24-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:13:9-22:20
 25            android:name="com.example.smellgood.Main"
-25-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:14:13-33
+25-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:14:13-33
 26            android:exported="true"
-26-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:15:13-36
+26-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:15:13-36
 27            android:screenOrientation="portrait" >
-27-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:16:13-49
+27-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:16:13-49
 28            <intent-filter>
-28-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:17:13-21:29
+28-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:17:13-21:29
 29                <action android:name="android.intent.action.MAIN" />
-29-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:18:17-69
-29-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:18:25-66
+29-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:18:17-69
+29-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:18:25-66
 30
 31                <category android:name="android.intent.category.LAUNCHER" />
-31-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:20:17-77
-31-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:20:27-74
+31-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:20:17-77
+31-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:20:27-74
 32            </intent-filter>
 33        </activity>
 34        <activity
-34-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:23:9-78
+34-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:23:9-78
 35            android:name="com.example.smellgood.Game"
-35-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:23:19-39
+35-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:23:19-39
 36            android:screenOrientation="portrait" />
-36-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:23:40-76
+36-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:23:40-76
 37        <activity
-37-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:24:9-84
+37-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:24:9-84
 38            android:name="com.example.smellgood.ScoreBoard"
-38-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:24:19-45
+38-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:24:19-45
 39            android:screenOrientation="portrait" />
-39-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:24:46-82
+39-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:24:46-82
 40        <activity
-40-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:25:9-81
+40-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:25:9-81
 41            android:name="com.example.smellgood.Profile"
-41-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:25:19-42
+41-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:25:19-42
 42            android:screenOrientation="portrait" />
-42-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:25:43-79
+42-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:25:43-79
 43        <activity
-43-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:26:9-90
+43-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:26:9-90
 44            android:name="com.example.smellgood.RegisterActivity"
-44-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:26:19-51
+44-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:26:19-51
 45            android:screenOrientation="portrait" />
-45-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:26:52-88
+45-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:26:52-88
 46        <activity
-46-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:27:9-87
+46-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:27:9-87
 47            android:name="com.example.smellgood.LoginActivity"
-47-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:27:19-48
+47-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:27:19-48
 48            android:screenOrientation="portrait" />
-48-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:27:49-85
+48-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:27:49-85
 49        <activity
-49-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:28:9-78
+49-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:28:9-78
 50            android:name="com.example.smellgood.Shop"
-50-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:28:19-39
+50-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:28:19-39
 51            android:screenOrientation="portrait" />
-51-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:28:40-76
+51-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:28:40-76
 52        <activity
-52-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:29:9-87
+52-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:29:9-87
 53            android:name="com.example.smellgood.ResetPassword"
-53-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:29:19-48
+53-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:29:19-48
 54            android:screenOrientation="portrait" />
-54-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:29:49-85
+54-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:29:49-85
 55        <activity
-55-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:30:9-93
+55-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:30:9-93
 56            android:name="com.example.smellgood.ResetPasswordLogged"
-56-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:30:19-54
+56-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:30:19-54
 57            android:screenOrientation="portrait" />
-57-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:30:55-91
+57-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:30:55-91
 58        <activity
-58-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:31:9-84
+58-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:31:9-84
 59            android:name="com.example.smellgood.NoInternet"
-59-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:31:19-45
+59-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:31:19-45
 60            android:screenOrientation="portrait" />
-60-->D:\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:31:46-82
+60-->C:\Users\mnemc\OneDrive\Dokumenty\GitHub\PMA\SmellGood\app\src\main\AndroidManifest.xml:31:46-82
 61        <activity
-61-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:27:9-44:20
+61-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:27:9-44:20
 62            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
-62-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:28:13-80
+62-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:28:13-80
 63            android:excludeFromRecents="true"
-63-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:29:13-46
+63-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:29:13-46
 64            android:exported="true"
-64-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:30:13-36
+64-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:30:13-36
 65            android:launchMode="singleTask"
-65-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:31:13-44
+65-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:31:13-44
 66            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-66-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:32:13-72
+66-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:32:13-72
 67            <intent-filter>
-67-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:33:13-43:29
+67-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:33:13-43:29
 68                <action android:name="android.intent.action.VIEW" />
-68-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:34:17-69
-68-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:34:25-66
+68-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:34:17-69
+68-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:34:25-66
 69
 70                <category android:name="android.intent.category.DEFAULT" />
-70-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:36:17-76
-70-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:36:27-73
+70-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:36:17-76
+70-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:36:27-73
 71                <category android:name="android.intent.category.BROWSABLE" />
-71-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:37:17-78
-71-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:37:27-75
+71-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:37:17-78
+71-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:37:27-75
 72
 73                <data
-73-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:39:17-42:51
+73-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:39:17-42:51
 74                    android:host="firebase.auth"
-74-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:40:21-49
+74-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:40:21-49
 75                    android:path="/"
-75-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:41:21-37
+75-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:41:21-37
 76                    android:scheme="genericidp" />
-76-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:42:21-48
+76-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:42:21-48
 77            </intent-filter>
 78        </activity>
 79        <activity
-79-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:45:9-62:20
+79-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:45:9-62:20
 80            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
-80-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:46:13-79
+80-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:46:13-79
 81            android:excludeFromRecents="true"
-81-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:47:13-46
+81-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:47:13-46
 82            android:exported="true"
-82-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:48:13-36
+82-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:48:13-36
 83            android:launchMode="singleTask"
-83-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:49:13-44
+83-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:49:13-44
 84            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-84-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:50:13-72
+84-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:50:13-72
 85            <intent-filter>
-85-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:51:13-61:29
+85-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:51:13-61:29
 86                <action android:name="android.intent.action.VIEW" />
-86-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:34:17-69
-86-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:34:25-66
+86-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:34:17-69
+86-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:34:25-66
 87
 88                <category android:name="android.intent.category.DEFAULT" />
-88-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:36:17-76
-88-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:36:27-73
+88-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:36:17-76
+88-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:36:27-73
 89                <category android:name="android.intent.category.BROWSABLE" />
-89-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:37:17-78
-89-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:37:27-75
+89-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:37:17-78
+89-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:37:27-75
 90
 91                <data
-91-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:39:17-42:51
+91-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:39:17-42:51
 92                    android:host="firebase.auth"
-92-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:40:21-49
+92-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:40:21-49
 93                    android:path="/"
-93-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:41:21-37
+93-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:41:21-37
 94                    android:scheme="recaptcha" />
-94-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:42:21-48
+94-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:42:21-48
 95            </intent-filter>
 96        </activity>
 97
 98        <service
-98-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:64:9-70:19
+98-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:64:9-70:19
 99            android:name="com.google.firebase.components.ComponentDiscoveryService"
-99-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:65:13-84
+99-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:65:13-84
 100            android:directBootAware="true"
-100-->[com.google.firebase:firebase-common:20.1.1] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\ec3d5d1fdc0ec38bd2906c73fbed579f\transformed\firebase-common-20.1.1\AndroidManifest.xml:35:13-43
+100-->[com.google.firebase:firebase-common:20.1.1] C:\Users\mnemc\.gradle\caches\transforms-3\ec3d5d1fdc0ec38bd2906c73fbed579f\transformed\firebase-common-20.1.1\AndroidManifest.xml:35:13-43
 101            android:exported="false" >
-101-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:66:13-37
+101-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:66:13-37
 102            <meta-data
-102-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:67:13-69:85
+102-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:67:13-69:85
 103                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
-103-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:68:17-109
+103-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:68:17-109
 104                android:value="com.google.firebase.components.ComponentRegistrar" />
-104-->[com.google.firebase:firebase-auth:21.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:69:17-82
+104-->[com.google.firebase:firebase-auth:21.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\6f141595851db8403bbe938209d5903d\transformed\firebase-auth-21.0.5\AndroidManifest.xml:69:17-82
 105            <meta-data
-105-->[com.google.firebase:firebase-database:20.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\f968e7fe978a8944d51e976ae60cf201\transformed\firebase-database-20.0.5\AndroidManifest.xml:32:13-34:85
+105-->[com.google.firebase:firebase-database:20.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\f968e7fe978a8944d51e976ae60cf201\transformed\firebase-database-20.0.5\AndroidManifest.xml:32:13-34:85
 106                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
-106-->[com.google.firebase:firebase-database:20.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\f968e7fe978a8944d51e976ae60cf201\transformed\firebase-database-20.0.5\AndroidManifest.xml:33:17-109
+106-->[com.google.firebase:firebase-database:20.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\f968e7fe978a8944d51e976ae60cf201\transformed\firebase-database-20.0.5\AndroidManifest.xml:33:17-109
 107                android:value="com.google.firebase.components.ComponentRegistrar" />
-107-->[com.google.firebase:firebase-database:20.0.5] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\f968e7fe978a8944d51e976ae60cf201\transformed\firebase-database-20.0.5\AndroidManifest.xml:34:17-82
+107-->[com.google.firebase:firebase-database:20.0.5] C:\Users\mnemc\.gradle\caches\transforms-3\f968e7fe978a8944d51e976ae60cf201\transformed\firebase-database-20.0.5\AndroidManifest.xml:34:17-82
 108        </service>
 109
 110        <provider
-110-->[com.google.firebase:firebase-common:20.1.1] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\ec3d5d1fdc0ec38bd2906c73fbed579f\transformed\firebase-common-20.1.1\AndroidManifest.xml:26:9-31:39
+110-->[com.google.firebase:firebase-common:20.1.1] C:\Users\mnemc\.gradle\caches\transforms-3\ec3d5d1fdc0ec38bd2906c73fbed579f\transformed\firebase-common-20.1.1\AndroidManifest.xml:26:9-31:39
 111            android:name="com.google.firebase.provider.FirebaseInitProvider"
-111-->[com.google.firebase:firebase-common:20.1.1] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\ec3d5d1fdc0ec38bd2906c73fbed579f\transformed\firebase-common-20.1.1\AndroidManifest.xml:27:13-77
+111-->[com.google.firebase:firebase-common:20.1.1] C:\Users\mnemc\.gradle\caches\transforms-3\ec3d5d1fdc0ec38bd2906c73fbed579f\transformed\firebase-common-20.1.1\AndroidManifest.xml:27:13-77
 112            android:authorities="com.example.smellgood.firebaseinitprovider"
-112-->[com.google.firebase:firebase-common:20.1.1] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\ec3d5d1fdc0ec38bd2906c73fbed579f\transformed\firebase-common-20.1.1\AndroidManifest.xml:28:13-72
+112-->[com.google.firebase:firebase-common:20.1.1] C:\Users\mnemc\.gradle\caches\transforms-3\ec3d5d1fdc0ec38bd2906c73fbed579f\transformed\firebase-common-20.1.1\AndroidManifest.xml:28:13-72
 113            android:directBootAware="true"
-113-->[com.google.firebase:firebase-common:20.1.1] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\ec3d5d1fdc0ec38bd2906c73fbed579f\transformed\firebase-common-20.1.1\AndroidManifest.xml:29:13-43
+113-->[com.google.firebase:firebase-common:20.1.1] C:\Users\mnemc\.gradle\caches\transforms-3\ec3d5d1fdc0ec38bd2906c73fbed579f\transformed\firebase-common-20.1.1\AndroidManifest.xml:29:13-43
 114            android:exported="false"
-114-->[com.google.firebase:firebase-common:20.1.1] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\ec3d5d1fdc0ec38bd2906c73fbed579f\transformed\firebase-common-20.1.1\AndroidManifest.xml:30:13-37
+114-->[com.google.firebase:firebase-common:20.1.1] C:\Users\mnemc\.gradle\caches\transforms-3\ec3d5d1fdc0ec38bd2906c73fbed579f\transformed\firebase-common-20.1.1\AndroidManifest.xml:30:13-37
 115            android:initOrder="100" />
-115-->[com.google.firebase:firebase-common:20.1.1] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\ec3d5d1fdc0ec38bd2906c73fbed579f\transformed\firebase-common-20.1.1\AndroidManifest.xml:31:13-36
+115-->[com.google.firebase:firebase-common:20.1.1] C:\Users\mnemc\.gradle\caches\transforms-3\ec3d5d1fdc0ec38bd2906c73fbed579f\transformed\firebase-common-20.1.1\AndroidManifest.xml:31:13-36
 116
 117        <activity
-117-->[com.google.android.gms:play-services-base:18.0.1] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\0e6f522ad209f5e182b9c0b3dea1b6cb\transformed\play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
+117-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\mnemc\.gradle\caches\transforms-3\0e6f522ad209f5e182b9c0b3dea1b6cb\transformed\play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
 118            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-118-->[com.google.android.gms:play-services-base:18.0.1] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\0e6f522ad209f5e182b9c0b3dea1b6cb\transformed\play-services-base-18.0.1\AndroidManifest.xml:20:19-85
+118-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\mnemc\.gradle\caches\transforms-3\0e6f522ad209f5e182b9c0b3dea1b6cb\transformed\play-services-base-18.0.1\AndroidManifest.xml:20:19-85
 119            android:exported="false"
-119-->[com.google.android.gms:play-services-base:18.0.1] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\0e6f522ad209f5e182b9c0b3dea1b6cb\transformed\play-services-base-18.0.1\AndroidManifest.xml:22:19-43
+119-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\mnemc\.gradle\caches\transforms-3\0e6f522ad209f5e182b9c0b3dea1b6cb\transformed\play-services-base-18.0.1\AndroidManifest.xml:22:19-43
 120            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-120-->[com.google.android.gms:play-services-base:18.0.1] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\0e6f522ad209f5e182b9c0b3dea1b6cb\transformed\play-services-base-18.0.1\AndroidManifest.xml:21:19-78
+120-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\mnemc\.gradle\caches\transforms-3\0e6f522ad209f5e182b9c0b3dea1b6cb\transformed\play-services-base-18.0.1\AndroidManifest.xml:21:19-78
 121
 122        <meta-data
-122-->[com.google.android.gms:play-services-basement:18.0.0] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\5d6e3e56e8652026d5bdc8686f18a0e6\transformed\play-services-basement-18.0.0\AndroidManifest.xml:21:9-23:69
+122-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\mnemc\.gradle\caches\transforms-3\5d6e3e56e8652026d5bdc8686f18a0e6\transformed\play-services-basement-18.0.0\AndroidManifest.xml:21:9-23:69
 123            android:name="com.google.android.gms.version"
-123-->[com.google.android.gms:play-services-basement:18.0.0] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\5d6e3e56e8652026d5bdc8686f18a0e6\transformed\play-services-basement-18.0.0\AndroidManifest.xml:22:13-58
+123-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\mnemc\.gradle\caches\transforms-3\5d6e3e56e8652026d5bdc8686f18a0e6\transformed\play-services-basement-18.0.0\AndroidManifest.xml:22:13-58
 124            android:value="@integer/google_play_services_version" />
-124-->[com.google.android.gms:play-services-basement:18.0.0] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\5d6e3e56e8652026d5bdc8686f18a0e6\transformed\play-services-basement-18.0.0\AndroidManifest.xml:23:13-66
+124-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\mnemc\.gradle\caches\transforms-3\5d6e3e56e8652026d5bdc8686f18a0e6\transformed\play-services-basement-18.0.0\AndroidManifest.xml:23:13-66
 125
 126        <provider
-126-->[androidx.emoji2:emoji2:1.0.0] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\9c10419946c063b9dccf6ca0f94f1c83\transformed\emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
+126-->[androidx.emoji2:emoji2:1.0.0] C:\Users\mnemc\.gradle\caches\transforms-3\9c10419946c063b9dccf6ca0f94f1c83\transformed\emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
 127            android:name="androidx.startup.InitializationProvider"
-127-->[androidx.emoji2:emoji2:1.0.0] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\9c10419946c063b9dccf6ca0f94f1c83\transformed\emoji2-1.0.0\AndroidManifest.xml:27:13-67
+127-->[androidx.emoji2:emoji2:1.0.0] C:\Users\mnemc\.gradle\caches\transforms-3\9c10419946c063b9dccf6ca0f94f1c83\transformed\emoji2-1.0.0\AndroidManifest.xml:27:13-67
 128            android:authorities="com.example.smellgood.androidx-startup"
-128-->[androidx.emoji2:emoji2:1.0.0] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\9c10419946c063b9dccf6ca0f94f1c83\transformed\emoji2-1.0.0\AndroidManifest.xml:28:13-68
+128-->[androidx.emoji2:emoji2:1.0.0] C:\Users\mnemc\.gradle\caches\transforms-3\9c10419946c063b9dccf6ca0f94f1c83\transformed\emoji2-1.0.0\AndroidManifest.xml:28:13-68
 129            android:exported="false" >
-129-->[androidx.emoji2:emoji2:1.0.0] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\9c10419946c063b9dccf6ca0f94f1c83\transformed\emoji2-1.0.0\AndroidManifest.xml:29:13-37
+129-->[androidx.emoji2:emoji2:1.0.0] C:\Users\mnemc\.gradle\caches\transforms-3\9c10419946c063b9dccf6ca0f94f1c83\transformed\emoji2-1.0.0\AndroidManifest.xml:29:13-37
 130            <meta-data
-130-->[androidx.emoji2:emoji2:1.0.0] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\9c10419946c063b9dccf6ca0f94f1c83\transformed\emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
+130-->[androidx.emoji2:emoji2:1.0.0] C:\Users\mnemc\.gradle\caches\transforms-3\9c10419946c063b9dccf6ca0f94f1c83\transformed\emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
 131                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-131-->[androidx.emoji2:emoji2:1.0.0] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\9c10419946c063b9dccf6ca0f94f1c83\transformed\emoji2-1.0.0\AndroidManifest.xml:32:17-75
+131-->[androidx.emoji2:emoji2:1.0.0] C:\Users\mnemc\.gradle\caches\transforms-3\9c10419946c063b9dccf6ca0f94f1c83\transformed\emoji2-1.0.0\AndroidManifest.xml:32:17-75
 132                android:value="androidx.startup" />
-132-->[androidx.emoji2:emoji2:1.0.0] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\9c10419946c063b9dccf6ca0f94f1c83\transformed\emoji2-1.0.0\AndroidManifest.xml:33:17-49
+132-->[androidx.emoji2:emoji2:1.0.0] C:\Users\mnemc\.gradle\caches\transforms-3\9c10419946c063b9dccf6ca0f94f1c83\transformed\emoji2-1.0.0\AndroidManifest.xml:33:17-49
 133            <meta-data
-133-->[androidx.lifecycle:lifecycle-process:2.4.0] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\4d3f5543a59ac0e586b3333b2fead6aa\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
+133-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\mnemc\.gradle\caches\transforms-3\4d3f5543a59ac0e586b3333b2fead6aa\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
 134                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-134-->[androidx.lifecycle:lifecycle-process:2.4.0] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\4d3f5543a59ac0e586b3333b2fead6aa\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
+134-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\mnemc\.gradle\caches\transforms-3\4d3f5543a59ac0e586b3333b2fead6aa\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
 135                android:value="androidx.startup" />
-135-->[androidx.lifecycle:lifecycle-process:2.4.0] D:\android\Matematika\gradle\wrapper\dists\gradle-7.0.2-bin\857tjihv64xamwrf0h14cai3r\gradle-7.0.2\caches\transforms-3\4d3f5543a59ac0e586b3333b2fead6aa\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
+135-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\mnemc\.gradle\caches\transforms-3\4d3f5543a59ac0e586b3333b2fead6aa\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
 136        </provider>
 137    </application>
 138
