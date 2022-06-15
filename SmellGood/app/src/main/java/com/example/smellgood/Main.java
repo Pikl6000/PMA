@@ -20,12 +20,17 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Random;
 import java.util.Timer;
 
 public class Main extends AppCompatActivity {
     FirebaseAuth mAuth;
+    private FirebaseUser user;
     public static Fdata data;
 
     private Handler handler=new Handler();
@@ -52,6 +57,10 @@ public class Main extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         data = new Fdata();
+        user = mAuth.getCurrentUser();
+        if (user != null){
+            updateRoboId();
+        }
 
 
         mp = MediaPlayer.create(this, R.raw.main);
@@ -60,6 +69,23 @@ public class Main extends AppCompatActivity {
 
         profile = findViewById(R.id.profileButton);
     }
+    public void updateRoboId(){
+        Query phoneQuery = data.getDatabaseReference().orderByChild("name").equalTo(user.getEmail());
+        phoneQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot singleSnapshot : dataSnapshot.getChildren()){
+                    Player z = singleSnapshot.getValue(Player.class);
+                    roboid = Integer.parseInt(z.getRobo());
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("Not GUT");
+            }
+        });
+    }
+
     public void checkInternet(){
         if (!isNetworkAvailable()){
             startActivity(new Intent(Main.this, NoInternet.class));

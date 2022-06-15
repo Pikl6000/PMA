@@ -1,17 +1,9 @@
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-#Mon Jun 13 13:00:44 CEST 2022
-base.2=C\:\\Users\\mnemc\\OneDrive\\Dokumenty\\GitHub\\PMA\\SmellGood\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\15\\classes.dex
-=======
->>>>>>> Stashed changes
-#Mon Jun 13 20:20:16 CEST 2022
+#Wed Jun 15 16:55:12 CEST 2022
 base.2=D\:\\GitHub\\PMA\\SmellGood\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\15\\classes.dex
->>>>>>> 87ec0b34808ecfbb3d0af9843f28a64f0eb280ec
 path.2=15/classes.dex
-base.1=C\:\\Users\\mnemc\\OneDrive\\Dokumenty\\GitHub\\PMA\\SmellGood\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.1=D\:\\GitHub\\PMA\\SmellGood\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
 path.1=0/classes.dex
-base.0=C\:\\Users\\mnemc\\OneDrive\\Dokumenty\\GitHub\\PMA\\SmellGood\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.0=D\:\\GitHub\\PMA\\SmellGood\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex
