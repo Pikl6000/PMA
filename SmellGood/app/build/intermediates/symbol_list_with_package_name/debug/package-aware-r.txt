@@ -2474,6 +2474,8 @@ drawable arrow
 drawable avd_hide_password
 drawable avd_show_password
 drawable background
+drawable backgroundstorm
+drawable backgroundstorm2
 drawable border
 drawable bronzemedal
 drawable btn_checkbox_checked_mtrl
@@ -2484,6 +2486,7 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable clouds
 drawable coin
 drawable coing
 drawable common_full_open_on_phone
@@ -2510,10 +2513,12 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable gamebackground
 drawable goldmedal
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable grass
+drawable grassn
 drawable ic_clock_black_24dp
 drawable ic_keyboard_black_24dp
 drawable ic_launcher_background
@@ -2577,6 +2582,8 @@ drawable profile
 drawable robo
 drawable robodeadleft
 drawable robodeadleftblue
+drawable robodeadleftblueno
+drawable robodeadleftno
 drawable robodeadleftpink
 drawable robodeadlefttwhite
 drawable robodeadright
@@ -2715,7 +2722,6 @@ id browser_actions_menu_item_icon
 id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
-id button
 id buttonPanel
 id cache_measures
 id callMeasure
@@ -2868,7 +2874,6 @@ id imageView3
 id imageView4
 id imageView5
 id imageView6
-id imageView7
 id imageView8
 id imageView9
 id immediateStop
@@ -3126,7 +3131,6 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
-id textView
 id textView2
 id textView3
 id textView4
@@ -3286,7 +3290,6 @@ layout abc_tooltip
 layout activity_menu
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
-layout change_robo
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog

@@ -38,14 +38,15 @@
             android:textColor="#FAFAFA"
             android:textSize="23sp" />
 
+
+
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/gamePanel"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#C2F6F6"
-        android:backgroundTint="#C2F6F6"
+        android:background="@drawable/gamebackground"
         android:gravity="bottom"
         android:onClick="klik"
         android:orientation="vertical"
