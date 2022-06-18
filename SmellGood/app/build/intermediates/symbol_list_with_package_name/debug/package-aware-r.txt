@@ -2517,6 +2517,7 @@ drawable gamebackground
 drawable goldmedal
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
+drawable gradientbackground
 drawable grass
 drawable grassn
 drawable ic_clock_black_24dp
@@ -2869,6 +2870,7 @@ id ignore
 id ignoreRequest
 id image
 id imageView
+id imageView10
 id imageView2
 id imageView3
 id imageView4

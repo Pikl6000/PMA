@@ -330,6 +330,7 @@ public class Game extends AppCompatActivity {
         return false;
     }
     public void collidedMud(){
+        checkInternet();
         stop();
         runOnUiThread(new Runnable() {
             @Override
@@ -436,6 +437,7 @@ public class Game extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        checkInternet();
         FirebaseUser user = mAuth.getCurrentUser();
         if (user == null){
             startActivity(new Intent(Game.this, LoginActivity.class));
@@ -445,6 +447,7 @@ public class Game extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        checkInternet();
     }
 
 

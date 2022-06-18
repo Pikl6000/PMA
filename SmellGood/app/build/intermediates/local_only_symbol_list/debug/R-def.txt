@@ -19,6 +19,7 @@ drawable coin
 drawable coing
 drawable gamebackground
 drawable goldmedal
+drawable gradientbackground
 drawable grass
 drawable grassn
 drawable ic_launcher_background
@@ -84,6 +85,7 @@ id grid_item_image
 id grid_item_label
 id grid_score_label
 id imageView
+id imageView10
 id imageView2
 id imageView3
 id imageView4
