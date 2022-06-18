@@ -426,13 +426,19 @@ public class Game extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        stop();
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null){
+            stop();
+        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        stop();
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null){
+            stop();
+        }
     }
     @Override
     protected void onStart() {
