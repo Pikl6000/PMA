@@ -399,11 +399,6 @@ public class Game extends AppCompatActivity {
         totemCount++;
     }
 
-    public void onMudCollision(){
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.splash);
-        mediaPlayer.start();
-    }
-
     protected void stop() {
         runOnUiThread(new Runnable() {
             @Override
