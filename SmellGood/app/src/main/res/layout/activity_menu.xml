@@ -13,7 +13,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="260dp"
         android:contentDescription="TODO"
         android:scaleType="centerInside"
         app:srcCompat="@drawable/title"
@@ -21,18 +21,23 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="318dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center|top"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:gravity="center|top"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingStart="50dp"
+        android:paddingTop="15dp"
+        android:paddingEnd="50dp"
+        android:paddingBottom="15dp">
 
         <Button
             android:id="@+id/playButton"
-            android:layout_width="260dp"
+            android:layout_width="match_parent"
             android:layout_height="78dp"
             android:layout_marginBottom="30dp"
+            android:background="@drawable/person"
             android:backgroundTint="#a17aef"
             android:onClick="onStartButton"
             android:text="PLAY"
@@ -42,9 +47,10 @@
 
         <Button
             android:id="@+id/scoreButton"
-            android:layout_width="260dp"
+            android:layout_width="match_parent"
             android:layout_height="78dp"
             android:layout_marginBottom="30dp"
+            android:background="@drawable/person"
             android:backgroundTint="#a17aef"
             android:onClick="onScoreButton"
             android:text="Shelf OFf Fame"
@@ -53,10 +59,25 @@
             android:textStyle="bold" />
 
         <Button
+            android:id="@+id/profileButton"
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/person"
+            android:backgroundTint="#a17aef"
+            android:onClick="openProfile"
+            android:text="PROFILE"
+            android:textColor="#FFFFFF"
+            android:textSize="21sp"
+            android:textStyle="bold"
+            tools:ignore="TextContrastCheck" />
+
+        <Button
             android:id="@+id/exitButton"
-            android:layout_width="260dp"
+            android:layout_width="match_parent"
             android:layout_height="78dp"
             android:layout_centerVertical="true"
+            android:background="@drawable/person"
             android:backgroundTint="#a17aef"
             android:onClick="onExitButton"
             android:text="@string/exit"
@@ -66,14 +87,4 @@
 
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/profileButton"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginEnd="10dp"
-        android:backgroundTint="#00FFFFFF"
-        android:contentDescription="@string/profile"
-        android:onClick="openProfile"
-        android:scaleType="centerInside"
-        app:srcCompat="@drawable/profile" />
 </LinearLayout>

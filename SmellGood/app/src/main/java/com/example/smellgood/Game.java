@@ -3,7 +3,9 @@ import android.content.AsyncQueryHandler;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
 import android.graphics.Rect;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -19,33 +21,36 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.smellgood.provider.NoteContentProvider;
-import com.example.smellgood.provider.Provider;
-
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static com.example.smellgood.Defaults.NO_COOKIE;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class Game extends AppCompatActivity {
     FirebaseAuth mAuth;
+    private FirebaseUser user;
     private Handler handler;
     private Timer timer;
     private ImageView robo, mud, powder, bottom, totem;
-    private Button playButton, saveButton;
+    private Button playButton;
     private TextView scoreText, totemText;
     private LinearLayout gamePanel;
     private int period, totemCount, scoreCount, media_length;
     private float roboX, mudY, powderY,totemY, width, height;
-    private boolean right = false, isMoving = false, firstGen = true;
+    private boolean right = false, isMoving = false, firstGen = true, mudHit = false, powderHit = false, totemHit = false;
     private boolean firstChange = true, roboRight;
     private int[] listOfImages;
     private long startTime;
     private static final int INSERT_NOTE_TOKEN = 0;
+    private Fdata data;
 
 
     @Override
@@ -54,10 +59,11 @@ public class Game extends AppCompatActivity {
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         setContentView(R.layout.game_layout);
         checkInternet();
+        data = Main.data;
 
         mAuth = FirebaseAuth.getInstance();
 
-        FirebaseUser user = mAuth.getCurrentUser();
+        user = mAuth.getCurrentUser();
         if (user == null){
             startActivity(new Intent(Game.this, LoginActivity.class));
         }
@@ -75,7 +81,6 @@ public class Game extends AppCompatActivity {
         mud = findViewById(R.id.mud);
         powder = findViewById(R.id.powder);
         bottom = findViewById(R.id.bottom);
-        saveButton = findViewById(R.id.saveButton);
         totem = findViewById(R.id.totemObject);
         right = true;
         handler = new Handler(Looper.getMainLooper());
@@ -116,6 +121,7 @@ public class Game extends AppCompatActivity {
     public void startGame(View view) {
         width = gamePanel.getWidth();
         height = gamePanel.getHeight() - bottom.getHeight() - mud.getHeight();
+        mudHit = false;
         if (totemCount > 0){
             totemCount--;
         } else {
@@ -124,7 +130,6 @@ public class Game extends AppCompatActivity {
         }
         scoreText.setText("Score : " + scoreCount);
         totemText.setText("Totem : " + totemCount);
-        saveButton.setVisibility(View.GONE);
         playButton.setVisibility(View.GONE);
         robo.setImageResource(listOfImages[0]);
         robo.setLayoutParams(new LinearLayout.LayoutParams(dpToPx(85), dpToPx(140)));
@@ -178,7 +183,7 @@ public class Game extends AppCompatActivity {
                             robo.setImageResource(listOfImages[0]);
                             roboRight = true;
                         }
-                        if (roboX + robo.getWidth() > gamePanel.getWidth()) {
+                        if (roboX + robo.getWidth() >= gamePanel.getWidth()) {
                             roboX = gamePanel.getWidth() - robo.getWidth();
                             robo.setX(roboX);
                             firstChange = true;
@@ -325,6 +330,7 @@ public class Game extends AppCompatActivity {
         return false;
     }
     public void collidedMud(){
+        checkInternet();
         stop();
         runOnUiThread(new Runnable() {
             @Override
@@ -384,19 +390,19 @@ public class Game extends AppCompatActivity {
         totemCount++;
     }
 
+    public void onMudCollision(){
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.splash);
+        mediaPlayer.start();
+    }
+
     protected void stop() {
-//        mp.reset();
-//        mp = MediaPlayer.create(this, R.raw.dead);
-//        mp.setLooping(true);
-//        mp.start();
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                saveButton.setVisibility(View.VISIBLE);
                 playButton.setVisibility(View.VISIBLE);
                 if (totemCount == 0){
                     playButton.setText("RESTART");
-                    saveButton.setVisibility(View.VISIBLE);
+                    zapis(Integer.parseInt(String.valueOf(scoreCount / 15)), scoreCount);
                     playButton.setVisibility(View.VISIBLE);
                     firstGen = true;
                     if (timer != null) {
@@ -406,7 +412,6 @@ public class Game extends AppCompatActivity {
                     }
                 } else {
                     playButton.setText("Continue ( " + totemCount + " )");
-                    saveButton.setVisibility(View.VISIBLE);
                     playButton.setVisibility(View.VISIBLE);
                     if (timer != null) {
                         timer.cancel();
@@ -421,21 +426,24 @@ public class Game extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        stop();
-//        mp.reset();
-//        mpEffects.reset();
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null){
+            stop();
+        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        stop();
-//        mp.reset();
-//        mpEffects.reset();
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null){
+            stop();
+        }
     }
     @Override
     protected void onStart() {
         super.onStart();
+        checkInternet();
         FirebaseUser user = mAuth.getCurrentUser();
         if (user == null){
             startActivity(new Intent(Game.this, LoginActivity.class));
@@ -445,34 +453,9 @@ public class Game extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        checkInternet();
     }
 
-    public void createReport(View view) {
-        FirebaseUser user = mAuth.getCurrentUser();
-        if (user == null){
-            startActivity(new Intent(Game.this, LoginActivity.class));
-        }
-        else{
-            insertIntoContentProvider(user.getEmail().toString(), String.valueOf(scoreCount));
-        }
-    }
-
-
-    private void insertIntoContentProvider(String nickname, String score) {
-        Uri uri = NoteContentProvider.CONTENT_URI;
-        ContentValues values = new ContentValues();
-        values.put(Provider.Note.NICKNAME, nickname);
-        values.put(Provider.Note.SCORE, score);
-        AsyncQueryHandler insertHandler = new
-                AsyncQueryHandler(getContentResolver()) {
-                    @Override
-                    protected void onInsertComplete(int token, Object cookie, Uri uri) {
-                        Toast.makeText(Game.this, "Saved",
-                                Toast.LENGTH_SHORT).show();
-                    }
-                };
-        insertHandler.startInsert(INSERT_NOTE_TOKEN, NO_COOKIE, uri, values);
-    }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -500,5 +483,30 @@ public class Game extends AppCompatActivity {
     public int dpToPx(int dp) {
         float density = this.getResources().getDisplayMetrics().density;
         return Math.round((float) dp * density);
+    }
+
+    public void zapis(int ball, int scoreCount){
+        Query phoneQuery = data.getDatabaseReference().orderByChild("name").equalTo(user.getEmail());
+        phoneQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot singleSnapshot : dataSnapshot.getChildren()){
+                    Player z = singleSnapshot.getValue(Player.class);
+                    HashMap<String, Object> hashMap = new HashMap<>();
+                    hashMap.put("name", z.getName());
+                    if (Integer.parseInt(z.getScore()) < scoreCount){
+                        Toast.makeText(Game.this, "New Highscore", Toast.LENGTH_SHORT).show();
+                        hashMap.put("score" , String.valueOf(scoreCount));
+                    }
+                    int ballance = Integer.parseInt(z.getBallance()) + ball;
+                    hashMap.put("ballance" , String.valueOf(ballance));
+                    data.update(z.getNickname(), hashMap);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("Not GUT");
+            }
+        });
     }
 }

@@ -10,10 +10,18 @@ color teal_700
 color white
 drawable arrow
 drawable background
+drawable backgroundstorm
+drawable backgroundstorm2
 drawable border
+drawable bronzemedal
+drawable clouds
 drawable coin
 drawable coing
+drawable gamebackground
+drawable goldmedal
+drawable gradientbackground
 drawable grass
+drawable grassn
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable icon
@@ -27,6 +35,8 @@ drawable profile
 drawable robo
 drawable robodeadleft
 drawable robodeadleftblue
+drawable robodeadleftblueno
+drawable robodeadleftno
 drawable robodeadleftpink
 drawable robodeadlefttwhite
 drawable robodeadright
@@ -47,6 +57,7 @@ drawable scoreboard
 drawable selectedrobo
 drawable shop
 drawable shopdocas
+drawable silvermedal
 drawable title
 drawable vanish
 id backR1
@@ -56,7 +67,6 @@ id backR4
 id ball
 id ballanc
 id bottom
-id button
 id change
 id changepass
 id coin1
@@ -71,15 +81,19 @@ id goBack2
 id goBack3
 id goBack4
 id goBack5
+id grid_item_image
+id grid_item_label
+id grid_score_label
 id imageView
+id imageView10
 id imageView2
 id imageView3
 id imageView4
 id imageView5
 id imageView6
-id imageView7
 id imageView8
 id imageView9
+id label
 id login
 id logout
 id mail
@@ -108,7 +122,6 @@ id resetPass
 id retryconn
 id robko
 id robo
-id saveButton
 id score
 id scoreButton
 id scoreProfile
@@ -118,7 +131,6 @@ id shop3
 id shop4
 id shopImage
 id startButton
-id textView
 id textView2
 id textView3
 id textView4
@@ -135,7 +147,6 @@ id un2
 id un3
 id un4
 layout activity_menu
-layout change_robo
 layout game_layout
 layout login
 layout no_internet
@@ -145,6 +156,7 @@ layout register
 layout reset_pass
 layout reset_pass_log
 layout scoreboard_layout
+layout scoreboardperson
 layout shop
 menu menu_main
 mipmap ic_launcher

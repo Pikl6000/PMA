@@ -1,122 +1,149 @@
 package com.example.smellgood;
 
-import static com.example.smellgood.Defaults.NO_CURSOR;
-import static com.example.smellgood.Defaults.DISMISS_ACTION;
-import static com.example.smellgood.Defaults.NO_COOKIE;
-import static com.example.smellgood.Defaults.NO_CURSOR;
-import static com.example.smellgood.Defaults.NO_FLAGS;
-import static com.example.smellgood.Defaults.NO_SELECTION;
-import static com.example.smellgood.Defaults.NO_SELECTION_ARGS;
 
 import android.app.AlertDialog;
 import android.app.LoaderManager;
+import android.content.Context;
 import android.content.CursorLoader;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ListAdapter;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.smellgood.provider.NoteContentProvider;
-import com.example.smellgood.provider.Provider;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ScoreBoard extends AppCompatActivity implements
-        LoaderManager.LoaderCallbacks<Cursor>, AdapterView.OnItemClickListener{
+public class ScoreBoard extends AppCompatActivity {
     private static final int NOTES_LOADER_ID = 0;
     private static final int INSERT_NOTE_TOKEN = 0;
     private static final int DELETE_NOTE_TOKEN = 0;
-    private GridView notesGridView;
     private SimpleCursorAdapter adapter;
     Fdata data;
+    private FirebaseAuth mAuth;
+    GridView gridView;
+    static String[][] player;
+    static int counter = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        data = Main.data;
         super.onCreate(savedInstanceState);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         setContentView(R.layout.scoreboard_layout);
-        getLoaderManager().initLoader(NOTES_LOADER_ID, Bundle.EMPTY, this);
-        notesGridView = (GridView) findViewById(R.id.notesGridView);
+
+        checkInternet();
+        mAuth = FirebaseAuth.getInstance();
+        data = Main.data;
         initializeAdapter();
-        notesGridView.setOnItemClickListener(this);
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, final long id) {
-        Cursor selectedNoteCursor = (Cursor) parent.getItemAtPosition(position);
-        int dN = selectedNoteCursor.getColumnIndex(Provider.Note.NICKNAME),
-                dL = selectedNoteCursor.getColumnIndex(Provider.Note.SCORE);
-        String noteN = selectedNoteCursor.getString(dN),noteL = selectedNoteCursor.getString(dL);
-        new AlertDialog.Builder(this)
-                .setTitle("Hráč a skóre")
-                .setMessage("Hráč : "+noteN+"\nSkóre : "+noteL)
-                .setNegativeButton("Zavrieť", DISMISS_ACTION)
-                .show();
+    public void checkInternet(){
+        if (!isNetworkAvailable()){
+            startActivity(new Intent(ScoreBoard.this, NoInternet.class));
+        }
+    }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
     private void initializeAdapter() {
-        List<String> names = new LinkedList<String>();
-
-        Query mquery = data.getDatabaseReference().child("users").orderByChild("score").limitToLast(10);
-        mquery.addListenerForSingleValueEvent(new ValueEventListener() {
+        Query top10Query = data.getDatabaseReference().orderByChild("score").limitToLast(10);
+        top10Query.addValueEventListener(new ValueEventListener() {
+            ArrayList<String> a = new ArrayList<>();
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot singleSnapshot : dataSnapshot.getChildren()){
-                    Player z = singleSnapshot.getValue(Player.class);
-                    String name = z.getNickname()+":\t"+z.getScore();
-                    System.out.println(name);
-                    names.add(0, name);
-                    a(names);
+                counter = 0;
+                for (DataSnapshot userSnapshot: dataSnapshot.getChildren()) {
+                    Player z = userSnapshot.getValue(Player.class);
+                    String key = z.getNickname();
+                    String scor = z.getScore();
+                    System.out.println(key);
+                    System.out.println(scor);
+                    a.add(key);
+                    a.add(scor);
+                    counter++;
                 }
+                System.out.println("a = "+a.size());
+                System.out.println(counter);
+                player = new String[counter][2];
+                System.out.println("Array size : "+player.length);
+                Collections.reverse(a);
+                System.out.println("R : "+a.size()/2);
+                int c = 0;
+                for (int i = 0; i < counter; i++) {
+                    player[i][0] = a.get(c+1);
+                    player[i][1] = a.get(c);
+                    System.out.println("P : "+ player[i][0]+" "+  player[i][1]);
+                    c = c+2;
+                }
+                Arrays.sort(player, (v1, v2) -> Integer.compare(Integer.parseInt(v2[1]), Integer.parseInt(v1[1])));
+                for (int i = 0; i < player.length; i++) {
+                    System.out.println("Pushing P : "+ player[i][0]+" "+  player[i][1]);
+                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        gridView = (GridView) findViewById(R.id.notesGridView);
+                        gridView.setAdapter(null);
+                        gridView.setAdapter(new CustomAdapter(ScoreBoard.this, player));
+//                        gridView.setOnTouchListener(new View.OnTouchListener() {
+//                            @Override
+//                            public boolean onTouch(View v, MotionEvent event) {
+//                                return event.getAction() == MotionEvent.ACTION_MOVE;
+//                            }
+//                        });
+                    }
+                });
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                System.out.println("Not GUT");
+                throw databaseError.toException();
             }
         });
-    }
 
-    private void a(List<String> names){
-        String[] from = names.toArray(new String[names.size()]);
-        int[] to = { R.id.notesGridViewItem };
-        this.adapter = new SimpleCursorAdapter(this, R.layout.note, NO_CURSOR, from, to, NO_FLAGS);
-        notesGridView.setAdapter(adapter);
     }
 
     @Override
-    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-        CursorLoader loader = new CursorLoader(this);
-        loader.setUri(NoteContentProvider.CONTENT_URI);
-        return loader;
+    protected void onStart() {
+        super.onStart();
+        checkInternet();
     }
-
     @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
-        this.adapter.swapCursor(cursor);
+    protected void onResume() {
+        super.onResume();
+        checkInternet();
     }
-
-    @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
-        this.adapter.swapCursor(NO_CURSOR);
-    }
-
-
-
-
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {

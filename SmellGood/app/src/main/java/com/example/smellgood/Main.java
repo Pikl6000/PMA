@@ -20,19 +20,24 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Random;
 import java.util.Timer;
 
 public class Main extends AppCompatActivity {
     FirebaseAuth mAuth;
+    private FirebaseUser user;
     public static Fdata data;
 
     private Handler handler=new Handler();
     private Timer timer;
     private SharedPreferences settings;
     private ImageView robo, roboDeadRight, roboStand, roboToRight, mud, powder;
-    private Button play;
+    private Button play, profile;
     private TextView score, totem;
     private RelativeLayout displej;
     private int speedMud, speedRobo, period, round, body, tBody;
@@ -40,7 +45,6 @@ public class Main extends AppCompatActivity {
     private boolean up=false, boolPowder=false, prvyBod=true;
     private Random rd=new Random();
     private MediaPlayer mp;
-    private ImageButton profile;
 
     public static int roboid = 1;
 
@@ -53,6 +57,10 @@ public class Main extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         data = new Fdata();
+        user = mAuth.getCurrentUser();
+        if (user != null){
+            updateRoboId();
+        }
 
 
         mp = MediaPlayer.create(this, R.raw.main);
@@ -61,6 +69,23 @@ public class Main extends AppCompatActivity {
 
         profile = findViewById(R.id.profileButton);
     }
+    public void updateRoboId(){
+        Query phoneQuery = data.getDatabaseReference().orderByChild("name").equalTo(user.getEmail());
+        phoneQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot singleSnapshot : dataSnapshot.getChildren()){
+                    Player z = singleSnapshot.getValue(Player.class);
+                    roboid = Integer.parseInt(z.getRobo());
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("Not GUT");
+            }
+        });
+    }
+
     public void checkInternet(){
         if (!isNetworkAvailable()){
             startActivity(new Intent(Main.this, NoInternet.class));
@@ -85,7 +110,7 @@ public class Main extends AppCompatActivity {
     public void onExitButton(View view){
         mp.reset();
         Intent homeIntent = new Intent(Intent.ACTION_MAIN);
-        homeIntent.addCategory( Intent.CATEGORY_HOME );
+        homeIntent.addCategory( Intent.CATEGORY_HOME);
         homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(homeIntent);
     }
@@ -103,7 +128,6 @@ public class Main extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         mp.reset();
-        checkInternet();
     }
 
     @Override
@@ -111,6 +135,11 @@ public class Main extends AppCompatActivity {
         super.onStart();
         mp.setLooping(true);
         mp.start();
+        checkInternet();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
         checkInternet();
     }
 

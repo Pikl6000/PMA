@@ -38,90 +38,92 @@
             android:textColor="#FAFAFA"
             android:textSize="23sp" />
 
+
+
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/gamePanel"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#C2F6F6"
-        android:backgroundTint="#C2F6F6"
-        android:gravity="bottom"
+        android:background="@drawable/gradientbackground"
+        android:gravity="top"
         android:onClick="klik"
-        android:orientation="vertical"
-        android:visibility="visible">
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/startButton"
+        <ImageView
+            android:id="@+id/imageView10"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginBottom="100dp"
-            android:background="@drawable/person"
-            android:backgroundTint="#a17aef"
-            android:onClick="startGame"
-            android:padding="25dp"
-            android:text="START"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="#FFFFFF"
-            android:textSize="25sp"
-            android:textStyle="bold" />
+            android:layout_height="135dp"
+            android:layout_marginBottom="-35dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/clouds" />
 
-        <Button
-            android:id="@+id/saveButton"
+        <LinearLayout
+            android:id="@+id/gamePanel"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="75dp"
-            android:layout_marginTop="-50dp"
-            android:layout_marginEnd="75dp"
-            android:layout_marginBottom="80dp"
-            android:backgroundTint="#a17aef"
-            android:onClick="createReport"
-            android:text="Save"
-            android:textColor="#FFFFFF"
-            android:visibility="gone" />
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:orientation="vertical"
+            android:visibility="visible">
 
-        <ImageView
-            android:id="@+id/powder"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:visibility="gone"
-            app:srcCompat="@drawable/powder" />
+            <Button
+                android:id="@+id/startButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginBottom="130dp"
+                android:background="@drawable/person"
+                android:backgroundTint="#a17aef"
+                android:onClick="startGame"
+                android:padding="25dp"
+                android:text="START"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#FFFFFF"
+                android:textSize="25sp"
+                android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/mud"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:scaleType="fitXY"
-            android:visibility="gone"
-            app:srcCompat="@drawable/mud" />
+            <ImageView
+                android:id="@+id/powder"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:visibility="gone"
+                app:srcCompat="@drawable/powder" />
 
-        <ImageView
-            android:id="@+id/totemObject"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:visibility="gone"
-            app:srcCompat="@drawable/vanish" />
+            <ImageView
+                android:id="@+id/mud"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleType="fitXY"
+                android:visibility="gone"
+                app:srcCompat="@drawable/mud" />
 
-        <ImageView
-            android:id="@+id/robo"
-            android:layout_width="85dp"
-            android:layout_height="140dp"
-            android:contentDescription="Robo"
-            android:maxHeight="150dp"
-            android:minHeight="100dp"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/robostand" />
+            <ImageView
+                android:id="@+id/totemObject"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:visibility="gone"
+                app:srcCompat="@drawable/vanish" />
 
-        <ImageView
-            android:id="@+id/bottom"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:contentDescription="grass"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/grass"
-            tools:ignore="ImageContrastCheck" />
+            <ImageView
+                android:id="@+id/robo"
+                android:layout_width="85dp"
+                android:layout_height="140dp"
+                android:contentDescription="Robo"
+                android:maxHeight="150dp"
+                android:minHeight="100dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/robostand" />
+
+            <ImageView
+                android:id="@+id/bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:contentDescription="grass"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/grass"
+                tools:ignore="ImageContrastCheck" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

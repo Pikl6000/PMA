@@ -24,16 +24,6 @@ public class Fdata {
         return databaseReference.child(key).updateChildren(hashMap);
     }
 
-    public Task<Void> remove(String key)
-    {
-        return databaseReference.child(key).removeValue();
-    }
-
-    public Query get()
-    {
-        return databaseReference;
-    }
-
     public DatabaseReference getDatabaseReference() {
         return databaseReference;
     }

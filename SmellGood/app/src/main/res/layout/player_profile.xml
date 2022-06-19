@@ -4,11 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#449BDC"
-    android:gravity="bottom|center_horizontal"
-    android:orientation="vertical">
+    android:gravity="center|center_horizontal"
+    android:orientation="vertical"
+    android:paddingStart="15dp"
+    android:paddingEnd="15dp">
 
     <LinearLayout
-        android:layout_width="380dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/border"
         android:gravity="center_horizontal|top"
@@ -19,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:scaleType="centerInside"
+            android:scaleType="fitCenter"
             app:srcCompat="@drawable/prof" />
 
         <LinearLayout
@@ -196,7 +198,7 @@
         android:id="@+id/goBack3"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="30dp"
         android:layout_marginBottom="10dp"
         android:gravity="center"
         android:text="Go to Main menu"

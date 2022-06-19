@@ -5,29 +5,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#449BDC"
-    android:gravity="bottom|center"
-    android:orientation="vertical">
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingStart="15dp"
+    android:paddingEnd="15dp">
 
     <LinearLayout
-        android:layout_width="380dp"
-        android:layout_height="510dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
 
         android:background="@drawable/border"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingStart="35dp"
+        android:paddingTop="15dp"
+        android:paddingEnd="35dp"
+        android:paddingBottom="15dp">
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:scaleType="center"
+            android:scaleType="fitCenter"
             app:srcCompat="@drawable/login" />
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
@@ -48,7 +54,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
@@ -69,7 +75,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
@@ -91,7 +97,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
@@ -103,7 +109,7 @@
             <EditText
                 android:id="@+id/password1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginTop="-7dp"
                 android:background="#E4E4E4"
                 android:hint="Repeat password"
@@ -142,7 +148,7 @@
         android:id="@+id/goBack5"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:layout_marginTop="170dp"
+        android:layout_marginTop="30dp"
         android:layout_marginBottom="10dp"
         android:gravity="center"
         android:text="Go to Main menu"

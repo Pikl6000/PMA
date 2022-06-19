@@ -2474,7 +2474,10 @@ drawable arrow
 drawable avd_hide_password
 drawable avd_show_password
 drawable background
+drawable backgroundstorm
+drawable backgroundstorm2
 drawable border
+drawable bronzemedal
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -2483,6 +2486,7 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable clouds
 drawable coin
 drawable coing
 drawable common_full_open_on_phone
@@ -2509,9 +2513,13 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable gamebackground
+drawable goldmedal
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
+drawable gradientbackground
 drawable grass
+drawable grassn
 drawable ic_clock_black_24dp
 drawable ic_keyboard_black_24dp
 drawable ic_launcher_background
@@ -2575,6 +2583,8 @@ drawable profile
 drawable robo
 drawable robodeadleft
 drawable robodeadleftblue
+drawable robodeadleftblueno
+drawable robodeadleftno
 drawable robodeadleftpink
 drawable robodeadlefttwhite
 drawable robodeadright
@@ -2595,6 +2605,7 @@ drawable scoreboard
 drawable selectedrobo
 drawable shop
 drawable shopdocas
+drawable silvermedal
 drawable test_custom_background
 drawable test_level_drawable
 drawable title
@@ -2712,7 +2723,6 @@ id browser_actions_menu_item_icon
 id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
-id button
 id buttonPanel
 id cache_measures
 id callMeasure
@@ -2839,6 +2849,9 @@ id goBack5
 id gone
 id graph
 id graph_wrap
+id grid_item_image
+id grid_item_label
+id grid_score_label
 id group_divider
 id grouping
 id groups
@@ -2857,12 +2870,12 @@ id ignore
 id ignoreRequest
 id image
 id imageView
+id imageView10
 id imageView2
 id imageView3
 id imageView4
 id imageView5
 id imageView6
-id imageView7
 id imageView8
 id imageView9
 id immediateStop
@@ -2878,6 +2891,7 @@ id item4
 id item_touch_helper_previous_elevation
 id jumpToEnd
 id jumpToStart
+id label
 id labeled
 id layout
 id left
@@ -3024,7 +3038,6 @@ id robko
 id robo
 id rounded
 id row_index_key
-id saveButton
 id save_non_transition_alpha
 id save_overlay_view
 id sawtooth
@@ -3120,7 +3133,6 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
-id textView
 id textView2
 id textView3
 id textView4
@@ -3280,7 +3292,6 @@ layout abc_tooltip
 layout activity_menu
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
-layout change_robo
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -3360,6 +3371,7 @@ layout register
 layout reset_pass
 layout reset_pass_log
 layout scoreboard_layout
+layout scoreboardperson
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
@@ -3393,6 +3405,7 @@ plurals mtrl_badge_content_description
 raw dead
 raw game
 raw getscore
+raw keep
 raw main
 raw score
 raw splash
@@ -3452,6 +3465,7 @@ string common_google_play_services_wear_update_text
 string common_open_on_phone
 string common_signin_button_text
 string common_signin_button_text_long
+string copy_toast_msg
 string default_web_client_id
 string e_mail
 string email
@@ -3460,6 +3474,9 @@ string exit
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
+string fallback_menu_item_copy_link
+string fallback_menu_item_open_in_browser
+string fallback_menu_item_share_link
 string firebase_database_url
 string gcm_defaultSenderId
 string google_api_key
@@ -4760,6 +4777,7 @@ styleable ViewPager2 android_orientation
 styleable ViewStubCompat android_id android_layout android_inflatedId
 styleable ViewTransition android_id SharedValue SharedValueId clearsTag duration ifTagNotSet ifTagSet motionInterpolator motionTarget onStateTransition pathMotionArc setsTag transitionDisable upDuration viewTransitionMode
 styleable include constraintSet
+xml image_share_filepaths
 xml standalone_badge
 xml standalone_badge_gravity_bottom_end
 xml standalone_badge_gravity_bottom_start

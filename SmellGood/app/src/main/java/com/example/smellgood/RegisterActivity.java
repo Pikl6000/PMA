@@ -80,6 +80,15 @@ public class RegisterActivity extends AppCompatActivity {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
+    private void test(int i){
+        Player p = new Player("Test"+i,"Test"+i,"0","1","0","1,");
+        data.add(p).addOnSuccessListener(suc->{
+            Toast.makeText(RegisterActivity.this, "success", Toast.LENGTH_SHORT).show();
+        }).addOnFailureListener(er->{
+            Toast.makeText(RegisterActivity.this, "Not GUT", Toast.LENGTH_SHORT).show();
+        });
+    }
+
     private void createUser(){
         good = true;
         String email = etRegEmail.getText().toString(),nick = nickname.getText().toString();
@@ -155,6 +164,16 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        checkInternet();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        checkInternet();
     }
 
     @Override
