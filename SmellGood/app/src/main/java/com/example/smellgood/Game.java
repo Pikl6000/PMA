@@ -52,6 +52,8 @@ public class Game extends AppCompatActivity {
     private static final int INSERT_NOTE_TOKEN = 0;
     private Fdata data;
     private MediaPlayer mpDead;
+    private MediaPlayer mpPowder;
+    private MediaPlayer mpTotem;
 
 
     @Override
@@ -84,7 +86,9 @@ public class Game extends AppCompatActivity {
         bottom = findViewById(R.id.bottom);
         totem = findViewById(R.id.totemObject);
         right = true;
-        mpDead = MediaPlayer.create(this, R.raw.dead);
+        mpDead = MediaPlayer.create(this, R.raw.mudhit);
+        mpPowder = MediaPlayer.create(this, R.raw.powderget);
+        mpTotem = MediaPlayer.create(this, R.raw.totemget);
         handler = new Handler(Looper.getMainLooper());
         updateRobo();
     }
@@ -312,7 +316,7 @@ public class Game extends AppCompatActivity {
         do {
             x = (float) (Math.random() * (gamePanel.getWidth() - totem.getWidth()));
         } while ((x >= img1Range[0] && x <= img1Range[1]) || (x >= img2Range[0] && x <= img2Range[1]));
-        totem.setY(-30000);
+        totem.setY(-5000);
         totem.setX(x);
         totem.setVisibility(View.VISIBLE);
         totemY = totem.getY();
@@ -371,6 +375,7 @@ public class Game extends AppCompatActivity {
 
     public void collidedPowder(){
         generatePowder();
+        mpPowder.start();
         scoreCount++;
     }
 
@@ -390,6 +395,7 @@ public class Game extends AppCompatActivity {
 
     public void collidedTotem(){
         generateTotem();
+        mpTotem.start();
         totemCount++;
     }
 

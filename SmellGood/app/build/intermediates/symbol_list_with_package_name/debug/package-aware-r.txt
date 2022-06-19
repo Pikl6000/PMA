@@ -3407,8 +3407,12 @@ raw game
 raw getscore
 raw keep
 raw main
+raw mudhit
+raw powderget
+raw robodead
 raw score
 raw splash
+raw totemget
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description

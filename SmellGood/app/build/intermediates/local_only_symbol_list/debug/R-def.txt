@@ -168,8 +168,12 @@ raw dead
 raw game
 raw getscore
 raw main
+raw mudhit
+raw powderget
+raw robodead
 raw score
 raw splash
+raw totemget
 string app_name
 string back
 string default_web_client_id

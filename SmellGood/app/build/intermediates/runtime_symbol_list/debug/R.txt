@@ -3406,8 +3406,12 @@ int raw game 0x7f0f0001
 int raw getscore 0x7f0f0002
 int raw keep 0x7f0f0003
 int raw main 0x7f0f0004
+int raw mudhit 0x7f0f0008
+int raw powderget 0x7f0f0009
+int raw robodead 0x7f0f0007
 int raw score 0x7f0f0005
 int raw splash 0x7f0f0006
+int raw totemget 0x7f0f000a
 int string abc_action_bar_home_description 0x7f100000
 int string abc_action_bar_up_description 0x7f100001
 int string abc_action_menu_overflow_description 0x7f100002
