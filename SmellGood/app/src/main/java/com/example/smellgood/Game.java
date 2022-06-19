@@ -54,7 +54,6 @@ public class Game extends AppCompatActivity {
     private MediaPlayer mpDead;
     private MediaPlayer mpPowder;
     private MediaPlayer mpTotem;
-    private MediaPlayer mpGame;
 
 
     @Override
@@ -90,7 +89,6 @@ public class Game extends AppCompatActivity {
         mpDead = MediaPlayer.create(this, R.raw.mudhit);
         mpPowder = MediaPlayer.create(this, R.raw.powderget);
         mpTotem = MediaPlayer.create(this, R.raw.totemget);
-        mpGame = MediaPlayer.create(this, R.raw.game);
         handler = new Handler(Looper.getMainLooper());
         updateRobo();
     }

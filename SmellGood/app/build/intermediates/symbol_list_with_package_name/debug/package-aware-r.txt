@@ -3394,12 +3394,14 @@ mipmap icon
 mipmap icon_foreground
 mipmap icon_round
 plurals mtrl_badge_content_description
+raw buy
 raw game
 raw keep
 raw main
 raw mudhit
 raw powderget
 raw score
+raw select
 raw totemget
 string abc_action_bar_home_description
 string abc_action_bar_up_description

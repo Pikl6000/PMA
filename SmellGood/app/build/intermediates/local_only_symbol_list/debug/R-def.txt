@@ -156,11 +156,13 @@ mipmap ic_launcher_round
 mipmap icon
 mipmap icon_foreground
 mipmap icon_round
+raw buy
 raw game
 raw main
 raw mudhit
 raw powderget
 raw score
+raw select
 raw totemget
 string app_name
 string back
