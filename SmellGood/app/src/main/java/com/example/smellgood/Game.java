@@ -495,6 +495,7 @@ public class Game extends AppCompatActivity {
                     HashMap<String, Object> hashMap = new HashMap<>();
                     hashMap.put("name", z.getName());
                     if (Integer.parseInt(z.getScore()) < scoreCount){
+                        Toast.makeText(Game.this, "New Highscore", Toast.LENGTH_SHORT).show();
                         hashMap.put("score" , String.valueOf(scoreCount));
                     }
                     int ballance = Integer.parseInt(z.getBallance()) + ball;
