@@ -54,6 +54,7 @@ public class Game extends AppCompatActivity {
     private MediaPlayer mpDead;
     private MediaPlayer mpPowder;
     private MediaPlayer mpTotem;
+    private MediaPlayer mpGame;
 
 
     @Override
@@ -89,6 +90,7 @@ public class Game extends AppCompatActivity {
         mpDead = MediaPlayer.create(this, R.raw.mudhit);
         mpPowder = MediaPlayer.create(this, R.raw.powderget);
         mpTotem = MediaPlayer.create(this, R.raw.totemget);
+        mpGame = MediaPlayer.create(this, R.raw.game);
         handler = new Handler(Looper.getMainLooper());
         updateRobo();
     }
@@ -316,7 +318,7 @@ public class Game extends AppCompatActivity {
         do {
             x = (float) (Math.random() * (gamePanel.getWidth() - totem.getWidth()));
         } while ((x >= img1Range[0] && x <= img1Range[1]) || (x >= img2Range[0] && x <= img2Range[1]));
-        totem.setY(-5000);
+        totem.setY(-30000);
         totem.setX(x);
         totem.setVisibility(View.VISIBLE);
         totemY = totem.getY();
