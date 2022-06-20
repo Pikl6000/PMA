@@ -1,5 +1,7 @@
 package com.example.smellgood;
 
+/* kollarcikm@spse-po.sk */
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;

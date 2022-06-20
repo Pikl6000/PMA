@@ -1,4 +1,4 @@
-#Sun Jun 19 19:35:31 CEST 2022
+#Mon Jun 20 09:54:26 CEST 2022
 base.2=C\:\\Moje subory\\Git\\PMA\\SmellGood\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\15\\classes.dex
 path.2=15/classes.dex
 base.1=C\:\\Moje subory\\Git\\PMA\\SmellGood\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
