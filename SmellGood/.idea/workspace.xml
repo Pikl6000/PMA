@@ -18,7 +18,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\asus\.android\avd\Pixel_5_API_30.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\micha\.android\avd\Pixel_4_API_30.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -96,7 +96,7 @@
     <property name="project.structure.last.edited" value="Suggestions" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="experimental" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="PsdUISettings">
     <option name="MODULE_TAB" value="Default Config" />
@@ -108,6 +108,7 @@
       <recent name="pl.droidsonroids.gif" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Moje subory\Git\PMA\SmellGood\app\src\main\res\raw" />
       <recent name="D:\GitHub\PMA\SmellGood\app\src\main\res\layout" />
       <recent name="D:\Moje Subory\Programovanie\Git\PMA\SmellGood\app\src\main\res\raw" />
       <recent name="D:\Moje Subory\Programovanie\Git\PMA\SmellGood\app\src\main\res\drawable-v24" />

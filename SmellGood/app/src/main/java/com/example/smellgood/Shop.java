@@ -1,12 +1,16 @@
 package com.example.smellgood;
 
+/* kollarcikm@spse-po.sk */
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -36,6 +40,8 @@ public class Shop extends AppCompatActivity {
     private ImageView coin1,coin2,coin3,coin4;
     private LinearLayout back1,back2,back3,back4;
     String[] unlocked;
+    private MediaPlayer select;
+    private MediaPlayer buy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +81,9 @@ public class Shop extends AppCompatActivity {
         back3 = findViewById(R.id.backR3);
         back4 = findViewById(R.id.backR4);
 
+        select = MediaPlayer.create(this, R.raw.select);
+        buy = MediaPlayer.create(this, R.raw.buy);
+
         back.setOnClickListener(view -> {
             startActivity(new Intent(this,Main.class));
         });
@@ -83,12 +92,14 @@ public class Shop extends AppCompatActivity {
 
         option1.setOnClickListener(view -> {
             zapis(1);
+            select.start();
             Toast.makeText(this, "Robo Changed", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, Profile.class));
         });
         option2.setOnClickListener(view -> {
             if (price2 == 0){
                 zapis(2);
+                select.start();
                 Toast.makeText(this, "Robo Changed", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this, Profile.class));
             }
@@ -96,6 +107,7 @@ public class Shop extends AppCompatActivity {
                 if (ballance >= price2){
                     ballance -= price2;
                     zapis(2);
+                    buy.start();
                     Toast.makeText(this, "Robo purchased & equipped", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(this, Profile.class));
                 }
@@ -107,6 +119,7 @@ public class Shop extends AppCompatActivity {
         option3.setOnClickListener(view -> {
             if (price3 == 0){
                 zapis(3);
+                select.start();
                 Toast.makeText(this, "Robo Changed", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this, Profile.class));
             }
@@ -114,6 +127,7 @@ public class Shop extends AppCompatActivity {
                 if (ballance >= price3){
                     ballance -= price3;
                     zapis(3);
+                    buy.start();
                     Toast.makeText(this, "Robo purchased & equipped", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(this, Profile.class));
                 }
@@ -125,6 +139,7 @@ public class Shop extends AppCompatActivity {
         option4.setOnClickListener(view -> {
             if (price4 == 0){
                 zapis(4);
+                select.start();
                 Toast.makeText(this, "Robo Changed", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this, Profile.class));
             }
@@ -132,6 +147,7 @@ public class Shop extends AppCompatActivity {
                 if (ballance >= price4){
                     ballance -= price4;
                     zapis(4);
+                    buy.start();
                     Toast.makeText(this, "Robo purchased & equipped", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(this, Profile.class));
                 }
